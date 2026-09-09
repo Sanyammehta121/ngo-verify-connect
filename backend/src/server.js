@@ -40,8 +40,8 @@ function getLocalIpAddresses() {
   return addresses;
 }
 
-// Health check
-app.get('/api/health', (req, res) => {
+// Health check & Base API
+app.get(['/api', '/api/health'], (req, res) => {
   res.json({
     status: 'ok',
     service: 'NGO Verify & Connect API',
