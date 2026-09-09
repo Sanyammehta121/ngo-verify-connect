@@ -9,5 +9,24 @@
     "seed": "node backend/src/import-seed.js",
     "test": "node backend/src/test-api.js"
   },
-  "keywords": ["ngo", "verification", "darpan", "80g", "12a", "trust-score", "react", "express"]
+  "keywords": [
+    "ngo",
+    "verification",
+    "darpan",
+    "80g",
+    "12a",
+    "trust-score",
+    "react",
+    "express"
+  ],
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
 }

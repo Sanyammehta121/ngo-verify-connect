@@ -1,13 +1,32 @@
 const { DatabaseSync } = require('node:sqlite');
 const path = require('node:path');
 const fs = require('node:fs');
+const os = require('node:os');
 
-const dbDir = path.join(__dirname, '..', 'data');
-if (!fs.existsSync(dbDir)) {
-  fs.mkdirSync(dbDir, { recursive: true });
+const isServerless = Boolean(process.env.VERCEL || process.env.AWS_LAMBDA_FUNCTION_NAME);
+let dbPath;
+
+if (isServerless) {
+  const tmpDbPath = path.join(os.tmpdir(), 'ngo_database.sqlite');
+  const bundledDb = path.join(__dirname, '..', 'data', 'ngo_database.sqlite');
+  if (!fs.existsSync(tmpDbPath)) {
+    if (fs.existsSync(bundledDb)) {
+      try {
+        fs.copyFileSync(bundledDb, tmpDbPath);
+      } catch (err) {
+        console.warn('Could not copy bundled DB to /tmp, will initialize fresh:', err.message);
+      }
+    }
+  }
+  dbPath = tmpDbPath;
+} else {
+  const dbDir = path.join(__dirname, '..', 'data');
+  if (!fs.existsSync(dbDir)) {
+    fs.mkdirSync(dbDir, { recursive: true });
+  }
+  dbPath = path.join(dbDir, 'ngo_database.sqlite');
 }
 
-const dbPath = path.join(dbDir, 'ngo_database.sqlite');
 const db = new DatabaseSync(dbPath);
 
 // Enable foreign keys and initialize tables
@@ -183,3 +202,15 @@ module.exports = {
   db,
   computeTrustScore
 };
+
+// Auto-seed database if empty (ensures serverless deployments have all records)
+try {
+  const checkUsers = db.prepare('SELECT count(*) as count FROM users').get();
+  if (!checkUsers || checkUsers.count === 0) {
+    const { importSeedData } = require('./import-seed');
+    importSeedData();
+  }
+} catch (e) {
+  // Ignored if table not ready
+}
+
