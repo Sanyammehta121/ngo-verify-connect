@@ -1,5 +1,7 @@
 # 🛡️ NGO Verify & Connect
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FSanyammehta121%2Fngo-verify-connect)
+
 **NGO Verify & Connect** is a full-stack public transparency, verification, and due-diligence platform designed to help citizens, donors, and volunteers independently cross-examine, verify, and trust local non-profit organizations (NGOs) before donating or volunteering.
 
 ---
