@@ -1,0 +1,13 @@
+{
+  "name": "ngo-verify-and-connect",
+  "version": "1.0.0",
+  "description": "Full-stack web application to find, verify, and trust local NGOs before donating or engaging.",
+  "scripts": {
+    "postinstall": "npm --prefix backend install && npm --prefix frontend install",
+    "build": "npm --prefix frontend run build",
+    "start": "node backend/src/server.js",
+    "seed": "node backend/src/import-seed.js",
+    "test": "node backend/src/test-api.js"
+  },
+  "keywords": ["ngo", "verification", "darpan", "80g", "12a", "trust-score", "react", "express"]
+}

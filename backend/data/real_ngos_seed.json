@@ -1,0 +1,1612 @@
+[
+  {
+    "id": 1,
+    "name": "Goonj",
+    "logo": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=160&auto=format&fit=crop&q=80",
+    "description": "Goonj is an award-winning Indian non-profit organization that envisions growing an idea into a movement where urban discard becomes a tool for rural development and disaster relief across India.",
+    "categories": [
+      "Disaster Relief",
+      "Rural Development",
+      "Women Empowerment",
+      "Sanitation"
+    ],
+    "city": "New Delhi",
+    "state": "Delhi",
+    "address": "J-93, Sarita Vihar, New Delhi - 110076",
+    "latitude": 28.5284,
+    "longitude": 77.2945,
+    "phone": "+91-11-26972351",
+    "email": "mail@goonj.org",
+    "website": "https://goonj.org",
+    "registrationNumber": "S-34346 of 1999 (Societies Reg. Act XXI)",
+    "panNumber": "AAATG0928L",
+    "status12A": "Verified",
+    "status80G": "Verified",
+    "statusFCRA": "Verified",
+    "fcraNumber": "231660608",
+    "darpanId": "DL/2009/0002131",
+    "verificationStatus": "Verified",
+    "donationLink": "https://goonj.org/donate/",
+    "donationUpi": "goonj@icici",
+    "lastVerifiedOn": "2026-08-15",
+    "certifications": [
+      {
+        "name": "80G Tax Exemption Certificate",
+        "issuer": "Income Tax Department of India",
+        "issueDate": "2021-05-10",
+        "expiryDate": "2026-05-10",
+        "status": "Verified"
+      },
+      {
+        "name": "12A Registration Certificate",
+        "issuer": "Director of Income Tax (Exemptions)",
+        "issueDate": "2021-04-12",
+        "expiryDate": "2026-04-12",
+        "status": "Verified"
+      },
+      {
+        "name": "FCRA Prior Permission Renewal",
+        "issuer": "Ministry of Home Affairs (MHA)",
+        "issueDate": "2022-09-01",
+        "expiryDate": "2027-08-31",
+        "status": "Verified"
+      },
+      {
+        "name": "NITI Aayog NGO Darpan Registration",
+        "issuer": "NITI Aayog, Govt of India",
+        "issueDate": "2009-08-20",
+        "expiryDate": "Active",
+        "status": "Verified"
+      }
+    ],
+    "sampleReviews": [
+      {
+        "author": "Ananya Sharma",
+        "rating": 5,
+        "comment": "Transparent disaster relief operations. Received official 80G tax receipt within 24 hours of donating.",
+        "date": "2026-07-14"
+      },
+      {
+        "author": "Vikram Malhotra",
+        "rating": 5,
+        "comment": "Visited their Sarita Vihar collection center. Exemplary cloth and material recycling model that dignifies rural beneficiaries.",
+        "date": "2026-08-02"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Pratham Education Foundation",
+    "logo": "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=160&auto=format&fit=crop&q=80",
+    "description": "Pratham is one of the largest educational non-governmental organizations in India, focusing on high-quality, low-cost, and replicable interventions to address gaps in the education system.",
+    "categories": [
+      "Education",
+      "Child Welfare",
+      "Skill Development"
+    ],
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "address": "Y.B. Chavan Center, 4th Floor, Gen. J. Bhosale Marg, Nariman Point, Mumbai - 400021",
+    "latitude": 18.9256,
+    "longitude": 72.8242,
+    "phone": "+91-22-22819561",
+    "email": "info@pratham.org",
+    "website": "https://www.pratham.org",
+    "registrationNumber": "E-18012 (Bombay Public Trusts Act, 1950)",
+    "panNumber": "AAATP2190B",
+    "status12A": "Verified",
+    "status80G": "Verified",
+    "statusFCRA": "Verified",
+    "fcraNumber": "083780864",
+    "darpanId": "MH/2010/0034444",
+    "verificationStatus": "Verified",
+    "donationLink": "https://www.pratham.org/donate/",
+    "donationUpi": "pratham@kotak",
+    "lastVerifiedOn": "2026-08-20",
+    "certifications": [
+      {
+        "name": "Section 80G Approval",
+        "issuer": "CIT (Exemptions), Mumbai",
+        "issueDate": "2021-06-15",
+        "expiryDate": "2026-06-15",
+        "status": "Verified"
+      },
+      {
+        "name": "Section 12A Lifetime / Form 10AC",
+        "issuer": "Income Tax Department",
+        "issueDate": "2021-05-20",
+        "expiryDate": "2026-05-20",
+        "status": "Verified"
+      },
+      {
+        "name": "FCRA Registration",
+        "issuer": "Ministry of Home Affairs",
+        "issueDate": "2022-03-10",
+        "expiryDate": "2027-03-09",
+        "status": "Verified"
+      }
+    ],
+    "sampleReviews": [
+      {
+        "author": "Dr. Ramesh Kulkarni",
+        "rating": 5,
+        "comment": "Pratham's Annual Status of Education Report (ASER) is the gold standard for foundational literacy in India.",
+        "date": "2026-06-10"
+      },
+      {
+        "author": "Sneha Sen",
+        "rating": 5,
+        "comment": "Volunteered with their Read India campaign. Incredibly structured ground deployment and genuine passion.",
+        "date": "2026-07-28"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "The Akshaya Patra Foundation",
+    "logo": "https://images.unsplash.com/photo-1593113598332-cd288d649433?w=160&auto=format&fit=crop&q=80",
+    "description": "The Akshaya Patra Foundation strives to eliminate classroom hunger by implementing the PM POSHAN (Mid-Day Meal) Programme in government and government-aided schools across 16 states in India.",
+    "categories": [
+      "Health & Nutrition",
+      "Education",
+      "Food Security"
+    ],
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "address": "Hare Krishna Hill, West of Chord Road, Rajajinagar, Bengaluru - 560010",
+    "latitude": 13.0098,
+    "longitude": 77.5511,
+    "phone": "+91-80-30143400",
+    "email": "infodesk@akshayapatra.org",
+    "website": "https://www.akshayapatra.org",
+    "registrationNumber": "416/2001-02 (Registered Trust)",
+    "panNumber": "AAATA0452C",
+    "status12A": "Verified",
+    "status80G": "Verified",
+    "statusFCRA": "Verified",
+    "fcraNumber": "094421110",
+    "darpanId": "KA/2010/0034177",
+    "verificationStatus": "Verified",
+    "donationLink": "https://www.akshayapatra.org/onlinedonations",
+    "donationUpi": "akshayapatra@sbi",
+    "lastVerifiedOn": "2026-08-18",
+    "certifications": [
+      {
+        "name": "ISO 22000:2018 Food Safety",
+        "issuer": "DNV GL Business Assurance",
+        "issueDate": "2022-01-10",
+        "expiryDate": "2027-01-09",
+        "status": "Verified"
+      },
+      {
+        "name": "Section 80G Tax Exemption",
+        "issuer": "Director General of Income Tax",
+        "issueDate": "2021-08-01",
+        "expiryDate": "2026-07-31",
+        "status": "Verified"
+      },
+      {
+        "name": "FCRA Renewal Registration",
+        "issuer": "Ministry of Home Affairs",
+        "issueDate": "2022-10-15",
+        "expiryDate": "2027-10-14",
+        "status": "Verified"
+      }
+    ],
+    "sampleReviews": [
+      {
+        "author": "Karthik N.",
+        "rating": 5,
+        "comment": "Visited their mega kitchen in Rajajinagar. Unbelievable industrial hygiene standards and timely delivery to schools.",
+        "date": "2026-05-22"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "HelpAge India",
+    "logo": "https://images.unsplash.com/photo-1516307365426-bea591f05011?w=160&auto=format&fit=crop&q=80",
+    "description": "HelpAge India is a leading national charity working with and for disadvantaged elderly elders for over 4 decades, championing elder healthcare, rights, pension advocacy, and active ageing.",
+    "categories": [
+      "Elderly Care",
+      "Health & Nutrition",
+      "Disaster Relief"
+    ],
+    "city": "New Delhi",
+    "state": "Delhi",
+    "address": "C-14, Qutab Institutional Area, New Delhi - 110016",
+    "latitude": 28.5398,
+    "longitude": 77.1873,
+    "phone": "+91-11-41688955",
+    "email": "headoffice@helpageindia.org",
+    "website": "https://www.helpageindia.org",
+    "registrationNumber": "S-9404 of 1978 (Societies Registration Act)",
+    "panNumber": "AAATH0140M",
+    "status12A": "Verified",
+    "status80G": "Verified",
+    "statusFCRA": "Verified",
+    "fcraNumber": "231650058",
+    "darpanId": "DL/2009/0014238",
+    "verificationStatus": "Verified",
+    "donationLink": "https://www.helpageindia.org/donate/",
+    "donationUpi": "helpageindia@pnb",
+    "lastVerifiedOn": "2026-08-10",
+    "certifications": [
+      {
+        "name": "80G Certificate with 50% Tax Relief",
+        "issuer": "Income Tax Department, New Delhi",
+        "issueDate": "2021-04-01",
+        "expiryDate": "2026-03-31",
+        "status": "Verified"
+      },
+      {
+        "name": "Section 12A Charitable Exemption",
+        "issuer": "Director of Income Tax (E)",
+        "issueDate": "2021-04-01",
+        "expiryDate": "2026-03-31",
+        "status": "Verified"
+      },
+      {
+        "name": "FCRA Approved Status",
+        "issuer": "Foreigners Division, MHA",
+        "issueDate": "2022-04-01",
+        "expiryDate": "2027-03-31",
+        "status": "Verified"
+      }
+    ],
+    "sampleReviews": [
+      {
+        "author": "Meera Joshi",
+        "rating": 5,
+        "comment": "Their Mobile Healthcare Units in rural Delhi provide free chronic medicine to thousands of elderly citizens. Great work!",
+        "date": "2026-07-09"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "CRY - Child Rights and You",
+    "logo": "https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=160&auto=format&fit=crop&q=80",
+    "description": "CRY is an Indian non-governmental organization that works towards restoring basic rights of underprivileged Indian children through advocacy, grassroots intervention, and policy reform.",
+    "categories": [
+      "Child Welfare",
+      "Education",
+      "Health & Nutrition"
+    ],
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "address": "189/A, Anand Estate, Sane Guruji Marg, Mahalaxmi, Mumbai - 400011",
+    "latitude": 18.9827,
+    "longitude": 72.8277,
+    "phone": "+91-22-23063651",
+    "email": "cryinfo.mum@crymail.org",
+    "website": "https://www.cry.org",
+    "registrationNumber": "801/1979 (Public Charitable Trust)",
+    "panNumber": "AAATC1287K",
+    "status12A": "Verified",
+    "status80G": "Verified",
+    "statusFCRA": "Verified",
+    "fcraNumber": "083780486",
+    "darpanId": "MH/2009/0002165",
+    "verificationStatus": "Verified",
+    "donationLink": "https://www.cry.org/donation/",
+    "donationUpi": "cry@hdfcbank",
+    "lastVerifiedOn": "2026-08-25",
+    "certifications": [
+      {
+        "name": "Income Tax 80G Certificate",
+        "issuer": "Director of Income Tax (Exemption)",
+        "issueDate": "2021-05-15",
+        "expiryDate": "2026-05-14",
+        "status": "Verified"
+      },
+      {
+        "name": "FCRA Permanent Registration",
+        "issuer": "Ministry of Home Affairs",
+        "issueDate": "2022-01-20",
+        "expiryDate": "2027-01-19",
+        "status": "Verified"
+      }
+    ],
+    "sampleReviews": [
+      {
+        "author": "Rajeshwari Nair",
+        "rating": 4,
+        "comment": "Dedicated ground teams stopping child marriage and facilitating school enrollment in high-risk zones.",
+        "date": "2026-06-25"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Smile Foundation",
+    "logo": "https://images.unsplash.com/photo-1542810634-71277d95dcbb?w=160&auto=format&fit=crop&q=80",
+    "description": "Smile Foundation promotes education, healthcare, livelihood, and women empowerment directly benefitting over 1.5 million children and families every year through more than 400 welfare projects across 26 states.",
+    "categories": [
+      "Education",
+      "Health & Nutrition",
+      "Women Empowerment",
+      "Skill Development"
+    ],
+    "city": "New Delhi",
+    "state": "Delhi",
+    "address": "161 B/4, 3rd Floor, Gulmohar House, Yusuf Sarai Community Centre, New Delhi - 110049",
+    "latitude": 28.5583,
+    "longitude": 77.2078,
+    "phone": "+91-11-43123700",
+    "email": "info@smilefoundationindia.org",
+    "website": "https://www.smilefoundationindia.org",
+    "registrationNumber": "S-42171 of 2002",
+    "panNumber": "AAATS1942E",
+    "status12A": "Verified",
+    "status80G": "Verified",
+    "statusFCRA": "Verified",
+    "fcraNumber": "231660424",
+    "darpanId": "DL/2010/0034876",
+    "verificationStatus": "Verified",
+    "donationLink": "https://www.smilefoundationindia.org/donate/",
+    "donationUpi": "smilefoundation@yesbank",
+    "lastVerifiedOn": "2026-08-12",
+    "certifications": [
+      {
+        "name": "Section 80G Tax Exemption",
+        "issuer": "Income Tax Department, New Delhi",
+        "issueDate": "2021-07-12",
+        "expiryDate": "2026-07-11",
+        "status": "Verified"
+      },
+      {
+        "name": "FCRA Registration",
+        "issuer": "Ministry of Home Affairs",
+        "issueDate": "2022-06-18",
+        "expiryDate": "2027-06-17",
+        "status": "Verified"
+      }
+    ],
+    "sampleReviews": [
+      {
+        "author": "Amitabh Bose",
+        "rating": 5,
+        "comment": "Our corporate CSR partnership with their Mission Education programme has shown consistent quantifiable gains in child literacy.",
+        "date": "2026-07-18"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Wildlife SOS",
+    "logo": "https://images.unsplash.com/photo-1534188753412-3e26d0d618d6?w=160&auto=format&fit=crop&q=80",
+    "description": "Wildlife SOS was established in 1995 to protect and conserve India's natural heritage, forest, and wildlife wealth, renowned for rescuing hundreds of dancing bears and running premier elephant conservation care centers.",
+    "categories": [
+      "Animal Welfare",
+      "Environment & Wildlife",
+      "Conservation"
+    ],
+    "city": "New Delhi",
+    "state": "Delhi",
+    "address": "D-210, Defence Colony, New Delhi - 110024",
+    "latitude": 28.5726,
+    "longitude": 77.2325,
+    "phone": "+91-11-46216920",
+    "email": "info@wildlifesos.org",
+    "website": "https://wildlifesos.org",
+    "registrationNumber": "588/1995 (Society under Act XXI)",
+    "panNumber": "AAATW4310F",
+    "status12A": "Verified",
+    "status80G": "Verified",
+    "statusFCRA": "Verified",
+    "fcraNumber": "231660350",
+    "darpanId": "DL/2017/0158492",
+    "verificationStatus": "Verified",
+    "donationLink": "https://wildlifesos.org/donate/",
+    "donationUpi": "wildlifesos@axisbank",
+    "lastVerifiedOn": "2026-08-05",
+    "certifications": [
+      {
+        "name": "Central Zoo Authority (CZA) Recognized Rescue Facility",
+        "issuer": "Ministry of Environment, Forest and Climate Change",
+        "issueDate": "2021-03-10",
+        "expiryDate": "2026-03-09",
+        "status": "Verified"
+      },
+      {
+        "name": "80G Exemption Approval",
+        "issuer": "Income Tax Department",
+        "issueDate": "2021-06-20",
+        "expiryDate": "2026-06-19",
+        "status": "Verified"
+      }
+    ],
+    "sampleReviews": [
+      {
+        "author": "Dr. Pradeep Verma",
+        "rating": 5,
+        "comment": "Outstanding veterinary facilities at their Mathura Elephant Hospital and Agra Bear Rescue Center. Truly transparent operations.",
+        "date": "2026-08-11"
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Give Foundation (GiveIndia)",
+    "logo": "https://images.unsplash.com/photo-1532629345422-7515f3d16bb0?w=160&auto=format&fit=crop&q=80",
+    "description": "Give Foundation is India's largest and most trusted donation platform, partnering with thousands of vetted non-profits to channel individual and corporate philanthropy directly to verified grassroots causes.",
+    "categories": [
+      "Poverty Alleviation",
+      "Disaster Relief",
+      "Education",
+      "Health & Nutrition"
+    ],
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "address": "3rd Floor, 18, 3rd Cross Rd, Koramangala 5th Block, Bengaluru - 560095",
+    "latitude": 12.9352,
+    "longitude": 77.6245,
+    "phone": "+91-80-49202020",
+    "email": "info@giveindia.org",
+    "website": "https://give.do",
+    "registrationNumber": "E-18579 (Mumbai Public Trust)",
+    "panNumber": "AAATG5591D",
+    "status12A": "Verified",
+    "status80G": "Verified",
+    "statusFCRA": "Verified",
+    "fcraNumber": "083780775",
+    "darpanId": "KA/2016/0107293",
+    "verificationStatus": "Verified",
+    "donationLink": "https://give.do/donate",
+    "donationUpi": "giveindia@icici",
+    "lastVerifiedOn": "2026-08-22",
+    "certifications": [
+      {
+        "name": "80G Tax Exemption (Order No. ITBA/EXM/S/80G)",
+        "issuer": "Income Tax Department",
+        "issueDate": "2021-04-15",
+        "expiryDate": "2026-04-14",
+        "status": "Verified"
+      },
+      {
+        "name": "FCRA Valid Clearance",
+        "issuer": "MHA (Foreigners Division)",
+        "issueDate": "2022-07-10",
+        "expiryDate": "2027-07-09",
+        "status": "Verified"
+      }
+    ],
+    "sampleReviews": [
+      {
+        "author": "Tanmay Sengupta",
+        "rating": 5,
+        "comment": "Immediate automated 80G tax receipts and transparent fund utilization reports with monthly impact metrics.",
+        "date": "2026-08-19"
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Project Nanhi Kali (KC Mahindra Trust)",
+    "logo": "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=160&auto=format&fit=crop&q=80",
+    "description": "Project Nanhi Kali supports the education of underprivileged girls across India, providing academic, material and social support to enable them to complete 10 years of formal schooling with dignity.",
+    "categories": [
+      "Education",
+      "Girl Child Education",
+      "Women Empowerment"
+    ],
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "address": "Cecil Court, 3rd Floor, Mahakavi Bhushan Marg, Colaba, Mumbai - 400001",
+    "latitude": 18.9242,
+    "longitude": 72.8322,
+    "phone": "+91-22-22021031",
+    "email": "support@nanhikali.org",
+    "website": "https://www.nanhikali.org",
+    "registrationNumber": "E-3324 (Bombay Public Trusts Act, 1950)",
+    "panNumber": "AAATK0112F",
+    "status12A": "Verified",
+    "status80G": "Verified",
+    "statusFCRA": "Verified",
+    "fcraNumber": "083780512",
+    "darpanId": "MH/2017/0152431",
+    "verificationStatus": "Verified",
+    "donationLink": "https://www.nanhikali.org/donate",
+    "donationUpi": "nanhikali@axisbank",
+    "lastVerifiedOn": "2026-08-28",
+    "certifications": [
+      {
+        "name": "80G Exemption Approval",
+        "issuer": "Directorate of Income Tax (Exemption)",
+        "issueDate": "2021-06-01",
+        "expiryDate": "2026-05-31",
+        "status": "Verified"
+      },
+      {
+        "name": "12A Charitable Institution Status",
+        "issuer": "Income Tax Department",
+        "issueDate": "2021-04-10",
+        "expiryDate": "2026-04-09",
+        "status": "Verified"
+      }
+    ],
+    "sampleReviews": [
+      {
+        "author": "Shalini Sundaram",
+        "rating": 5,
+        "comment": "Sponsored two girls in Maharashtra. Received detailed academic progress report cards and handwritten letters.",
+        "date": "2026-07-20"
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Teach For India",
+    "logo": "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=160&auto=format&fit=crop&q=80",
+    "description": "Teach For India is a nationwide non-profit movement that recruits outstanding college graduates and working professionals to serve as full-time teachers in under-resourced schools.",
+    "categories": [
+      "Education",
+      "Youth Leadership",
+      "Skill Development"
+    ],
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "address": "Godrej One, 2nd Floor, Pirojshanagar, Eastern Express Highway, Vikhroli (East), Mumbai - 400079",
+    "latitude": 19.1025,
+    "longitude": 72.9281,
+    "phone": "+91-22-67253500",
+    "email": "info@teachforindia.org",
+    "website": "https://www.teachforindia.org",
+    "registrationNumber": "U80301MH2008NPL188040 (Section 8 Non-Profit)",
+    "panNumber": "AAACT8921J",
+    "status12A": "Verified",
+    "status80G": "Verified",
+    "statusFCRA": "Verified",
+    "fcraNumber": "083781290",
+    "darpanId": "MH/2016/0101683",
+    "verificationStatus": "Verified",
+    "donationLink": "https://www.teachforindia.org/donate",
+    "donationUpi": "teachforindia@hdfcbank",
+    "lastVerifiedOn": "2026-08-14",
+    "certifications": [
+      {
+        "name": "80G Certificate with 50% Benefit",
+        "issuer": "Commissioner of Income Tax (Exemptions)",
+        "issueDate": "2021-05-18",
+        "expiryDate": "2026-05-17",
+        "status": "Verified"
+      },
+      {
+        "name": "Section 12A Charitable Company Registration",
+        "issuer": "Income Tax Department",
+        "issueDate": "2021-04-25",
+        "expiryDate": "2026-04-24",
+        "status": "Verified"
+      }
+    ],
+    "sampleReviews": [
+      {
+        "author": "Arjun Singhal",
+        "rating": 5,
+        "comment": "Teach For India fellows bring infectious energy and modern pedagogical techniques to municipal classrooms.",
+        "date": "2026-08-01"
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "SEWA Bharat",
+    "logo": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=160&auto=format&fit=crop&q=80",
+    "description": "SEWA Bharat is the All-India federation of the Self-Employed Women's Association, organizing informal women workers into viable micro-enterprises, healthcare collectives, and cooperatives.",
+    "categories": [
+      "Women Empowerment",
+      "Livelihood",
+      "Rural Development",
+      "Skill Development"
+    ],
+    "city": "New Delhi",
+    "state": "Delhi",
+    "address": "7/52, South Patel Nagar, New Delhi - 110008",
+    "latitude": 28.6475,
+    "longitude": 77.165,
+    "phone": "+91-11-25841369",
+    "email": "mail@sewabharat.org",
+    "website": "https://sewabharat.org",
+    "registrationNumber": "S-14569 of 1984 (Societies Registration Act)",
+    "panNumber": "AAATS4419K",
+    "status12A": "Verified",
+    "status80G": "Verified",
+    "statusFCRA": "Verified",
+    "fcraNumber": "231660142",
+    "darpanId": "DL/2010/0037805",
+    "verificationStatus": "Verified",
+    "donationLink": "https://sewabharat.org/donate/",
+    "donationUpi": "sewabharat@sbi",
+    "lastVerifiedOn": "2026-08-16",
+    "certifications": [
+      {
+        "name": "80G Exemption Approval",
+        "issuer": "Director of Income Tax (Exemption), Delhi",
+        "issueDate": "2021-07-01",
+        "expiryDate": "2026-06-30",
+        "status": "Verified"
+      },
+      {
+        "name": "FCRA Permanent Registration",
+        "issuer": "Ministry of Home Affairs",
+        "issueDate": "2022-05-12",
+        "expiryDate": "2027-05-11",
+        "status": "Verified"
+      }
+    ],
+    "sampleReviews": [
+      {
+        "author": "Geeta Raman",
+        "rating": 5,
+        "comment": "True grassroots empowerment. Direct impact on women artisans and street vendors gaining financial security.",
+        "date": "2026-06-15"
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Sankara Eye Foundation India",
+    "logo": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=160&auto=format&fit=crop&q=80",
+    "description": "Sankara Eye Foundation is a super-specialty charitable eye care network delivering free eye surgeries, corneal transplants, and pediatric vision screenings to rural and marginalized populations across India.",
+    "categories": [
+      "Health & Nutrition",
+      "Healthcare Support",
+      "Community Health"
+    ],
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "address": "Varthur Road, Kundalahalli Gate, Bengaluru - 560037",
+    "latitude": 12.9648,
+    "longitude": 77.7176,
+    "phone": "+91-80-28542727",
+    "email": "contact@sankaraeye.com",
+    "website": "https://www.sankaraeye.com",
+    "registrationNumber": "83/1997-98 (Registered Charitable Trust)",
+    "panNumber": "AAATS9182P",
+    "status12A": "Verified",
+    "status80G": "Verified",
+    "statusFCRA": "Verified",
+    "fcraNumber": "094420881",
+    "darpanId": "KA/2011/0046182",
+    "verificationStatus": "Verified",
+    "donationLink": "https://www.sankaraeye.com/donate/",
+    "donationUpi": "sankaraeye@canarabank",
+    "lastVerifiedOn": "2026-08-24",
+    "certifications": [
+      {
+        "name": "NABH Accreditation for Eye Hospitals",
+        "issuer": "National Accreditation Board for Hospitals",
+        "issueDate": "2021-09-15",
+        "expiryDate": "2026-09-14",
+        "status": "Verified"
+      },
+      {
+        "name": "Section 80G Tax Exemption",
+        "issuer": "Income Tax Department",
+        "issueDate": "2021-05-10",
+        "expiryDate": "2026-05-09",
+        "status": "Verified"
+      }
+    ],
+    "sampleReviews": [
+      {
+        "author": "Naveen Chari",
+        "rating": 5,
+        "comment": "80% of all cataract surgeries are performed completely free of charge for rural patients. A beacon of integrity.",
+        "date": "2026-07-11"
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Friendicoes SECA",
+    "logo": "https://images.unsplash.com/photo-1548767797-d8c844163c4c?w=160&auto=format&fit=crop&q=80",
+    "description": "Friendicoes SECA is one of Delhi-NCR's oldest and most dedicated animal welfare charities, managing 24/7 veterinary hospitals, mobile equine clinics, and shelter rehabilitation for abandoned and injured animals.",
+    "categories": [
+      "Animal Welfare",
+      "Veterinary Care",
+      "Rescue Operations"
+    ],
+    "city": "New Delhi",
+    "state": "Delhi",
+    "address": "271 & 273, Flyover Market, Defence Colony, New Delhi - 110024",
+    "latitude": 28.5739,
+    "longitude": 77.2346,
+    "phone": "+91-11-24320707",
+    "email": "friendicoes.india@gmail.com",
+    "website": "https://friendicoes.org",
+    "registrationNumber": "S-10214 of 1979 (Societies Act)",
+    "panNumber": "AAATF1890L",
+    "status12A": "Verified",
+    "status80G": "Verified",
+    "statusFCRA": "Verified",
+    "fcraNumber": "231650392",
+    "darpanId": "DL/2011/0042189",
+    "verificationStatus": "Verified",
+    "donationLink": "https://friendicoes.org/donate/",
+    "donationUpi": "friendicoes@kotak",
+    "lastVerifiedOn": "2026-08-09",
+    "certifications": [
+      {
+        "name": "AWBI Recognition Certificate",
+        "issuer": "Animal Welfare Board of India",
+        "issueDate": "2020-10-10",
+        "expiryDate": "2025-10-09",
+        "status": "Verified"
+      },
+      {
+        "name": "80G Tax Exemption Certificate",
+        "issuer": "Income Tax Department",
+        "issueDate": "2021-06-25",
+        "expiryDate": "2026-06-24",
+        "status": "Verified"
+      }
+    ],
+    "sampleReviews": [
+      {
+        "author": "Simran Bedi",
+        "rating": 5,
+        "comment": "Saved our neighborhood community dog after an accident. Their emergency veterinary care team is tirelessly committed.",
+        "date": "2026-08-15"
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Salaam Baalak Trust",
+    "logo": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=160&auto=format&fit=crop&q=80",
+    "description": "Salaam Baalak Trust provides comprehensive support services including safe shelter, medical care, formal education, and vocational training to children in street situations and runaways in Delhi.",
+    "categories": [
+      "Child Welfare",
+      "Education",
+      "Disaster Relief"
+    ],
+    "city": "New Delhi",
+    "state": "Delhi",
+    "address": "2nd Floor, DDA Community Centre, Gali Chandiwali, Paharganj, New Delhi - 110055",
+    "latitude": 28.6433,
+    "longitude": 77.2144,
+    "phone": "+91-11-23584164",
+    "email": "sbtdelhi@yahoo.com",
+    "website": "https://www.salaambaalaktrust.com",
+    "registrationNumber": "9481 of 1988 (Indian Public Trust)",
+    "panNumber": "AAATS2219M",
+    "status12A": "Verified",
+    "status80G": "Verified",
+    "statusFCRA": "Verified",
+    "fcraNumber": "231650891",
+    "darpanId": "DL/2009/0001852",
+    "verificationStatus": "Verified",
+    "donationLink": "https://www.salaambaalaktrust.com/donation.php",
+    "donationUpi": "salaambaalak@icici",
+    "lastVerifiedOn": "2026-08-11",
+    "certifications": [
+      {
+        "name": "Section 80G Order",
+        "issuer": "Director of Income Tax (Exemption)",
+        "issueDate": "2021-05-14",
+        "expiryDate": "2026-05-13",
+        "status": "Verified"
+      },
+      {
+        "name": "12A Registration Order",
+        "issuer": "Income Tax Department",
+        "issueDate": "2021-04-12",
+        "expiryDate": "2026-04-11",
+        "status": "Verified"
+      }
+    ],
+    "sampleReviews": [
+      {
+        "author": "Karan Singhal",
+        "rating": 5,
+        "comment": "Took their guided heritage city walk led by former street children. Transforming lives into dignified young adults.",
+        "date": "2026-07-29"
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Make-A-Wish Foundation of India",
+    "logo": "https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=160&auto=format&fit=crop&q=80",
+    "description": "Make-A-Wish Foundation of India grants life-changing wishes for children with critical illnesses between ages 3 to 18, restoring hope and joy during rigorous medical treatments across 11 divisions.",
+    "categories": [
+      "Child Welfare",
+      "Health & Nutrition",
+      "Healthcare Support"
+    ],
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "address": "213, Vardhaman Chambers, Cawasji Patel Street, Fort, Mumbai - 400001",
+    "latitude": 18.9322,
+    "longitude": 72.8335,
+    "phone": "+91-22-22822180",
+    "email": "info@makeawishindia.org",
+    "website": "https://makeawishindia.org",
+    "registrationNumber": "E-16146 (Mumbai Public Trusts Act, 1950)",
+    "panNumber": "AAATM0991N",
+    "status12A": "Verified",
+    "status80G": "Verified",
+    "statusFCRA": "Verified",
+    "fcraNumber": "083780332",
+    "darpanId": "MH/2012/0051189",
+    "verificationStatus": "Verified",
+    "donationLink": "https://makeawishindia.org/donate-now/",
+    "donationUpi": "makeawish@yesbank",
+    "lastVerifiedOn": "2026-08-21",
+    "certifications": [
+      {
+        "name": "Section 80G Tax Exemption",
+        "issuer": "Income Tax Department, Mumbai",
+        "issueDate": "2021-06-18",
+        "expiryDate": "2026-06-17",
+        "status": "Verified"
+      },
+      {
+        "name": "12A Registration Approval",
+        "issuer": "Directorate of Income Tax",
+        "issueDate": "2021-05-22",
+        "expiryDate": "2026-05-21",
+        "status": "Verified"
+      }
+    ],
+    "sampleReviews": [
+      {
+        "author": "Dr. Rakesh Tandon",
+        "rating": 5,
+        "comment": "Collaborated with their Mumbai hospital chapter for pediatric oncology patients. Uplifts morale miraculously.",
+        "date": "2026-08-04"
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "name": "Agastya International Foundation",
+    "logo": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=160&auto=format&fit=crop&q=80",
+    "description": "Agastya International Foundation runs one of the world's largest mobile hands-on science education programs, sparking curiosity and creativity in over 15 million underprivileged children across rural India.",
+    "categories": [
+      "Education",
+      "Skill Development",
+      "Rural Development"
+    ],
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "address": "101, Haudin Road, Ulsoor, Bengaluru - 560042",
+    "latitude": 12.9814,
+    "longitude": 77.62,
+    "phone": "+91-80-41127715",
+    "email": "agastya@agastya.org",
+    "website": "https://www.agastya.org",
+    "registrationNumber": "122/1999 (Registered Charitable Trust)",
+    "panNumber": "AAATA8211E",
+    "status12A": "Verified",
+    "status80G": "Verified",
+    "statusFCRA": "Verified",
+    "fcraNumber": "094420914",
+    "darpanId": "KA/2010/0031178",
+    "verificationStatus": "Verified",
+    "donationLink": "https://www.agastya.org/donate/",
+    "donationUpi": "agastya@sbi",
+    "lastVerifiedOn": "2026-08-17",
+    "certifications": [
+      {
+        "name": "80G Tax Exemption Clearance",
+        "issuer": "Director General of Income Tax",
+        "issueDate": "2021-04-20",
+        "expiryDate": "2026-04-19",
+        "status": "Verified"
+      },
+      {
+        "name": "FCRA Valid Clearance",
+        "issuer": "MHA Foreigners Division",
+        "issueDate": "2022-08-01",
+        "expiryDate": "2027-07-31",
+        "status": "Verified"
+      }
+    ],
+    "sampleReviews": [
+      {
+        "author": "Girish Rao",
+        "rating": 5,
+        "comment": "Their Kuppam creativity campus is mindblowing. Hands-on astronomy and physics models accessible to village kids.",
+        "date": "2026-08-08"
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Robin Hood Army (Volunteer Collective)",
+    "logo": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=160&auto=format&fit=crop&q=80",
+    "description": "A volunteer-based zero-funds movement that works to get surplus food from restaurants and communities to serve the less fortunate, while running Robin Hood Academy to help street children get enrolled in schools.",
+    "categories": [
+      "Food Security",
+      "Poverty Alleviation",
+      "Education"
+    ],
+    "city": "New Delhi",
+    "state": "Delhi",
+    "address": "Green Park, New Delhi - 110016",
+    "latitude": 28.5588,
+    "longitude": 77.2028,
+    "phone": "+91-11-26569900",
+    "email": "info@robinhoodarmy.com",
+    "website": "https://robinhoodarmy.com",
+    "registrationNumber": "Zero-Funds Public Volunteer Collective",
+    "panNumber": "Unregistered Financial Entity (No Cash Accepted)",
+    "status12A": "Unverified",
+    "status80G": "Unverified",
+    "statusFCRA": "Unverified",
+    "fcraNumber": null,
+    "darpanId": null,
+    "verificationStatus": "Pending",
+    "donationLink": null,
+    "donationUpi": null,
+    "lastVerifiedOn": "2026-08-20",
+    "certifications": [
+      {
+        "name": "Zero-Funds Volunteer Charter",
+        "issuer": "Robin Hood Army National Council",
+        "issueDate": "2024-08-15",
+        "expiryDate": "Active",
+        "status": "Verified"
+      }
+    ],
+    "sampleReviews": [
+      {
+        "author": "Kavita Rao",
+        "rating": 4,
+        "comment": "Does not accept monetary donations at all, only food packets and volunteer time. Highly recommended for ground volunteering!",
+        "date": "2026-07-22"
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Jan Kalyan Samajik Sanstha",
+    "logo": "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=160&auto=format&fit=crop&q=80",
+    "description": "An informal local community initiative running youth recreation programs in suburban Pune. Registration papers and tax audit reports are currently under review by authorities.",
+    "categories": [
+      "Rural Development",
+      "Skill Development"
+    ],
+    "city": "Pune",
+    "state": "Maharashtra",
+    "address": "Plot 42, Sector 18, Chinchwad, Pune - 411019",
+    "latitude": 18.6298,
+    "longitude": 73.7997,
+    "phone": "+91-20-27471100",
+    "email": "contact@jankalyanpune.org.demo",
+    "website": "https://jankalyansanstha.demo.org",
+    "registrationNumber": "MH/PUN/TEMP-2025/9981 (Under Review)",
+    "panNumber": "AABTJ1190X",
+    "status12A": "Unverified",
+    "status80G": "Unverified",
+    "statusFCRA": "Unverified",
+    "fcraNumber": null,
+    "darpanId": null,
+    "verificationStatus": "Pending",
+    "donationLink": null,
+    "donationUpi": null,
+    "lastVerifiedOn": "2025-10-12",
+    "certifications": [
+      {
+        "name": "Provisional Society Registration Application",
+        "issuer": "Pune Charity Commissioner Office",
+        "issueDate": "2024-11-01",
+        "expiryDate": "2025-10-31",
+        "status": "Expired"
+      }
+    ],
+    "sampleReviews": [
+      {
+        "author": "Sunil Joshi",
+        "rating": 3,
+        "comment": "Local volunteers are friendly but they do not provide 80G tax certificates. Awaiting proper Darpan verification.",
+        "date": "2026-03-12"
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "name": "The Banyan",
+    "logo": "https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=160&auto=format&fit=crop&q=80",
+    "description": "The Banyan enables mental healthcare solutions for homeless and impoverished individuals with severe mental health issues, running transit-care centers, inclusive living communities, and rural mental health clinics.",
+    "categories": [
+      "Mental Health",
+      "Women Empowerment",
+      "Healthcare Support"
+    ],
+    "city": "Chennai",
+    "state": "Tamil Nadu",
+    "address": "6th Main Road, Mogappair West, Chennai - 600037",
+    "latitude": 13.0827,
+    "longitude": 80.1707,
+    "phone": "+91-44-26530105",
+    "email": "contact@thebanyan.org",
+    "website": "https://thebanyan.org",
+    "registrationNumber": "808/1993 (Registered Public Trust)",
+    "panNumber": "AAATT3190Q",
+    "status12A": "Verified",
+    "status80G": "Verified",
+    "statusFCRA": "Verified",
+    "fcraNumber": "075900591",
+    "darpanId": "TN/2010/0038190",
+    "verificationStatus": "Verified",
+    "donationLink": "https://thebanyan.org/donate/",
+    "donationUpi": "thebanyan@icici",
+    "lastVerifiedOn": "2026-08-27",
+    "certifications": [
+      {
+        "name": "Section 80G Tax Exemption",
+        "issuer": "Income Tax Department, Chennai",
+        "issueDate": "2021-05-19",
+        "expiryDate": "2026-05-18",
+        "status": "Verified"
+      },
+      {
+        "name": "FCRA Permanent Registration",
+        "issuer": "Ministry of Home Affairs",
+        "issueDate": "2022-04-10",
+        "expiryDate": "2027-04-09",
+        "status": "Verified"
+      }
+    ],
+    "sampleReviews": [
+      {
+        "author": "Dr. Saravanan Ramanathan",
+        "rating": 5,
+        "comment": "Pioneering mental health transit care for homeless women in Chennai. Compassion and clinical excellence at its finest.",
+        "date": "2026-07-30"
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "name": "Naandi Foundation",
+    "logo": "https://images.unsplash.com/photo-1593113598332-cd288d649433?w=160&auto=format&fit=crop&q=80",
+    "description": "Naandi Foundation is one of the largest social sector organizations in India, working on sustainable agrarian livelihoods, Araku coffee regenerative agriculture, safe drinking water, and girl child education.",
+    "categories": [
+      "Livelihood",
+      "Rural Development",
+      "Girl Child Education",
+      "Skill Development"
+    ],
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "address": "502, Trendset Towers, Road No. 2, Banjara Hills, Hyderabad - 500034",
+    "latitude": 17.4156,
+    "longitude": 78.435,
+    "phone": "+91-40-23556470",
+    "email": "info@naandi.org",
+    "website": "https://www.naandi.org",
+    "registrationNumber": "4725/1998 (Public Charitable Trust)",
+    "panNumber": "AAATN9022L",
+    "status12A": "Verified",
+    "status80G": "Verified",
+    "statusFCRA": "Verified",
+    "fcraNumber": "010230554",
+    "darpanId": "TS/2011/0043180",
+    "verificationStatus": "Verified",
+    "donationLink": "https://www.naandi.org/donate",
+    "donationUpi": "naandi@sbi",
+    "lastVerifiedOn": "2026-08-25",
+    "certifications": [
+      {
+        "name": "80G Certificate with Tax Deduction",
+        "issuer": "Income Tax Department, Hyderabad",
+        "issueDate": "2021-06-12",
+        "expiryDate": "2026-06-11",
+        "status": "Verified"
+      },
+      {
+        "name": "FCRA Approved Status",
+        "issuer": "Foreigners Division, MHA",
+        "issueDate": "2022-09-18",
+        "expiryDate": "2027-09-17",
+        "status": "Verified"
+      }
+    ],
+    "sampleReviews": [
+      {
+        "author": "Venkat Rao",
+        "rating": 5,
+        "comment": "Their Nanhi Kali partnership and Araku tribal coffee agroforestry models are celebrated globally.",
+        "date": "2026-08-05"
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "name": "Child In Need Institute (CINI)",
+    "logo": "https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=160&auto=format&fit=crop&q=80",
+    "description": "CINI works across eastern India to enable children, adolescents, and women to realize their rights to health, nutrition, education, and protection through child-friendly community ecosystems.",
+    "categories": [
+      "Child Welfare",
+      "Health & Nutrition",
+      "Education",
+      "Women Empowerment"
+    ],
+    "city": "Kolkata",
+    "state": "West Bengal",
+    "address": "Daulatpur, P.O. Pailan, via Joka, Kolkata - 700104",
+    "latitude": 22.4542,
+    "longitude": 88.2915,
+    "phone": "+91-33-24978192",
+    "email": "cinikolkata@cinindia.org",
+    "website": "https://www.cini-india.org",
+    "registrationNumber": "S-14545 of 1974-75 (Societies Act)",
+    "panNumber": "AAATC0911M",
+    "status12A": "Verified",
+    "status80G": "Verified",
+    "statusFCRA": "Verified",
+    "fcraNumber": "147120014",
+    "darpanId": "WB/2009/0017812",
+    "verificationStatus": "Verified",
+    "donationLink": "https://www.cini-india.org/donate/",
+    "donationUpi": "cini@pnb",
+    "lastVerifiedOn": "2026-08-22",
+    "certifications": [
+      {
+        "name": "Section 80G Tax Exemption",
+        "issuer": "Income Tax Department, Kolkata",
+        "issueDate": "2021-04-18",
+        "expiryDate": "2026-04-17",
+        "status": "Verified"
+      },
+      {
+        "name": "12A Charitable Order",
+        "issuer": "Director of Income Tax (Exemption)",
+        "issueDate": "2021-04-01",
+        "expiryDate": "2026-03-31",
+        "status": "Verified"
+      }
+    ],
+    "sampleReviews": [
+      {
+        "author": "Debabrata Mukherjee",
+        "rating": 5,
+        "comment": "Over 50 years of tireless service addressing infant malnutrition in West Bengal and Jharkhand.",
+        "date": "2026-07-16"
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "name": "Barefoot College (SWRC)",
+    "logo": "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=160&auto=format&fit=crop&q=80",
+    "description": "Barefoot College demystifies technology to empower rural marginalized women as Solar Engineers ('Solar Mamas'), night school educators, and rainwater harvesters in village communities across Rajasthan.",
+    "categories": [
+      "Rural Development",
+      "Women Empowerment",
+      "Skill Development",
+      "Education"
+    ],
+    "city": "Jaipur",
+    "state": "Rajasthan",
+    "address": "Tilonia, via Madanganj, Ajmer/Jaipur, Rajasthan - 305816",
+    "latitude": 26.6534,
+    "longitude": 75.0441,
+    "phone": "+91-145-2817202",
+    "email": "contact@barefootcollege.org",
+    "website": "https://www.barefootcollege.org",
+    "registrationNumber": "204/1972 (Rajasthan Societies Registration Act)",
+    "panNumber": "AAATS1102A",
+    "status12A": "Verified",
+    "status80G": "Verified",
+    "statusFCRA": "Verified",
+    "fcraNumber": "125410012",
+    "darpanId": "RJ/2010/0035182",
+    "verificationStatus": "Verified",
+    "donationLink": "https://www.barefootcollege.org/donate/",
+    "donationUpi": "barefoot@sbi",
+    "lastVerifiedOn": "2026-08-19",
+    "certifications": [
+      {
+        "name": "80G Exemption Approval",
+        "issuer": "Income Tax Department, Jaipur",
+        "issueDate": "2021-05-15",
+        "expiryDate": "2026-05-14",
+        "status": "Verified"
+      },
+      {
+        "name": "FCRA Valid Clearance",
+        "issuer": "Ministry of Home Affairs",
+        "issueDate": "2022-07-20",
+        "expiryDate": "2027-07-19",
+        "status": "Verified"
+      }
+    ],
+    "sampleReviews": [
+      {
+        "author": "Pooja Shekhawat",
+        "rating": 5,
+        "comment": "Seeing semi-literate grandmothers assemble solar circuit boards without reading text is inspiring!",
+        "date": "2026-08-07"
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "name": "Blind People's Association (BPA)",
+    "logo": "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=160&auto=format&fit=crop&q=80",
+    "description": "BPA India is a premier comprehensive rehabilitation institute for persons with blindness and locomotor disabilities, running Braille press facilities, inclusive schooling, and computer training centers.",
+    "categories": [
+      "Disability Welfare",
+      "Skill Development",
+      "Healthcare Support",
+      "Education"
+    ],
+    "city": "Ahmedabad",
+    "state": "Gujarat",
+    "address": "Jagdish Patel Chowk, Surdas Marg, Vastrapur, Ahmedabad - 380015",
+    "latitude": 23.0338,
+    "longitude": 72.5332,
+    "phone": "+91-79-26305082",
+    "email": "bpapromr1@bsnl.in",
+    "website": "https://bpaindia.org",
+    "registrationNumber": "F-140 (Bombay Public Trusts Act, Ahmedabad)",
+    "panNumber": "AAATB1410P",
+    "status12A": "Verified",
+    "status80G": "Verified",
+    "statusFCRA": "Verified",
+    "fcraNumber": "041910015",
+    "darpanId": "GJ/2009/0008891",
+    "verificationStatus": "Verified",
+    "donationLink": "https://bpaindia.org/donation/",
+    "donationUpi": "bpaindia@axisbank",
+    "lastVerifiedOn": "2026-08-23",
+    "certifications": [
+      {
+        "name": "Section 80G Tax Exemption",
+        "issuer": "Income Tax Department, Ahmedabad",
+        "issueDate": "2021-04-30",
+        "expiryDate": "2026-04-29",
+        "status": "Verified"
+      },
+      {
+        "name": "12A Charitable Exemption",
+        "issuer": "Director of Income Tax",
+        "issueDate": "2021-04-01",
+        "expiryDate": "2026-03-31",
+        "status": "Verified"
+      }
+    ],
+    "sampleReviews": [
+      {
+        "author": "Dr. Hardik Patel",
+        "rating": 5,
+        "comment": "Exemplary vocational campus in Vastrapur providing dignified jobs and adaptive tech for visual impairment.",
+        "date": "2026-07-19"
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "name": "Mata Amritanandamayi Math (Amrita Seva)",
+    "logo": "https://images.unsplash.com/photo-1532629345422-7515f3d16bb0?w=160&auto=format&fit=crop&q=80",
+    "description": "Amrita Seva conducts nationwide humanitarian work through disaster relief teams, free charitable healthcare hospitals, homes for destitute women, and vocational skill centers across Kerala and India.",
+    "categories": [
+      "Disaster Relief",
+      "Healthcare Support",
+      "Poverty Alleviation",
+      "Education"
+    ],
+    "city": "Kochi",
+    "state": "Kerala",
+    "address": "Amrita Lane, Edappally, Kochi, Kerala - 682024",
+    "latitude": 10.0261,
+    "longitude": 76.3125,
+    "phone": "+91-476-2896278",
+    "email": "mam@amritapuri.org",
+    "website": "https://www.amritapuri.org",
+    "registrationNumber": "A-227/1981 (Travancore-Cochin Literary & Charitable Societies Act)",
+    "panNumber": "AAATM0198C",
+    "status12A": "Verified",
+    "status80G": "Verified",
+    "statusFCRA": "Verified",
+    "fcraNumber": "052860012",
+    "darpanId": "KL/2010/0034459",
+    "verificationStatus": "Verified",
+    "donationLink": "https://www.amritapuri.org/donate",
+    "donationUpi": "amritaseva@federalbank",
+    "lastVerifiedOn": "2026-08-26",
+    "certifications": [
+      {
+        "name": "Section 80G Tax Order",
+        "issuer": "Commissioner of Income Tax, Kochi",
+        "issueDate": "2021-06-22",
+        "expiryDate": "2026-06-21",
+        "status": "Verified"
+      },
+      {
+        "name": "FCRA Permanent Clearance",
+        "issuer": "Ministry of Home Affairs",
+        "issueDate": "2022-08-14",
+        "expiryDate": "2027-08-13",
+        "status": "Verified"
+      }
+    ],
+    "sampleReviews": [
+      {
+        "author": "Anoop Menon",
+        "rating": 5,
+        "comment": "Free treatments and heart surgeries at Amrita Hospital have rescued countless underprivileged families.",
+        "date": "2026-08-12"
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "name": "Kiran Society (Kiran Village)",
+    "logo": "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=160&auto=format&fit=crop&q=80",
+    "description": "Kiran Society operates an inclusive educational village in Varanasi for children and youth with neurological, physical, and sensory disabilities, providing orthotic aids, inclusive schooling, and organic farming skills.",
+    "categories": [
+      "Disability Welfare",
+      "Child Welfare",
+      "Education",
+      "Healthcare Support"
+    ],
+    "city": "Varanasi",
+    "state": "Uttar Pradesh",
+    "address": "Madhopur, P.O. Mirzamurad, Varanasi, Uttar Pradesh - 221307",
+    "latitude": 25.2638,
+    "longitude": 82.7825,
+    "phone": "+91-542-2635147",
+    "email": "kiran@kiranvillage.org",
+    "website": "https://www.kiranvillage.org",
+    "registrationNumber": "334/1990-91 (Societies Registration Act XXI)",
+    "panNumber": "AAATK1910K",
+    "status12A": "Verified",
+    "status80G": "Verified",
+    "statusFCRA": "Verified",
+    "fcraNumber": "136370014",
+    "darpanId": "UP/2011/0045189",
+    "verificationStatus": "Verified",
+    "donationLink": "https://www.kiranvillage.org/donate/",
+    "donationUpi": "kiransociety@sbi",
+    "lastVerifiedOn": "2026-08-15",
+    "certifications": [
+      {
+        "name": "80G Tax Exemption",
+        "issuer": "Income Tax Department, Varanasi",
+        "issueDate": "2021-05-18",
+        "expiryDate": "2026-05-17",
+        "status": "Verified"
+      },
+      {
+        "name": "FCRA Approved Registration",
+        "issuer": "Ministry of Home Affairs",
+        "issueDate": "2022-03-25",
+        "expiryDate": "2027-03-24",
+        "status": "Verified"
+      }
+    ],
+    "sampleReviews": [
+      {
+        "author": "Shweta Tripathi",
+        "rating": 5,
+        "comment": "Incredible rehabilitative warmth in rural Varanasi. Children with cerebral palsy receive customized orthotics and education.",
+        "date": "2026-07-27"
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "name": "Parijat Academy",
+    "logo": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=160&auto=format&fit=crop&q=80",
+    "description": "Parijat Academy provides free, quality formal education, boarding, and sewing livelihood training to indigenous tribal children and dropouts from the Pamohi tribal belt on the outskirts of Guwahati.",
+    "categories": [
+      "Education",
+      "Tribal Welfare",
+      "Child Welfare"
+    ],
+    "city": "Guwahati",
+    "state": "Assam",
+    "address": "Pamohi, Garchuk, Guwahati, Assam - 781035",
+    "latitude": 26.1158,
+    "longitude": 91.6825,
+    "phone": "+91-9864041711",
+    "email": "parijatacademy03@gmail.com",
+    "website": "https://parijatacademy.org",
+    "registrationNumber": "RS/KAM/240/A-1/321 of 2004-05",
+    "panNumber": "AAATP8912C",
+    "status12A": "Verified",
+    "status80G": "Verified",
+    "statusFCRA": "Verified",
+    "fcraNumber": "021750032",
+    "darpanId": "AS/2014/0078129",
+    "verificationStatus": "Verified",
+    "donationLink": "https://parijatacademy.org/donate/",
+    "donationUpi": "parijatacademy@pnb",
+    "lastVerifiedOn": "2026-08-18",
+    "certifications": [
+      {
+        "name": "Section 80G Tax Exemption",
+        "issuer": "Income Tax Department, Guwahati",
+        "issueDate": "2021-07-15",
+        "expiryDate": "2026-07-14",
+        "status": "Verified"
+      },
+      {
+        "name": "12A Charitable Exemption",
+        "issuer": "Director of Income Tax (E)",
+        "issueDate": "2021-04-10",
+        "expiryDate": "2026-04-09",
+        "status": "Verified"
+      }
+    ],
+    "sampleReviews": [
+      {
+        "author": "Pranjal Barua",
+        "rating": 5,
+        "comment": "Started with 4 children in a cow shed, now educating hundreds of tribal children for free. Pure grassroots devotion.",
+        "date": "2026-08-02"
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "name": "Nidan",
+    "logo": "https://images.unsplash.com/photo-1542810634-71277d95dcbb?w=160&auto=format&fit=crop&q=80",
+    "description": "Nidan organizes informal sector workers, street vendors, waste pickers, and agricultural laborers across Bihar, building self-sustaining community cooperatives, child day-care, and health insurance umbrellas.",
+    "categories": [
+      "Poverty Alleviation",
+      "Livelihood",
+      "Child Welfare",
+      "Women Empowerment"
+    ],
+    "city": "Patna",
+    "state": "Bihar",
+    "address": "D-208, Anand Vihar, West Boring Canal Road, Patna - 800001",
+    "latitude": 25.6148,
+    "longitude": 85.1215,
+    "phone": "+91-612-2557404",
+    "email": "nidan@nidan.in",
+    "website": "https://nidan.in",
+    "registrationNumber": "588 of 1996 (Societies Registration Act XXI)",
+    "panNumber": "AAATN1019D",
+    "status12A": "Verified",
+    "status80G": "Verified",
+    "statusFCRA": "Verified",
+    "fcraNumber": "031170241",
+    "darpanId": "BR/2010/0035112",
+    "verificationStatus": "Verified",
+    "donationLink": "https://nidan.in/donate/",
+    "donationUpi": "nidan@hdfcbank",
+    "lastVerifiedOn": "2026-08-13",
+    "certifications": [
+      {
+        "name": "Section 80G Tax Exemption",
+        "issuer": "Income Tax Department, Patna",
+        "issueDate": "2021-06-10",
+        "expiryDate": "2026-06-09",
+        "status": "Verified"
+      },
+      {
+        "name": "FCRA Approved Registration",
+        "issuer": "Ministry of Home Affairs",
+        "issueDate": "2022-04-18",
+        "expiryDate": "2027-04-17",
+        "status": "Verified"
+      }
+    ],
+    "sampleReviews": [
+      {
+        "author": "Anand Mohan Prasad",
+        "rating": 5,
+        "comment": "Crucial advocacy organizing street vendors and waste collectors into dignified micro-enterprises in Patna.",
+        "date": "2026-07-24"
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "name": "Ruchika Social Service Organisation",
+    "logo": "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=160&auto=format&fit=crop&q=80",
+    "description": "Ruchika Social Service Organisation pioneered the Railway Platform Schools in Odisha, educating runaway and underprivileged children living on train platforms and city slums.",
+    "categories": [
+      "Child Welfare",
+      "Education",
+      "Disaster Relief"
+    ],
+    "city": "Bhubaneswar",
+    "state": "Odisha",
+    "address": "3731/A, Sriram Nagar, Old Town, Bhubaneswar - 751002",
+    "latitude": 20.2458,
+    "longitude": 85.8344,
+    "phone": "+91-674-2340583",
+    "email": "rssobbsr@gmail.com",
+    "website": "https://ruchika.org",
+    "registrationNumber": "18195/25 of 1985 (Societies Act XXI)",
+    "panNumber": "AAATR9811J",
+    "status12A": "Verified",
+    "status80G": "Verified",
+    "statusFCRA": "Verified",
+    "fcraNumber": "104830022",
+    "darpanId": "OR/2010/0033190",
+    "verificationStatus": "Verified",
+    "donationLink": "https://ruchika.org/donate/",
+    "donationUpi": "ruchika@sbi",
+    "lastVerifiedOn": "2026-08-17",
+    "certifications": [
+      {
+        "name": "Section 80G Approval",
+        "issuer": "Income Tax Department, Bhubaneswar",
+        "issueDate": "2021-05-20",
+        "expiryDate": "2026-05-19",
+        "status": "Verified"
+      },
+      {
+        "name": "FCRA Permanent Clearance",
+        "issuer": "Ministry of Home Affairs",
+        "issueDate": "2022-06-12",
+        "expiryDate": "2027-06-11",
+        "status": "Verified"
+      }
+    ],
+    "sampleReviews": [
+      {
+        "author": "Subhashree Jena",
+        "rating": 5,
+        "comment": "Their platform schools gave thousands of destitute children on railway tracks a real childhood and future.",
+        "date": "2026-08-01"
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "name": "All India Pingalwara Charitable Society",
+    "logo": "https://images.unsplash.com/photo-1516307365426-bea591f05011?w=160&auto=format&fit=crop&q=80",
+    "description": "Founded by Bhagat Puran Singh in 1947, Pingalwara provides completely free shelter, medical treatment, hospice care, and special schools to thousands of abandoned, paralyzed, psychiatric, and dying destitute persons in Punjab.",
+    "categories": [
+      "Elderly Care",
+      "Disability Welfare",
+      "Healthcare Support",
+      "Poverty Alleviation"
+    ],
+    "city": "Amritsar",
+    "state": "Punjab",
+    "address": "GT Road, Near Bus Stand, Amritsar, Punjab - 143001",
+    "latitude": 31.6258,
+    "longitude": 74.8825,
+    "phone": "+91-183-2584586",
+    "email": "pingal@pingalwara.org",
+    "website": "https://pingalwara.org",
+    "registrationNumber": "337 of 1957 (Societies Registration Act XXI)",
+    "panNumber": "AAATA0819R",
+    "status12A": "Verified",
+    "status80G": "Verified",
+    "statusFCRA": "Verified",
+    "fcraNumber": "115120014",
+    "darpanId": "PB/2011/0046199",
+    "verificationStatus": "Verified",
+    "donationLink": "https://pingalwara.org/donate-now/",
+    "donationUpi": "pingalwara@pnb",
+    "lastVerifiedOn": "2026-08-20",
+    "certifications": [
+      {
+        "name": "Section 80G Tax Exemption (100% / 50%)",
+        "issuer": "Director General of Income Tax",
+        "issueDate": "2021-04-12",
+        "expiryDate": "2026-04-11",
+        "status": "Verified"
+      },
+      {
+        "name": "FCRA Permanent Clearance",
+        "issuer": "Ministry of Home Affairs",
+        "issueDate": "2022-05-18",
+        "expiryDate": "2027-05-17",
+        "status": "Verified"
+      }
+    ],
+    "sampleReviews": [
+      {
+        "author": "Harpreet Singh Sodhi",
+        "rating": 5,
+        "comment": "Pingalwara is the supreme example of selflessness. Anyone in need of hospice or critical shelter is embraced without question.",
+        "date": "2026-08-10"
+      }
+    ]
+  }
+]
