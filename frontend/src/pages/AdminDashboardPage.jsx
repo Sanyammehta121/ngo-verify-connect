@@ -9,7 +9,7 @@ import { api } from '../services/api';
 import { INDIA_LOCATIONS, ALL_INDIAN_STATES, ALL_INDIAN_CITIES } from '../data/indiaLocations';
 
 export default function AdminDashboardPage({ onSelectNgo }) {
-  const { user, isAdmin, demoLogin } = useAuth();
+  const { user, isAdmin } = useAuth();
   const [activeTab, setActiveTab] = useState('documents'); // 'documents', 'reviews', 'reports', 'suggestions'
 
   // Data states
@@ -145,23 +145,31 @@ export default function AdminDashboardPage({ onSelectNgo }) {
     }
   };
 
-  // If not admin, show switch banner
+  // If not admin, strictly deny access
   if (!isAdmin) {
     return (
-      <div className="max-w-xl mx-auto px-4 py-20 text-center space-y-4">
-        <div className="w-16 h-16 bg-blue-100 text-blue-700 rounded-3xl flex items-center justify-center mx-auto shadow-md">
-          <ShieldCheck className="w-9 h-9" />
+      <div className="max-w-md mx-auto px-4 py-24 text-center space-y-4 animate-fadeIn">
+        <div className="w-16 h-16 bg-rose-100 text-rose-600 rounded-3xl flex items-center justify-center mx-auto shadow-md">
+          <ShieldAlert className="w-9 h-9" />
         </div>
-        <h2 className="text-2xl font-bold text-slate-900">Official Verification Desk</h2>
-        <p className="text-xs text-slate-600 max-w-md mx-auto">
-          This portal allows authorized government desk officers to inspect statutory registrations (12A, 80G, Darpan), moderate citizen reviews, and investigate scam reports.
+        <h2 className="text-2xl font-bold text-slate-900">Restricted Access: Officers Only</h2>
+        <p className="text-xs text-slate-600 leading-relaxed max-w-sm mx-auto">
+          The Admin Compliance Desk is restricted exclusively to authorized government desk officers and system administrators. Your current session does not have administrative privileges.
         </p>
-        <button
-          onClick={() => demoLogin('admin')}
-          className="mt-2 py-3 px-6 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-md transition"
-        >
-          ⚡ Switch to Demo Admin Desk
-        </button>
+        <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-2">
+          <button
+            onClick={() => { window.location.hash = 'finder'; }}
+            className="w-full sm:w-auto py-2.5 px-5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs rounded-xl shadow-xs transition"
+          >
+            Find NGOs
+          </button>
+          <button
+            onClick={() => { window.location.hash = 'home'; }}
+            className="w-full sm:w-auto py-2.5 px-5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs rounded-xl transition"
+          >
+            Return to Home
+          </button>
+        </div>
       </div>
     );
   }

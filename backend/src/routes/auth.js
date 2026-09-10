@@ -21,7 +21,9 @@ router.post('/register', (req, res) => {
 
   const salt = bcrypt.genSaltSync(10);
   const hashedPassword = bcrypt.hashSync(password, salt);
-  const userRole = role === 'admin' ? 'admin' : 'citizen';
+  // Admin accounts require an authorized clearance passkey; public accounts are always citizen/donor
+  const adminSecret = process.env.ADMIN_INVITE_CODE || 'GOV-ADMIN-2026';
+  const userRole = (role === 'admin' && req.body.adminCode === adminSecret) ? 'admin' : 'citizen';
 
   const insert = db.prepare('INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)');
   const result = insert.run(name.trim(), email.toLowerCase().trim(), hashedPassword, userRole);

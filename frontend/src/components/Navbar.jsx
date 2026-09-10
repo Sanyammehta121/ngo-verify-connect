@@ -1,12 +1,12 @@
-﻿import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { 
   Shield, Search, CheckCircle, PlusCircle, User, LogOut, 
-  ShieldCheck, ChevronDown, ExternalLink, Menu, X, Smartphone 
+  ShieldCheck, ChevronDown, ExternalLink, Menu, X 
 } from 'lucide-react';
 
-export default function Navbar({ onNavigate, currentPage, onOpenSuggest, onOpenAuth, onOpenMobileConnect }) {
-  const { user, isAdmin, logout, demoLogin } = useAuth();
+export default function Navbar({ onNavigate, currentPage, onOpenSuggest, onOpenAuth }) {
+  const { user, isAdmin, logout } = useAuth();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -69,44 +69,25 @@ export default function Navbar({ onNavigate, currentPage, onOpenSuggest, onOpenA
             <span>Suggest an NGO</span>
           </button>
 
-          {/* Admin link */}
-          <button
-            onClick={() => onNavigate('admin')}
-            className={`flex items-center space-x-1 px-3 py-1.5 rounded-lg text-sm font-medium transition ${
-              currentPage === 'admin'
-                ? 'bg-blue-50 text-blue-700 font-semibold'
-                : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50/50'
-            }`}
-          >
-            <Shield className="w-3.5 h-3.5 text-blue-600" />
-            <span>Admin Desk</span>
-            {isAdmin && (
+          {/* Admin link - only visible to authenticated admin */}
+          {isAdmin && (
+            <button
+              onClick={() => onNavigate('admin')}
+              className={`flex items-center space-x-1 px-3 py-1.5 rounded-lg text-sm font-medium transition ${
+                currentPage === 'admin'
+                  ? 'bg-blue-50 text-blue-700 font-semibold'
+                  : 'text-slate-600 hover:text-blue-600 hover:bg-blue-50/50'
+              }`}
+            >
+              <Shield className="w-3.5 h-3.5 text-blue-600" />
+              <span>Admin Desk</span>
               <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
-            )}
-          </button>
-
-          {/* Mobile QR Connect Button for Desktop */}
-          <button
-            onClick={onOpenMobileConnect}
-            className="flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-emerald-800 bg-emerald-50 hover:bg-emerald-100/80 border border-emerald-200 transition"
-            title="Scan QR to open on your smartphone"
-          >
-            <Smartphone className="w-3.5 h-3.5 text-emerald-600" />
-            <span className="hidden lg:inline">Open on Mobile</span>
-          </button>
+            </button>
+          )}
         </nav>
 
         {/* Right Area: Auth & Mobile Hamburger */}
         <div className="flex items-center space-x-2 sm:space-x-3">
-          {/* Quick Mobile Phone Connect Icon on Mobile */}
-          <button
-            onClick={onOpenMobileConnect}
-            className="md:hidden p-2 text-emerald-700 bg-emerald-50 hover:bg-emerald-100 rounded-xl border border-emerald-200 transition"
-            title="Open on phone"
-          >
-            <Smartphone className="w-4 h-4" />
-          </button>
-
           {/* Auth / Profile Area */}
           {user ? (
             <div className="relative">
@@ -138,31 +119,13 @@ export default function Navbar({ onNavigate, currentPage, onOpenSuggest, onOpenA
                     <p className="text-[11px] text-slate-500 truncate">{user.email}</p>
                   </div>
 
-                  {user.role === 'admin' ? (
+                  {isAdmin && (
                     <button
                       onClick={() => onNavigate('admin')}
                       className="w-full text-left px-4 py-2 text-xs font-medium text-blue-700 hover:bg-blue-50 flex items-center space-x-2"
                     >
                       <Shield className="w-3.5 h-3.5" />
                       <span>Admin Control Center</span>
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => demoLogin('admin')}
-                      className="w-full text-left px-4 py-2 text-xs font-medium text-slate-700 hover:bg-slate-50 flex items-center space-x-2"
-                    >
-                      <Shield className="w-3.5 h-3.5 text-blue-600" />
-                      <span>Switch to Demo Admin</span>
-                    </button>
-                  )}
-
-                  {user.role === 'admin' && (
-                    <button
-                      onClick={() => demoLogin('citizen')}
-                      className="w-full text-left px-4 py-2 text-xs font-medium text-slate-700 hover:bg-slate-50 flex items-center space-x-2"
-                    >
-                      <User className="w-3.5 h-3.5 text-emerald-600" />
-                      <span>Switch to Demo Citizen</span>
                     </button>
                   )}
 
@@ -248,42 +211,44 @@ export default function Navbar({ onNavigate, currentPage, onOpenSuggest, onOpenA
             <span>Suggest an NGO</span>
           </button>
 
-          <button
-            onClick={() => handleMobileNav('admin')}
-            className={`w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-semibold flex items-center justify-between ${
-              currentPage === 'admin'
-                ? 'bg-blue-50 text-blue-800'
-                : 'text-slate-700 hover:bg-slate-50'
-            }`}
-          >
-            <div className="flex items-center space-x-2">
-              <Shield className="w-4 h-4 text-blue-600" />
-              <span>Officer Admin Desk</span>
-            </div>
-            {isAdmin && <span className="px-2 py-0.5 bg-blue-100 text-blue-800 text-[10px] font-bold rounded-full">Officer</span>}
-          </button>
-
-          <div className="pt-2 border-t border-slate-100 flex gap-2">
+          {isAdmin && (
             <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenMobileConnect();
-              }}
-              className="flex-1 py-2 px-3 bg-emerald-50 text-emerald-800 rounded-xl text-xs font-semibold flex items-center justify-center space-x-1.5 border border-emerald-200"
+              onClick={() => handleMobileNav('admin')}
+              className={`w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-semibold flex items-center justify-between ${
+                currentPage === 'admin'
+                  ? 'bg-blue-50 text-blue-800'
+                  : 'text-slate-700 hover:bg-slate-50'
+              }`}
             >
-              <Smartphone className="w-3.5 h-3.5 text-emerald-600" />
-              <span>QR Mobile Link</span>
+              <div className="flex items-center space-x-2">
+                <Shield className="w-4 h-4 text-blue-600" />
+                <span>Officer Admin Desk</span>
+              </div>
+              <span className="px-2 py-0.5 bg-blue-100 text-blue-800 text-[10px] font-bold rounded-full">Officer</span>
             </button>
+          )}
 
-            {!user && (
+          <div className="pt-2 border-t border-slate-100">
+            {!user ? (
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   onOpenAuth();
                 }}
-                className="flex-1 py-2 px-3 bg-slate-900 text-white rounded-xl text-xs font-semibold text-center"
+                className="w-full py-2.5 px-3 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-semibold text-center transition shadow-xs"
               >
                 Sign In
+              </button>
+            ) : (
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  logout();
+                }}
+                className="w-full py-2.5 px-3 bg-rose-50 hover:bg-rose-100 text-rose-700 rounded-xl text-xs font-semibold text-center transition flex items-center justify-center space-x-1.5"
+              >
+                <LogOut className="w-3.5 h-3.5" />
+                <span>Sign Out ({user.name})</span>
               </button>
             )}
           </div>

@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import Navbar from './components/Navbar';
 import BottomNav from './components/BottomNav';
@@ -11,7 +11,6 @@ import HowVerificationWorks from './pages/HowVerificationWorks';
 import AuthModal from './components/AuthModal';
 import SuggestNgoModal from './components/SuggestNgoModal';
 import TrustScoreModal from './components/TrustScoreModal';
-import MobileConnectModal from './components/MobileConnectModal';
 
 function MainApp() {
   const [currentPage, setCurrentPage] = useState('home');
@@ -22,7 +21,6 @@ function MainApp() {
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [suggestModalOpen, setSuggestModalOpen] = useState(false);
   const [trustModalOpen, setTrustModalOpen] = useState(false);
-  const [mobileConnectOpen, setMobileConnectOpen] = useState(false);
   const [trustNgo, setTrustNgo] = useState(null);
 
   const [finderKey, setFinderKey] = useState(0);
@@ -85,7 +83,6 @@ function MainApp() {
         onNavigate={navigateTo}
         onOpenSuggest={() => setSuggestModalOpen(true)}
         onOpenAuth={() => setAuthModalOpen(true)}
-        onOpenMobileConnect={() => setMobileConnectOpen(true)}
       />
 
       {/* Main Content Area - with bottom padding on mobile for BottomNav */}
@@ -164,11 +161,6 @@ function MainApp() {
         ngo={trustNgo}
         isOpen={trustModalOpen}
         onClose={() => setTrustModalOpen(false)}
-      />
-
-      <MobileConnectModal
-        isOpen={mobileConnectOpen}
-        onClose={() => setMobileConnectOpen(false)}
       />
     </div>
   );

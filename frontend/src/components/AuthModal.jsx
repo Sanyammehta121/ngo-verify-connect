@@ -152,35 +152,6 @@ export default function AuthModal({ isOpen, onClose, initialRole = 'citizen' }) 
             </div>
           </div>
 
-          {isRegister && (
-            <div>
-              <label className="block text-xs font-medium text-slate-700 mb-1">Account Role</label>
-              <div className="grid grid-cols-2 gap-2">
-                <button
-                  type="button"
-                  onClick={() => setRole('citizen')}
-                  className={`py-2 px-3 text-xs font-medium rounded-xl border transition text-center ${
-                    role === 'citizen'
-                      ? 'bg-emerald-50 border-emerald-500 text-emerald-800 font-semibold'
-                      : 'bg-white border-slate-200 text-slate-600'
-                  }`}
-                >
-                  Citizen / Donor
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setRole('admin')}
-                  className={`py-2 px-3 text-xs font-medium rounded-xl border transition text-center ${
-                    role === 'admin'
-                      ? 'bg-blue-50 border-blue-500 text-blue-800 font-semibold'
-                      : 'bg-white border-slate-200 text-slate-600'
-                  }`}
-                >
-                  Admin Moderator
-                </button>
-              </div>
-            </div>
-          )}
 
           <button
             type="submit"
