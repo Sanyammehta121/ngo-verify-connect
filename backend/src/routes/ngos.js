@@ -104,9 +104,9 @@ router.get('/', (req, res) => {
     params.push(term, term, term, term, term, term, term);
   }
 
-  // Location filters
+  // Location filters (supporting flexible spacing like "Yamuna Nagar" vs "Yamunanagar")
   if (city && city.trim() !== '') {
-    query += ' AND LOWER(n.city) = LOWER(?)';
+    query += " AND LOWER(REPLACE(n.city, ' ', '')) = LOWER(REPLACE(?, ' ', ''))";
     params.push(city.trim());
   }
 

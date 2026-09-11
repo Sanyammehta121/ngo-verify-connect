@@ -95,15 +95,19 @@ export default function Navbar({ onNavigate, currentPage, onOpenSuggest, onOpenA
                 onClick={() => setDropdownOpen(!dropdownOpen)}
                 className="flex items-center space-x-2 py-1.5 px-2.5 sm:px-3 bg-slate-100 hover:bg-slate-200/80 rounded-xl border border-slate-200 transition"
               >
-                <div className="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold uppercase">
-                  {user.name.charAt(0)}
-                </div>
+                {user.avatar ? (
+                  <img src={user.avatar} alt={user.name} className="w-6 h-6 rounded-full object-cover border border-emerald-300" />
+                ) : (
+                  <div className="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs font-bold uppercase">
+                    {user.name.charAt(0)}
+                  </div>
+                )}
                 <div className="text-left hidden sm:block">
                   <div className="text-xs font-semibold text-slate-800 leading-tight truncate max-w-[120px]">
                     {user.name}
                   </div>
                   <div className="text-[10px] text-emerald-700 font-medium capitalize">
-                    {user.role === 'admin' ? '🛡️ Admin Officer' : '✓ Verified Donor'}
+                    {user.role === 'admin' ? '🛡️ Admin Officer' : user.provider === 'google' ? '🟢 Google Verified' : '✓ Verified Donor'}
                   </div>
                 </div>
                 <ChevronDown className="w-3.5 h-3.5 text-slate-500 hidden sm:block" />

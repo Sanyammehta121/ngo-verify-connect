@@ -110,9 +110,71 @@ router.post('/demo-login', (req, res) => {
   });
 });
 
+// Google Sign-In authentication endpoint
+router.post('/google', (req, res) => {
+  const { email, name, avatar, googleId } = req.body;
+
+  if (!email) {
+    return res.status(400).json({ error: 'Google email is required.' });
+  }
+
+  const normalizedEmail = email.toLowerCase().trim();
+  const userName = (name && name.trim()) || normalizedEmail.split('@')[0];
+  const userAvatar = avatar || `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(userName)}`;
+
+  let user = db.prepare('SELECT * FROM users WHERE email = ?').get(normalizedEmail);
+
+  if (!user) {
+    // Register new citizen user via Google
+    const randomSecret = require('node:crypto').randomBytes(16).toString('hex');
+    const salt = bcrypt.genSaltSync(10);
+    const hashedPassword = bcrypt.hashSync(randomSecret, salt);
+
+    const insert = db.prepare(
+      'INSERT INTO users (name, email, password, role, provider, avatar) VALUES (?, ?, ?, ?, ?, ?)'
+    );
+    const result = insert.run(userName, normalizedEmail, hashedPassword, 'citizen', 'google', userAvatar);
+    
+    user = {
+      id: Number(result.lastInsertRowid),
+      name: userName,
+      email: normalizedEmail,
+      role: 'citizen',
+      provider: 'google',
+      avatar: userAvatar
+    };
+  } else {
+    // Update existing user with avatar and google provider
+    try {
+      db.prepare('UPDATE users SET avatar = ?, provider = "google" WHERE id = ?').run(userAvatar, user.id);
+      user.avatar = userAvatar;
+      user.provider = 'google';
+    } catch (e) {}
+  }
+
+  const token = jwt.sign(
+    { id: user.id, name: user.name, email: user.email, role: user.role },
+    JWT_SECRET,
+    { expiresIn: '7d' }
+  );
+
+  res.json({
+    message: 'Google authentication successful',
+    token,
+    user: {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+      provider: 'google',
+      avatar: user.avatar || userAvatar
+    }
+  });
+});
+
 // Get current user profile
 router.get('/me', authenticateToken, (req, res) => {
-  const user = db.prepare('SELECT id, name, email, role, created_at FROM users WHERE id = ?').get(req.user.id);
+  const user = db.prepare('SELECT id, name, email, role, provider, avatar, created_at FROM users WHERE id = ?').get(req.user.id);
   if (!user) {
     return res.status(404).json({ error: 'User not found' });
   }

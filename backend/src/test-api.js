@@ -165,7 +165,34 @@ async function runTests() {
     assert(updateDocRes.body.trustScore > 3.0, 'Trust score should increase when 12A/80G are verified');
     console.log(`✅ Admin document update recalculated score to: ${updateDocRes.body.trustScore}/5.0`);
 
-    console.log('\n🎉 ALL 11 AUTOMATED VERIFICATION TESTS PASSED SUCCESSFULLY!');
+    // 12. Yamuna Nagar (Haryana) District Filter & Search
+    console.log('Testing 12: GET /api/ngos?city=Yamuna Nagar and city=Yamunanagar');
+    const y1 = await request('/api/ngos?city=Yamuna%20Nagar');
+    assert.strictEqual(y1.status, 200);
+    assert(y1.body.ngos.length > 0, 'Must find NGO for Yamuna Nagar');
+    assert.strictEqual(y1.body.ngos[0].state, 'Haryana');
+    const y2 = await request('/api/ngos?city=Yamunanagar');
+    assert.strictEqual(y2.status, 200);
+    assert(y2.body.ngos.length > 0, 'Must find NGO for Yamunanagar');
+    console.log(`✅ Yamuna Nagar district search passed -> ${y1.body.ngos[0].name}`);
+
+    // 13. Google Sign-In Authentication
+    console.log('Testing 13: POST /api/auth/google');
+    const googleRes = await request('/api/auth/google', {
+      method: 'POST',
+      body: {
+        email: 'tester.google@gmail.com',
+        name: 'Tester Google Citizen',
+        avatar: 'https://lh3.googleusercontent.com/a/default-user'
+      }
+    });
+    assert.strictEqual(googleRes.status, 200);
+    assert.strictEqual(googleRes.body.user.provider, 'google');
+    assert.strictEqual(googleRes.body.user.role, 'citizen');
+    assert(googleRes.body.token, 'Must return signed JWT');
+    console.log('✅ Google Sign-In authentication passed');
+
+    console.log('\n🎉 ALL 13 AUTOMATED VERIFICATION TESTS PASSED SUCCESSFULLY!');
     process.exit(0);
   } catch (err) {
     console.error('❌ Test failed:', err);

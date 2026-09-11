@@ -39,6 +39,8 @@ db.exec(`
     email TEXT UNIQUE NOT NULL,
     password TEXT NOT NULL,
     role TEXT DEFAULT 'citizen',
+    provider TEXT DEFAULT 'local',
+    avatar TEXT,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
   );
 
@@ -126,6 +128,14 @@ db.exec(`
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
   );
 `);
+
+// Idempotent column migrations for existing SQLite databases
+try {
+  db.exec("ALTER TABLE users ADD COLUMN provider TEXT DEFAULT 'local';");
+} catch (e) {}
+try {
+  db.exec("ALTER TABLE users ADD COLUMN avatar TEXT;");
+} catch (e) {}
 
 /**
  * Computes composite trust score based on document validity, donation verification,

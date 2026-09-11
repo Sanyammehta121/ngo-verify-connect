@@ -19,16 +19,20 @@ export default function BottomNav({ currentPage, onNavigate, onOpenSuggest, onOp
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center space-x-3 pb-3 border-b border-slate-100">
-              <div className="w-10 h-10 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-sm uppercase shadow-sm">
-                {user.name?.charAt(0) || 'U'}
-              </div>
+              {user.avatar ? (
+                <img src={user.avatar} alt={user.name} className="w-10 h-10 rounded-full object-cover border border-emerald-300 shadow-xs" />
+              ) : (
+                <div className="w-10 h-10 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-sm uppercase shadow-sm">
+                  {user.name?.charAt(0) || 'U'}
+                </div>
+              )}
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-bold text-slate-900 truncate">{user.name}</p>
                 <p className="text-xs text-slate-500 truncate">{user.email}</p>
                 <span className={`inline-block mt-1 text-[10px] font-semibold px-2 py-0.5 rounded-full ${
-                  isAdmin ? 'bg-blue-100 text-blue-800' : 'bg-emerald-100 text-emerald-800'
+                  isAdmin ? 'bg-blue-100 text-blue-800' : user.provider === 'google' ? 'bg-blue-50 text-blue-700 border border-blue-200' : 'bg-emerald-100 text-emerald-800'
                 }`}>
-                  {isAdmin ? '🛡️ Admin Officer' : '✓ Verified Citizen / Donor'}
+                  {isAdmin ? '🛡️ Admin Officer' : user.provider === 'google' ? '🟢 Google Verified Donor' : '✓ Verified Citizen / Donor'}
                 </span>
               </div>
             </div>
@@ -124,9 +128,13 @@ export default function BottomNav({ currentPage, onNavigate, onOpenSuggest, onOp
           }`}
         >
           {user ? (
-            <div className="w-5 h-5 rounded-full bg-emerald-600 text-white text-[10px] font-bold flex items-center justify-center uppercase">
-              {user.name?.charAt(0) || 'U'}
-            </div>
+            user.avatar ? (
+              <img src={user.avatar} alt={user.name} className="w-5 h-5 rounded-full object-cover border border-emerald-400" />
+            ) : (
+              <div className="w-5 h-5 rounded-full bg-emerald-600 text-white text-[10px] font-bold flex items-center justify-center uppercase">
+                {user.name?.charAt(0) || 'U'}
+              </div>
+            )
           ) : (
             <User className="w-5 h-5 stroke-2" />
           )}

@@ -45,6 +45,14 @@ export function AuthProvider({ children }) {
     return data;
   };
 
+  const loginWithGoogle = async (googleData) => {
+    const data = await api.loginWithGoogle(googleData);
+    localStorage.setItem('ngo_auth_token', data.token);
+    localStorage.setItem('ngo_user', JSON.stringify(data.user));
+    setUser(data.user);
+    return data;
+  };
+
   const logout = () => {
     localStorage.removeItem('ngo_auth_token');
     localStorage.removeItem('ngo_user');
@@ -58,6 +66,7 @@ export function AuthProvider({ children }) {
     login,
     register,
     demoLogin,
+    loginWithGoogle,
     logout
   };
 
