@@ -2,8 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Search, ShieldCheck, CheckCircle2, ArrowRight, Star, Heart, MapPin, Building2, AlertTriangle, Users, BookOpen, HeartPulse, Sparkles } from 'lucide-react';
 import { api } from '../services/api';
 import NgoCard from '../components/NgoCard';
+import { useTranslation } from '../context/LanguageContext';
 
 export default function HomePage({ onNavigate, onSelectNgo, onOpenSuggest, onOpenTrustBreakdown }) {
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -67,6 +69,17 @@ export default function HomePage({ onNavigate, onSelectNgo, onOpenSuggest, onOpe
     onSelectNgo(item.id);
   };
 
+  const categoryKeys = {
+    'Education': 'education',
+    'Health & Nutrition': 'health',
+    'Disaster Relief': 'disaster',
+    'Elderly Care': 'elderly',
+    'Animal Welfare': 'animal',
+    'Child Welfare': 'child',
+    'Women Empowerment': 'women',
+    'Rural Development': 'rural'
+  };
+
   const categories = [
     { name: 'Education', icon: '🎓', count: 'Pratham, Smile' },
     { name: 'Health & Nutrition', icon: '🏥', count: 'Akshaya Patra, Smile' },
@@ -89,19 +102,19 @@ export default function HomePage({ onNavigate, onSelectNgo, onOpenSuggest, onOpe
           {/* Trust Badge Pill */}
           <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs font-semibold backdrop-blur-xs">
             <ShieldCheck className="w-4 h-4 text-emerald-400" />
-            <span>Official NGO Darpan & 12A / 80G Due Diligence Platform</span>
+            <span>{t('home.badge')}</span>
           </div>
 
           {/* Main Title */}
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
-            Verify, Trust, & Donate to <br className="hidden sm:inline" />
+            {t('home.heroTitle1')} <br className="hidden sm:inline" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-200">
-              Genuine Local NGOs
+              {t('home.heroTitle2')}
             </span>
           </h1>
 
           <p className="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto font-normal leading-relaxed">
-            Eliminate doubts before donating. Inspect government compliance certificates, NITI Aayog Darpan IDs, 80G tax deductions, and verified bank channels across Delhi, Mumbai, and Bengaluru.
+            {t('home.heroDesc')}
           </p>
 
           {/* Search Autocomplete Bar */}
@@ -111,7 +124,7 @@ export default function HomePage({ onNavigate, onSelectNgo, onOpenSuggest, onOpe
                 <Search className="w-5 h-5 text-slate-400 ml-3 shrink-0" />
                 <input
                   type="text"
-                  placeholder="Search by NGO Name (e.g. Goonj), City (Mumbai), or Cause (Education)..."
+                  placeholder={t('home.searchPlaceholder')}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   onFocus={() => { if (suggestions.length > 0) setShowSuggestions(true); }}
@@ -121,7 +134,7 @@ export default function HomePage({ onNavigate, onSelectNgo, onOpenSuggest, onOpe
                   type="submit"
                   className="py-2.5 px-5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs sm:text-sm rounded-xl transition shadow-xs shrink-0"
                 >
-                  Search
+                  {t('home.searchBtn')}
                 </button>
               </div>
             </form>
@@ -130,7 +143,7 @@ export default function HomePage({ onNavigate, onSelectNgo, onOpenSuggest, onOpe
             {showSuggestions && suggestions.length > 0 && (
               <div className="absolute left-0 right-0 mt-2 bg-white rounded-2xl shadow-2xl border border-slate-200 py-2 z-50 text-left animate-fadeIn">
                 <div className="px-4 py-1.5 text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-                  Matching Verified Records ({suggestions.length})
+                  {t('home.matchingRecords')} ({suggestions.length})
                 </div>
                 {suggestions.map((item) => (
                   <div
@@ -167,19 +180,19 @@ export default function HomePage({ onNavigate, onSelectNgo, onOpenSuggest, onOpe
           <div className="pt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto border-t border-slate-800/80">
             <div>
               <div className="text-2xl sm:text-3xl font-bold text-emerald-400">100%</div>
-              <div className="text-xs text-slate-400 mt-0.5">Public Registry Seeded</div>
+              <div className="text-xs text-slate-400 mt-0.5">{t('home.statRegistry')}</div>
             </div>
             <div>
               <div className="text-2xl sm:text-3xl font-bold text-white">40+</div>
-              <div className="text-xs text-slate-400 mt-0.5">Verified Documents</div>
+              <div className="text-xs text-slate-400 mt-0.5">{t('home.statDocs')}</div>
             </div>
             <div>
               <div className="text-2xl sm:text-3xl font-bold text-teal-300">4.8★</div>
-              <div className="text-xs text-slate-400 mt-0.5">Average Trust Rating</div>
+              <div className="text-xs text-slate-400 mt-0.5">{t('home.statRating')}</div>
             </div>
             <div>
               <div className="text-2xl sm:text-3xl font-bold text-white">₹0</div>
-              <div className="text-xs text-slate-400 mt-0.5">Zero Platform Cut</div>
+              <div className="text-xs text-slate-400 mt-0.5">{t('home.statCut')}</div>
             </div>
           </div>
         </div>
@@ -189,34 +202,38 @@ export default function HomePage({ onNavigate, onSelectNgo, onOpenSuggest, onOpe
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8">
           <div>
-            <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Explore Causes by Category</h2>
-            <p className="text-xs text-slate-500 mt-1">Filter genuine initiatives dedicated to your passion</p>
+            <h2 className="text-2xl font-bold text-slate-900 tracking-tight">{t('home.exploreCauses')}</h2>
+            <p className="text-xs text-slate-500 mt-1">{t('home.exploreCausesSub')}</p>
           </div>
           <button
             onClick={() => onNavigate('finder')}
             className="mt-3 sm:mt-0 text-xs font-semibold text-emerald-700 hover:text-emerald-800 flex items-center space-x-1"
           >
-            <span>View All Verified Causes</span>
+            <span>{t('home.viewAllCauses')}</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          {categories.map((cat, idx) => (
-            <div
-              key={idx}
-              onClick={() => onNavigate('finder', { category: cat.name })}
-              className="p-4 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 hover:shadow-lg transition cursor-pointer group flex flex-col justify-between"
-            >
-              <div className="text-2xl mb-2 group-hover:scale-110 transition">{cat.icon}</div>
-              <div>
-                <h3 className="font-bold text-slate-900 text-sm group-hover:text-emerald-700 transition">
-                  {cat.name}
-                </h3>
-                <p className="text-[11px] text-slate-500 mt-0.5">{cat.count}</p>
+          {categories.map((cat, idx) => {
+            const locKey = categoryKeys[cat.name];
+            const label = locKey ? t(`categories.${locKey}`) : cat.name;
+            return (
+              <div
+                key={idx}
+                onClick={() => onNavigate('finder', { category: cat.name })}
+                className="p-4 rounded-2xl bg-white border border-slate-200 hover:border-emerald-400 hover:shadow-lg transition cursor-pointer group flex flex-col justify-between"
+              >
+                <div className="text-2xl mb-2 group-hover:scale-110 transition">{cat.icon}</div>
+                <div>
+                  <h3 className="font-bold text-slate-900 text-sm group-hover:text-emerald-700 transition">
+                    {label}
+                  </h3>
+                  <p className="text-[11px] text-slate-500 mt-0.5">{cat.count}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
@@ -226,20 +243,20 @@ export default function HomePage({ onNavigate, onSelectNgo, onOpenSuggest, onOpe
           <div>
             <div className="inline-flex items-center space-x-1 text-emerald-700 text-xs font-bold uppercase tracking-wider mb-1">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Audited Non-Profit Index</span>
+              <span>{t('home.topRatedBadge')}</span>
             </div>
             <h2 className="text-2xl font-bold text-slate-900 tracking-tight">
-              Top-Rated Verified NGOs in India
+              {t('home.topRatedTitle')}
             </h2>
             <p className="text-xs text-slate-500 mt-1">
-              Cross-referenced against Darpan IDs and valid 12A/80G tax exemptions
+              {t('home.topRatedSub')}
             </p>
           </div>
           <button
             onClick={() => onNavigate('finder')}
             className="mt-3 sm:mt-0 px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-medium text-xs rounded-xl shadow-xs transition"
           >
-            Explore Full Directory
+            {t('home.exploreFullDirectory')}
           </button>
         </div>
 
@@ -268,13 +285,13 @@ export default function HomePage({ onNavigate, onSelectNgo, onOpenSuggest, onOpe
         <div className="bg-gradient-to-r from-teal-900 to-emerald-900 text-white rounded-3xl p-8 sm:p-10 shadow-xl flex flex-col lg:flex-row items-center justify-between gap-8">
           <div className="space-y-3 max-w-2xl">
             <span className="px-3 py-1 bg-emerald-400/20 text-emerald-300 text-xs font-bold rounded-full uppercase tracking-wider">
-              Transparent Methodology
+              {t('home.methodologyBadge')}
             </span>
             <h3 className="text-2xl sm:text-3xl font-bold tracking-tight">
-              How Does the Trust Rating Engine Work?
+              {t('home.methodologyTitle')}
             </h3>
             <p className="text-slate-200 text-xs sm:text-sm leading-relaxed">
-              Unlike arbitrary reviews, our 1.0 to 5.0 Trust Score uses a verifiable weighted formula: <strong>50% Statutory Compliance</strong> (12A, 80G, and Darpan ID), <strong>20% Operational Verification</strong> (FCRA & Verified Payment Gateway), <strong>15% Audit Freshness</strong>, and <strong>15% Community Donor Feedback</strong>.
+              {t('home.methodologyDesc')}
             </p>
           </div>
 
@@ -283,13 +300,13 @@ export default function HomePage({ onNavigate, onSelectNgo, onOpenSuggest, onOpe
               onClick={() => onNavigate('how-it-works')}
               className="py-3 px-6 bg-white text-emerald-950 font-bold text-xs sm:text-sm rounded-xl shadow-md hover:bg-slate-100 transition text-center"
             >
-              Read Verification Methodology
+              {t('home.readMethodology')}
             </button>
             <button
               onClick={onOpenSuggest}
               className="py-3 px-6 bg-emerald-700 hover:bg-emerald-600 text-white font-semibold text-xs sm:text-sm rounded-xl transition text-center"
             >
-              Suggest an NGO to Verify
+              {t('home.suggestNgoBtn')}
             </button>
           </div>
         </div>

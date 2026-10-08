@@ -1,7 +1,10 @@
 import React from 'react';
 import { ShieldCheck, CheckCircle2, AlertTriangle, ExternalLink, HelpCircle, FileCheck, Layers, Award } from 'lucide-react';
+import { useTranslation } from '../context/LanguageContext';
 
 export default function HowVerificationWorks({ onNavigate, onOpenSuggest }) {
+  const { t } = useTranslation();
+
   const formulaPillars = [
     {
       percentage: '20%',
@@ -64,10 +67,10 @@ export default function HowVerificationWorks({ onNavigate, onOpenSuggest }) {
           <span>Independent Non-Profit Due Diligence</span>
         </div>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-          How Verification & Trust Scores Work
+          {t('howItWorks.title')}
         </h1>
         <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-          Our platform prevents philanthropic fraud by combining statutory government registry audits with transparent, objective scoring. Here is the exact mathematical model and verification lifecycle.
+          {t('howItWorks.subtitle')}
         </p>
       </div>
 
@@ -75,8 +78,8 @@ export default function HowVerificationWorks({ onNavigate, onOpenSuggest }) {
       <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-100 gap-2">
           <div>
-            <h2 className="text-lg font-bold text-slate-900">Composite Trust Score Model (1.0 to 5.0 Stars)</h2>
-            <p className="text-xs text-slate-500">Every score is mathematically derived from 7 core compliance pillars (Max 100% / 5.0)</p>
+            <h2 className="text-lg font-bold text-slate-900">{t('howItWorks.scoreTitle')}</h2>
+            <p className="text-xs text-slate-500">{t('howItWorks.scoreDesc')}</p>
           </div>
           <span className="px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-lg self-start sm:self-auto">
             100 Point Scale
@@ -187,13 +190,13 @@ export default function HowVerificationWorks({ onNavigate, onOpenSuggest }) {
             onClick={() => onNavigate('finder')}
             className="py-2.5 px-5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl shadow-xs transition"
           >
-            Explore Verified NGOs
+            {t('nav.findNgos')}
           </button>
           <button
             onClick={onOpenSuggest}
             className="py-2.5 px-5 bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 text-xs font-semibold rounded-xl transition"
           >
-            Suggest an NGO
+            {t('nav.suggestNgo')}
           </button>
         </div>
       </div>

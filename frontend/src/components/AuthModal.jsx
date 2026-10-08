@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { useTranslation } from '../context/LanguageContext';
 import { X, Shield, User, Lock, Mail, CheckCircle2, AlertCircle, ArrowLeft } from 'lucide-react';
 
 export default function AuthModal({ isOpen, onClose, initialRole = 'citizen' }) {
   const { login, register, demoLogin, loginWithGoogle } = useAuth();
+  const { t } = useTranslation();
   const [isRegister, setIsRegister] = useState(false);
   const [showGoogleChooser, setShowGoogleChooser] = useState(false);
   const [useCustomGoogle, setUseCustomGoogle] = useState(false);
@@ -233,9 +235,9 @@ export default function AuthModal({ isOpen, onClose, initialRole = 'citizen' }) 
                 </div>
                 <div>
                   <h3 className="font-semibold text-slate-800 text-base">
-                    {isRegister ? 'Create Citizen Account' : 'Welcome to NGO Verify'}
+                    {isRegister ? t('auth.submitSignUp') : t('auth.signInTitle')}
                   </h3>
-                  <p className="text-xs text-slate-500">Secure access to ratings and moderation</p>
+                  <p className="text-xs text-slate-500">{t('auth.signInSub')}</p>
                 </div>
               </div>
               <button
@@ -260,12 +262,14 @@ export default function AuthModal({ isOpen, onClose, initialRole = 'citizen' }) 
                   <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"/>
                   <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
                 </svg>
-                <span>Continue with Google</span>
+                <span>{t('auth.googleSignIn')}</span>
               </button>
 
               <div className="relative my-3 flex items-center justify-center">
                 <div className="border-t border-slate-200 w-full"></div>
-                <span className="bg-white px-2.5 text-[10px] font-semibold text-slate-400 uppercase tracking-wider absolute">or</span>
+                <span className="bg-white px-2.5 text-[10px] font-semibold text-slate-400 uppercase tracking-wider absolute">
+                  {t('auth.orEmail')}
+                </span>
               </div>
             </div>
 
@@ -304,7 +308,7 @@ export default function AuthModal({ isOpen, onClose, initialRole = 'citizen' }) 
 
               {isRegister && (
                 <div>
-                  <label className="block text-xs font-medium text-slate-700 mb-1">Full Name</label>
+                  <label className="block text-xs font-medium text-slate-700 mb-1">{t('auth.nameLabel')}</label>
                   <div className="relative">
                     <User className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
                     <input
@@ -320,7 +324,7 @@ export default function AuthModal({ isOpen, onClose, initialRole = 'citizen' }) 
               )}
 
               <div>
-                <label className="block text-xs font-medium text-slate-700 mb-1">Email Address</label>
+                <label className="block text-xs font-medium text-slate-700 mb-1">{t('auth.emailLabel')}</label>
                 <div className="relative">
                   <Mail className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
                   <input
@@ -335,7 +339,7 @@ export default function AuthModal({ isOpen, onClose, initialRole = 'citizen' }) 
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-slate-700 mb-1">Password</label>
+                <label className="block text-xs font-medium text-slate-700 mb-1">{t('auth.passwordLabel')}</label>
                 <div className="relative">
                   <Lock className="w-4 h-4 text-slate-400 absolute left-3 top-3" />
                   <input
@@ -354,7 +358,7 @@ export default function AuthModal({ isOpen, onClose, initialRole = 'citizen' }) 
                 disabled={loading}
                 className="w-full py-2.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-sm rounded-xl shadow-xs hover:shadow-md transition disabled:opacity-50"
               >
-                {loading ? 'Authenticating...' : isRegister ? 'Create Citizen Account' : 'Sign In with Email'}
+                {loading ? 'Authenticating...' : isRegister ? t('auth.submitSignUp') : t('auth.submitSignIn')}
               </button>
 
               <div className="text-center pt-1">
@@ -367,8 +371,8 @@ export default function AuthModal({ isOpen, onClose, initialRole = 'citizen' }) 
                   className="text-xs text-emerald-700 hover:text-emerald-800 font-medium hover:underline"
                 >
                   {isRegister
-                    ? 'Already have an account? Sign In'
-                    : "Don't have an account? Create one"}
+                    ? t('auth.haveAccount')
+                    : t('auth.noAccount')}
                 </button>
               </div>
             </form>

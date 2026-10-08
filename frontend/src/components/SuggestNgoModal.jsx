@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { X, PlusCircle, Building2, CheckCircle2, AlertCircle } from 'lucide-react';
 import { api } from '../services/api';
 import { INDIA_LOCATIONS, ALL_INDIAN_STATES, ALL_INDIAN_CITIES } from '../data/indiaLocations';
+import { useTranslation } from '../context/LanguageContext';
 
 export default function SuggestNgoModal({ isOpen, onClose }) {
+  const { t } = useTranslation();
   const [name, setName] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
@@ -80,8 +82,8 @@ export default function SuggestNgoModal({ isOpen, onClose }) {
               <PlusCircle className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="font-bold text-base">Suggest a Real NGO</h3>
-              <p className="text-xs text-emerald-100">Help expand the verified public non-profit directory</p>
+              <h3 className="font-bold text-base">{t('suggest.title')}</h3>
+              <p className="text-xs text-emerald-100">{t('suggest.subtitle')}</p>
             </div>
           </div>
           <button
@@ -98,7 +100,7 @@ export default function SuggestNgoModal({ isOpen, onClose }) {
               <CheckCircle2 className="w-7 h-7" />
             </div>
             <div>
-              <h4 className="font-bold text-slate-900 text-base">Submission Received!</h4>
+              <h4 className="font-bold text-slate-900 text-base">{t('suggest.success')}</h4>
               <p className="text-xs text-slate-600 mt-1 max-w-sm mx-auto">
                 Thank you for contributing <strong>{name}</strong>. Our audit officers will cross-check public records on NGO Darpan and Income Tax e-filing before indexing this entity.
               </p>
@@ -121,7 +123,7 @@ export default function SuggestNgoModal({ isOpen, onClose }) {
 
             <div>
               <label className="block text-xs font-semibold text-slate-700 mb-1">
-                Official NGO Name *
+                {t('suggest.ngoName')}
               </label>
               <input
                 type="text"
@@ -135,7 +137,7 @@ export default function SuggestNgoModal({ isOpen, onClose }) {
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">State / UT *</label>
+                <label className="block text-xs font-semibold text-slate-700 mb-1">{t('suggest.state')}</label>
                 <select
                   required
                   value={state}
@@ -152,7 +154,7 @@ export default function SuggestNgoModal({ isOpen, onClose }) {
                 </select>
               </div>
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">City / Town *</label>
+                <label className="block text-xs font-semibold text-slate-700 mb-1">{t('suggest.city')}</label>
                 <input
                   type="text"
                   required
@@ -172,26 +174,26 @@ export default function SuggestNgoModal({ isOpen, onClose }) {
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">Cause Category</label>
+                <label className="block text-xs font-semibold text-slate-700 mb-1">{t('suggest.category')}</label>
                 <select
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
                   className="w-full p-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white"
                 >
-                  <option value="Education">Education</option>
-                  <option value="Health & Nutrition">Health & Nutrition</option>
-                  <option value="Disaster Relief">Disaster Relief</option>
-                  <option value="Elderly Care">Elderly Care</option>
-                  <option value="Animal Welfare">Animal Welfare</option>
-                  <option value="Women Empowerment">Women Empowerment</option>
-                  <option value="Rural Development">Rural Development</option>
-                  <option value="Environment & Wildlife">Environment & Wildlife</option>
-                  <option value="Poverty Alleviation">Poverty Alleviation</option>
+                  <option value="Education">{t('categories.education')}</option>
+                  <option value="Health & Nutrition">{t('categories.health')}</option>
+                  <option value="Disaster Relief">{t('categories.disaster')}</option>
+                  <option value="Elderly Care">{t('categories.elderly')}</option>
+                  <option value="Animal Welfare">{t('categories.animal')}</option>
+                  <option value="Women Empowerment">{t('categories.women')}</option>
+                  <option value="Rural Development">{t('categories.rural')}</option>
+                  <option value="Environment & Wildlife">{t('categories.environment')}</option>
+                  <option value="Poverty Alleviation">{t('categories.poverty')}</option>
                 </select>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">Darpan ID (if known)</label>
+                <label className="block text-xs font-semibold text-slate-700 mb-1">{t('suggest.darpan')}</label>
                 <input
                   type="text"
                   placeholder="e.g. MH/2018/0199221"
@@ -214,7 +216,7 @@ export default function SuggestNgoModal({ isOpen, onClose }) {
                 />
               </div>
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">Official Website</label>
+                <label className="block text-xs font-semibold text-slate-700 mb-1">{t('suggest.website')}</label>
                 <input
                   type="url"
                   placeholder="https://..."
@@ -266,7 +268,7 @@ export default function SuggestNgoModal({ isOpen, onClose }) {
               disabled={submitting}
               className="w-full py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs rounded-xl shadow-xs transition mt-2"
             >
-              {submitting ? 'Submitting NGO...' : 'Submit NGO for Officer Review'}
+              {submitting ? 'Submitting NGO...' : t('suggest.submit')}
             </button>
           </form>
         )}

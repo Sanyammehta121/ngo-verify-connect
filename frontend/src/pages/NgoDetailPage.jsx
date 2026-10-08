@@ -10,8 +10,10 @@ import MapLocation from '../components/MapLocation';
 import ReviewSection from '../components/ReviewSection';
 import TrustScoreModal from '../components/TrustScoreModal';
 import ReportFraudModal from '../components/ReportFraudModal';
+import { useTranslation } from '../context/LanguageContext';
 
 export default function NgoDetailPage({ ngoId, onBack, onOpenTrustBreakdown }) {
+  const { t } = useTranslation();
   const [ngo, setNgo] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -74,7 +76,7 @@ export default function NgoDetailPage({ ngoId, onBack, onOpenTrustBreakdown }) {
           onClick={onBack}
           className="mt-4 px-4 py-2 bg-slate-900 text-white text-xs font-semibold rounded-xl"
         >
-          Back to Directory
+          {t('detail.backToDirectory')}
         </button>
       </div>
     );
@@ -91,7 +93,7 @@ export default function NgoDetailPage({ ngoId, onBack, onOpenTrustBreakdown }) {
         className="inline-flex items-center space-x-1.5 text-xs font-semibold text-slate-600 hover:text-emerald-700 transition"
       >
         <ArrowLeft className="w-4 h-4" />
-        <span>Back to Search Results</span>
+        <span>{t('detail.backToDirectory')}</span>
       </button>
 
       {/* Hero Profile Dossier Card */}
@@ -114,12 +116,12 @@ export default function NgoDetailPage({ ngoId, onBack, onOpenTrustBreakdown }) {
                 {ngo.verificationStatus === 'Verified' ? (
                   <span className="inline-flex items-center space-x-1 px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full border border-emerald-300">
                     <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                    <span>Gov Verified NGO</span>
+                    <span>{t('card.verified')} NGO</span>
                   </span>
                 ) : (
                   <span className="inline-flex items-center space-x-1 px-3 py-1 bg-amber-100 text-amber-800 text-xs font-bold rounded-full border border-amber-300">
                     <Clock className="w-4 h-4 text-amber-600" />
-                    <span>Under Officer Verification</span>
+                    <span>{t('card.pending')}</span>
                   </span>
                 )}
               </div>
@@ -148,7 +150,7 @@ export default function NgoDetailPage({ ngoId, onBack, onOpenTrustBreakdown }) {
           {/* Trust Gauge & Score Button */}
           <div className="shrink-0 flex flex-col items-start sm:items-end w-full sm:w-auto p-4 bg-slate-50 rounded-2xl border border-slate-200">
             <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-              Calculated Trust Score
+              {t('card.trustScore')}
             </div>
             <div className="flex items-baseline space-x-1 mt-1">
               <span className="text-3xl font-black text-slate-900">
@@ -157,13 +159,13 @@ export default function NgoDetailPage({ ngoId, onBack, onOpenTrustBreakdown }) {
               <span className="text-sm font-semibold text-slate-500">/ 5.0</span>
             </div>
             <div className="text-xs font-semibold text-emerald-700 mt-0.5">
-              {percentage}% Platform Integrity Grade
+              {percentage}% Integrity Grade
             </div>
             <button
               onClick={() => setTrustModalOpen(true)}
               className="mt-3 text-xs font-bold text-emerald-700 hover:text-emerald-800 underline decoration-dotted transition"
             >
-              Inspect Score Formula ➔
+              {t('detail.breakdown')} ➔
             </button>
           </div>
         </div>
@@ -202,7 +204,7 @@ export default function NgoDetailPage({ ngoId, onBack, onOpenTrustBreakdown }) {
                 className="inline-flex items-center justify-center space-x-1.5 py-2.5 px-3.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-medium rounded-xl transition w-full sm:w-auto"
               >
                 <Globe className="w-4 h-4 text-slate-500" />
-                <span>Official Website</span>
+                <span>{t('detail.website')}</span>
                 <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
               </a>
             )}

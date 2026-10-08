@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
+import { useTranslation } from '../context/LanguageContext';
+import LanguageSelector from './LanguageSelector';
 import { 
   Shield, Search, CheckCircle, PlusCircle, User, LogOut, 
   ShieldCheck, ChevronDown, ExternalLink, Menu, X 
@@ -7,6 +9,7 @@ import {
 
 export default function Navbar({ onNavigate, currentPage, onOpenSuggest, onOpenAuth }) {
   const { user, isAdmin, logout } = useAuth();
+  const { t } = useTranslation();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -21,7 +24,7 @@ export default function Navbar({ onNavigate, currentPage, onOpenSuggest, onOpenA
         {/* Logo */}
         <div 
           onClick={() => handleMobileNav('home')}
-          className="flex items-center space-x-2.5 cursor-pointer group select-none"
+          className="flex items-center space-x-2.5 cursor-pointer group select-none shrink-0"
         >
           <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-white shadow-md shadow-emerald-500/20 group-hover:scale-105 transition">
             <ShieldCheck className="w-6 h-6" />
@@ -33,7 +36,9 @@ export default function Navbar({ onNavigate, currentPage, onOpenSuggest, onOpenA
                 & Connect
               </span>
             </div>
-            <p className="text-[10px] sm:text-[11px] text-slate-500 font-medium leading-none">Public Trust & Compliance</p>
+            <p className="text-[10px] sm:text-[11px] text-slate-500 font-medium leading-none">
+              {t('nav.tagline') || 'Public Trust & Compliance'}
+            </p>
           </div>
         </div>
 
@@ -47,7 +52,7 @@ export default function Navbar({ onNavigate, currentPage, onOpenSuggest, onOpenA
                 : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70'
             }`}
           >
-            Find NGOs
+            {t('nav.findNgos')}
           </button>
 
           <button
@@ -58,7 +63,7 @@ export default function Navbar({ onNavigate, currentPage, onOpenSuggest, onOpenA
                 : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/70'
             }`}
           >
-            How Verification Works
+            {t('nav.howItWorks')}
           </button>
 
           <button
@@ -66,7 +71,7 @@ export default function Navbar({ onNavigate, currentPage, onOpenSuggest, onOpenA
             className="flex items-center space-x-1 px-3 py-1.5 rounded-lg text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100/70 transition"
           >
             <PlusCircle className="w-4 h-4 text-emerald-600" />
-            <span>Suggest an NGO</span>
+            <span>{t('nav.suggestNgo')}</span>
           </button>
 
           {/* Admin link - only visible to authenticated admin */}
@@ -80,14 +85,19 @@ export default function Navbar({ onNavigate, currentPage, onOpenSuggest, onOpenA
               }`}
             >
               <Shield className="w-3.5 h-3.5 text-blue-600" />
-              <span>Admin Desk</span>
+              <span>{t('nav.adminDesk')}</span>
               <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
             </button>
           )}
         </nav>
 
-        {/* Right Area: Auth & Mobile Hamburger */}
+        {/* Right Area: Language Selector + Auth + Mobile Hamburger */}
         <div className="flex items-center space-x-2 sm:space-x-3">
+          {/* Desktop & Tablet Language Selector */}
+          <div className="hidden sm:block">
+            <LanguageSelector />
+          </div>
+
           {/* Auth / Profile Area */}
           {user ? (
             <div className="relative">
@@ -107,7 +117,7 @@ export default function Navbar({ onNavigate, currentPage, onOpenSuggest, onOpenA
                     {user.name}
                   </div>
                   <div className="text-[10px] text-emerald-700 font-medium capitalize">
-                    {user.role === 'admin' ? '🛡️ Admin Officer' : user.provider === 'google' ? '🟢 Google Verified' : '✓ Verified Donor'}
+                    {user.role === 'admin' ? `🛡️ ${t('nav.adminOfficer')}` : user.provider === 'google' ? `🟢 ${t('nav.googleVerified')}` : `✓ ${t('nav.verifiedDonor')}`}
                   </div>
                 </div>
                 <ChevronDown className="w-3.5 h-3.5 text-slate-500 hidden sm:block" />
@@ -129,7 +139,7 @@ export default function Navbar({ onNavigate, currentPage, onOpenSuggest, onOpenA
                       className="w-full text-left px-4 py-2 text-xs font-medium text-blue-700 hover:bg-blue-50 flex items-center space-x-2"
                     >
                       <Shield className="w-3.5 h-3.5" />
-                      <span>Admin Control Center</span>
+                      <span>{t('nav.adminControlCenter')}</span>
                     </button>
                   )}
 
@@ -139,7 +149,7 @@ export default function Navbar({ onNavigate, currentPage, onOpenSuggest, onOpenA
                     className="w-full text-left px-4 py-2 text-xs font-medium text-rose-600 hover:bg-rose-50 flex items-center space-x-2"
                   >
                     <LogOut className="w-3.5 h-3.5" />
-                    <span>Sign Out</span>
+                    <span>{t('nav.signOut')}</span>
                   </button>
                 </div>
               )}
@@ -150,7 +160,7 @@ export default function Navbar({ onNavigate, currentPage, onOpenSuggest, onOpenA
               className="py-1.5 px-3 sm:px-3.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs sm:text-sm font-semibold shadow-xs hover:shadow-md transition flex items-center space-x-1.5"
             >
               <User className="w-3.5 h-3.5" />
-              <span>Sign In</span>
+              <span>{t('nav.signIn')}</span>
             </button>
           )}
 
@@ -168,6 +178,12 @@ export default function Navbar({ onNavigate, currentPage, onOpenSuggest, onOpenA
       {/* Mobile Slide-down Navigation Drawer */}
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-slate-100 bg-white/98 backdrop-blur-md px-4 pt-3 pb-5 space-y-2 shadow-xl animate-fadeIn">
+          {/* Mobile Language Selector Row */}
+          <div className="pb-2 border-b border-slate-100 flex items-center justify-between">
+            <span className="text-xs font-semibold text-slate-600">Language / भाषा:</span>
+            <LanguageSelector compact />
+          </div>
+
           <button
             onClick={() => handleMobileNav('home')}
             className={`w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-semibold flex items-center justify-between ${
@@ -176,7 +192,7 @@ export default function Navbar({ onNavigate, currentPage, onOpenSuggest, onOpenA
                 : 'text-slate-700 hover:bg-slate-50'
             }`}
           >
-            <span>Home Portal</span>
+            <span>{t('nav.homePortal')}</span>
             {currentPage === 'home' && <span className="w-2 h-2 rounded-full bg-emerald-600"></span>}
           </button>
 
@@ -188,7 +204,7 @@ export default function Navbar({ onNavigate, currentPage, onOpenSuggest, onOpenA
                 : 'text-slate-700 hover:bg-slate-50'
             }`}
           >
-            <span>Find & Verify NGOs</span>
+            <span>{t('nav.findAndVerify')}</span>
             {currentPage === 'finder' && <span className="w-2 h-2 rounded-full bg-emerald-600"></span>}
           </button>
 
@@ -200,7 +216,7 @@ export default function Navbar({ onNavigate, currentPage, onOpenSuggest, onOpenA
                 : 'text-slate-700 hover:bg-slate-50'
             }`}
           >
-            <span>How Verification Works</span>
+            <span>{t('nav.howItWorks')}</span>
             {currentPage === 'how-it-works' && <span className="w-2 h-2 rounded-full bg-emerald-600"></span>}
           </button>
 
@@ -212,7 +228,7 @@ export default function Navbar({ onNavigate, currentPage, onOpenSuggest, onOpenA
             className="w-full text-left px-3.5 py-2.5 rounded-xl text-xs font-semibold text-emerald-700 hover:bg-emerald-50 flex items-center space-x-2"
           >
             <PlusCircle className="w-4 h-4 text-emerald-600" />
-            <span>Suggest an NGO</span>
+            <span>{t('nav.suggestNgo')}</span>
           </button>
 
           {isAdmin && (
@@ -226,7 +242,7 @@ export default function Navbar({ onNavigate, currentPage, onOpenSuggest, onOpenA
             >
               <div className="flex items-center space-x-2">
                 <Shield className="w-4 h-4 text-blue-600" />
-                <span>Officer Admin Desk</span>
+                <span>{t('nav.officerAdminDesk')}</span>
               </div>
               <span className="px-2 py-0.5 bg-blue-100 text-blue-800 text-[10px] font-bold rounded-full">Officer</span>
             </button>
@@ -241,7 +257,7 @@ export default function Navbar({ onNavigate, currentPage, onOpenSuggest, onOpenA
                 }}
                 className="w-full py-2.5 px-3 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-semibold text-center transition shadow-xs"
               >
-                Sign In
+                {t('nav.signIn')}
               </button>
             ) : (
               <button
@@ -252,7 +268,7 @@ export default function Navbar({ onNavigate, currentPage, onOpenSuggest, onOpenA
                 className="w-full py-2.5 px-3 bg-rose-50 hover:bg-rose-100 text-rose-700 rounded-xl text-xs font-semibold text-center transition flex items-center justify-center space-x-1.5"
               >
                 <LogOut className="w-3.5 h-3.5" />
-                <span>Sign Out ({user.name})</span>
+                <span>{t('nav.signOut')} ({user.name})</span>
               </button>
             )}
           </div>

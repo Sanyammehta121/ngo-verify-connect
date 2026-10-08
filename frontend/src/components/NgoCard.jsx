@@ -1,7 +1,9 @@
 import React from 'react';
-import { ShieldCheck, MapPin, Star, AlertTriangle, Clock, ExternalLink, CheckCircle, HeartHandshake } from 'lucide-react';
+import { ShieldCheck, MapPin, Star, AlertTriangle, Clock, ExternalLink, CheckCircle } from 'lucide-react';
+import { useTranslation } from '../context/LanguageContext';
 
 export default function NgoCard({ ngo, onSelect, onOpenTrustBreakdown }) {
+  const { t } = useTranslation();
   // Trust score color
   const score = ngo.trustScore || 0;
   const percentage = ngo.trustPercentage || Math.round(score * 20);
@@ -14,6 +16,20 @@ export default function NgoCard({ ngo, onSelect, onOpenTrustBreakdown }) {
   };
 
   const isVerified = ngo.verificationStatus === 'Verified';
+
+  const categoryKeys = {
+    'Education': 'education',
+    'Health & Nutrition': 'health',
+    'Disaster Relief': 'disaster',
+    'Elderly Care': 'elderly',
+    'Animal Welfare': 'animal',
+    'Child Welfare': 'child',
+    'Women Empowerment': 'women',
+    'Rural Development': 'rural',
+    'Environment & Wildlife': 'environment',
+    'Poverty Alleviation': 'poverty',
+    'Skill Development': 'skill'
+  };
 
   return (
     <div className="bg-white rounded-2xl border border-slate-200/80 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden group hover:border-emerald-300">
@@ -50,12 +66,12 @@ export default function NgoCard({ ngo, onSelect, onOpenTrustBreakdown }) {
             {isVerified ? (
               <span className="inline-flex items-center space-x-1 px-2.5 py-1 bg-emerald-100/80 text-emerald-800 text-[11px] font-semibold rounded-full shrink-0 border border-emerald-200">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                <span>Verified</span>
+                <span>{t('card.verified')}</span>
               </span>
             ) : (
               <span className="inline-flex items-center space-x-1 px-2.5 py-1 bg-amber-100/80 text-amber-800 text-[11px] font-semibold rounded-full shrink-0 border border-amber-200">
                 <Clock className="w-3.5 h-3.5 text-amber-600" />
-                <span>Pending Review</span>
+                <span>{t('card.pending')}</span>
               </span>
             )}
           </div>
@@ -67,14 +83,18 @@ export default function NgoCard({ ngo, onSelect, onOpenTrustBreakdown }) {
 
           {/* Category Tags */}
           <div className="flex flex-wrap gap-1.5 mt-3">
-            {(ngo.categories || []).slice(0, 3).map((cat, idx) => (
-              <span
-                key={idx}
-                className="px-2 py-0.5 bg-slate-100 text-slate-700 rounded-md text-[11px] font-medium"
-              >
-                {cat}
-              </span>
-            ))}
+            {(ngo.categories || []).slice(0, 3).map((cat, idx) => {
+              const locKey = categoryKeys[cat];
+              const catLabel = locKey ? t(`categories.${locKey}`) : cat;
+              return (
+                <span
+                  key={idx}
+                  className="px-2 py-0.5 bg-slate-100 text-slate-700 rounded-md text-[11px] font-medium"
+                >
+                  {catLabel}
+                </span>
+              );
+            })}
             {(ngo.categories || []).length > 3 && (
               <span className="px-1.5 py-0.5 bg-slate-100 text-slate-500 rounded-md text-[10px]">
                 +{(ngo.categories || []).length - 3}
@@ -88,13 +108,13 @@ export default function NgoCard({ ngo, onSelect, onOpenTrustBreakdown }) {
           <div className="flex flex-col items-center">
             <span className="text-[10px] text-slate-400 font-medium uppercase">12A Tax</span>
             <span className={`font-semibold mt-0.5 ${ngo.status12A === 'Verified' ? 'text-emerald-700' : 'text-slate-500'}`}>
-              {ngo.status12A === 'Verified' ? '✓ Valid' : ngo.status12A || 'Pending'}
+              {ngo.status12A === 'Verified' ? `✓ ${t('detail.valid')}` : ngo.status12A || t('detail.pending')}
             </span>
           </div>
           <div className="flex flex-col items-center border-x border-slate-200/60">
             <span className="text-[10px] text-slate-400 font-medium uppercase">80G Benefit</span>
             <span className={`font-semibold mt-0.5 ${ngo.status80G === 'Verified' ? 'text-emerald-700' : 'text-slate-500'}`}>
-              {ngo.status80G === 'Verified' ? '✓ 50% Tax' : ngo.status80G || 'Pending'}
+              {ngo.status80G === 'Verified' ? '✓ 50% Tax' : ngo.status80G || t('detail.pending')}
             </span>
           </div>
           <div className="flex flex-col items-center">
@@ -120,12 +140,12 @@ export default function NgoCard({ ngo, onSelect, onOpenTrustBreakdown }) {
                 ★ {score.toFixed(1)} / 5
               </span>
               <span className="text-xs font-semibold text-slate-700 group-hover/score:text-emerald-700 transition underline decoration-dotted">
-                {percentage}% Trust
+                {percentage}% {t('card.trustScore')}
               </span>
             </div>
             {ngo.reviewCount > 0 && (
               <span className="text-[10px] text-slate-400 block mt-0.5">
-                Based on {ngo.reviewCount} {ngo.reviewCount === 1 ? 'review' : 'reviews'}
+                {ngo.reviewCount} {t('card.reviews')}
               </span>
             )}
           </div>
@@ -139,7 +159,7 @@ export default function NgoCard({ ngo, onSelect, onOpenTrustBreakdown }) {
           ) : (
             <span className="text-[11px] font-medium text-amber-700 bg-amber-50 px-2 py-0.5 rounded-md flex items-center space-x-1">
               <AlertTriangle className="w-3 h-3 text-amber-600" />
-              <span>Caution: No Direct Link</span>
+              <span>Direct Bank Channel</span>
             </span>
           )}
         </div>
@@ -149,7 +169,7 @@ export default function NgoCard({ ngo, onSelect, onOpenTrustBreakdown }) {
           onClick={() => onSelect(ngo.id)}
           className="w-full py-2.5 px-3 bg-slate-900 hover:bg-emerald-600 text-white font-medium text-xs rounded-xl shadow-xs transition duration-200 flex items-center justify-center space-x-1.5 min-h-[44px]"
         >
-          <span>View Profile & Compliance Dossier</span>
+          <span>{t('card.viewDetails')}</span>
           <ExternalLink className="w-3.5 h-3.5" />
         </button>
       </div>

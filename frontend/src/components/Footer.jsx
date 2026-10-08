@@ -1,7 +1,10 @@
 import React from 'react';
 import { ShieldCheck, ExternalLink, FileText, CheckCircle2, Heart } from 'lucide-react';
+import { useTranslation } from '../context/LanguageContext';
 
 export default function Footer({ onNavigate }) {
+  const { t } = useTranslation();
+
   return (
     <footer className="bg-slate-900 text-slate-400 text-xs border-t border-slate-800 mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -12,10 +15,10 @@ export default function Footer({ onNavigate }) {
               <div className="p-1.5 bg-emerald-500 rounded-lg text-slate-950 font-bold">
                 <ShieldCheck className="w-4 h-4" />
               </div>
-              <span className="font-bold text-base tracking-tight">NGO Verify & Connect</span>
+              <span className="font-bold text-base tracking-tight">{t('footer.aboutTitle')}</span>
             </div>
             <p className="text-slate-400 text-xs leading-relaxed">
-              An open transparency and due-diligence platform enabling donors and volunteers to independently cross-examine statutory registrations, 80G tax benefits, and Darpan ID credentials of Indian NGOs.
+              {t('footer.aboutDesc')}
             </p>
           </div>
 
@@ -75,7 +78,7 @@ export default function Footer({ onNavigate }) {
           {/* Col 3: Quick Navigation */}
           <div className="space-y-2">
             <h4 className="text-slate-200 font-semibold uppercase tracking-wider text-[11px]">
-              Platform Navigation
+              {t('footer.quickLinks')}
             </h4>
             <ul className="space-y-1.5">
               <li>
@@ -83,7 +86,7 @@ export default function Footer({ onNavigate }) {
                   onClick={() => onNavigate('finder')}
                   className="hover:text-emerald-400 transition"
                 >
-                  Search Verified NGOs
+                  {t('nav.findNgos')}
                 </button>
               </li>
               <li>
@@ -91,7 +94,7 @@ export default function Footer({ onNavigate }) {
                   onClick={() => onNavigate('how-it-works')}
                   className="hover:text-emerald-400 transition"
                 >
-                  Trust Score Methodology
+                  {t('nav.howItWorks')}
                 </button>
               </li>
               <li>
@@ -99,7 +102,7 @@ export default function Footer({ onNavigate }) {
                   onClick={() => onNavigate('admin')}
                   className="hover:text-emerald-400 transition"
                 >
-                  Admin Verification Desk
+                  {t('nav.adminDesk')}
                 </button>
               </li>
             </ul>
@@ -108,19 +111,19 @@ export default function Footer({ onNavigate }) {
           {/* Col 4: Transparency & Freshness Disclaimer */}
           <div className="space-y-2">
             <h4 className="text-slate-200 font-semibold uppercase tracking-wider text-[11px]">
-              Public Compliance Disclaimer
+              {t('footer.legalDisclaimer')}
             </h4>
             <p className="text-[11px] leading-relaxed text-slate-400">
-              Registration certificates (12A, 80G, FCRA) and Darpan IDs displayed on this portal are indexed from publicly accessible government archives. Statuses can vary over time; always confirm the "Last verified on" date before disbursing large contributions.
+              {t('footer.disclaimerText')}
             </p>
           </div>
         </div>
 
         <div className="border-t border-slate-800 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-400">
-          <p>© 2026 NGO Verify & Connect. Dedicated to civil society integrity and donor security.</p>
+          <p>© 2026 NGO Verify & Connect. {t('footer.allRightsReserved')}</p>
           <div className="flex items-center space-x-1 mt-2 sm:mt-0 text-emerald-400">
             <CheckCircle2 className="w-3.5 h-3.5" />
-            <span>Real Verifiable NGO Dataset (Delhi, Mumbai, Bengaluru)</span>
+            <span>Pan-India Verified NGO Registry</span>
           </div>
         </div>
       </div>

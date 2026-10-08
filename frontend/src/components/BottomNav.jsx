@@ -1,9 +1,12 @@
 import React from 'react';
 import { Home, Search, PlusCircle, ShieldCheck, User, Shield } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import { useTranslation } from '../context/LanguageContext';
+import LanguageSelector from './LanguageSelector';
 
 export default function BottomNav({ currentPage, onNavigate, onOpenSuggest, onOpenAuth }) {
   const { user, isAdmin, logout } = useAuth();
+  const { t } = useTranslation();
   const [showAccountMenu, setShowAccountMenu] = React.useState(false);
 
   return (
@@ -32,9 +35,15 @@ export default function BottomNav({ currentPage, onNavigate, onOpenSuggest, onOp
                 <span className={`inline-block mt-1 text-[10px] font-semibold px-2 py-0.5 rounded-full ${
                   isAdmin ? 'bg-blue-100 text-blue-800' : user.provider === 'google' ? 'bg-blue-50 text-blue-700 border border-blue-200' : 'bg-emerald-100 text-emerald-800'
                 }`}>
-                  {isAdmin ? '🛡️ Admin Officer' : user.provider === 'google' ? '🟢 Google Verified Donor' : '✓ Verified Citizen / Donor'}
+                  {isAdmin ? `🛡️ ${t('nav.adminOfficer')}` : user.provider === 'google' ? `🟢 ${t('nav.googleVerified')}` : `✓ ${t('nav.verifiedDonor')}`}
                 </span>
               </div>
+            </div>
+
+            {/* Language Selector Row inside Mobile Account Sheet */}
+            <div className="py-1 flex items-center justify-between border-b border-slate-100 pb-2">
+              <span className="text-xs font-semibold text-slate-600">{t('bottomNav.selectLanguage')}:</span>
+              <LanguageSelector compact />
             </div>
 
             {isAdmin && (
@@ -46,7 +55,7 @@ export default function BottomNav({ currentPage, onNavigate, onOpenSuggest, onOp
                 className="w-full py-2 px-3 bg-blue-50 text-blue-700 hover:bg-blue-100 rounded-xl text-xs font-semibold flex items-center justify-center space-x-2 transition"
               >
                 <Shield className="w-4 h-4 text-blue-600" />
-                <span>Open Admin Desk</span>
+                <span>{t('bottomNav.openAdminDesk')}</span>
               </button>
             )}
 
@@ -57,7 +66,7 @@ export default function BottomNav({ currentPage, onNavigate, onOpenSuggest, onOp
               }}
               className="w-full py-2 px-3 bg-rose-50 text-rose-700 hover:bg-rose-100 rounded-xl text-xs font-semibold text-center transition"
             >
-              Sign Out
+              {t('bottomNav.signOut')}
             </button>
           </div>
         </div>
@@ -74,7 +83,7 @@ export default function BottomNav({ currentPage, onNavigate, onOpenSuggest, onOp
           }`}
         >
           <Home className={`w-5 h-5 ${currentPage === 'home' ? 'stroke-[2.5]' : 'stroke-2'}`} />
-          <span className="text-[10px] mt-1 font-medium">Home</span>
+          <span className="text-[10px] mt-1 font-medium">{t('bottomNav.home')}</span>
         </button>
 
         {/* 2. Finder / Directory */}
@@ -87,7 +96,7 @@ export default function BottomNav({ currentPage, onNavigate, onOpenSuggest, onOp
           }`}
         >
           <Search className={`w-5 h-5 ${currentPage === 'finder' ? 'stroke-[2.5]' : 'stroke-2'}`} />
-          <span className="text-[10px] mt-1 font-medium">Find NGOs</span>
+          <span className="text-[10px] mt-1 font-medium">{t('bottomNav.findNgos')}</span>
         </button>
 
         {/* 3. Suggest NGO (Center prominent action button) */}
@@ -98,7 +107,7 @@ export default function BottomNav({ currentPage, onNavigate, onOpenSuggest, onOp
           <div className="w-11 h-11 rounded-full bg-emerald-600 text-white flex items-center justify-center shadow-md shadow-emerald-600/30 group-active:scale-95 transition">
             <PlusCircle className="w-6 h-6 stroke-[2.2]" />
           </div>
-          <span className="text-[10px] mt-0.5 text-slate-700 font-semibold">Suggest</span>
+          <span className="text-[10px] mt-0.5 text-slate-700 font-semibold">{t('bottomNav.suggest')}</span>
         </button>
 
         {/* 4. Verification Guide / Admin Desk (Only for admin) */}
@@ -116,7 +125,7 @@ export default function BottomNav({ currentPage, onNavigate, onOpenSuggest, onOp
             <ShieldCheck className={`w-5 h-5 ${currentPage === 'how-it-works' ? 'stroke-[2.5]' : 'stroke-2'}`} />
           )}
           <span className="text-[10px] mt-1 font-medium">
-            {isAdmin ? 'Admin' : 'Guide'}
+            {isAdmin ? t('bottomNav.admin') : t('bottomNav.guide')}
           </span>
         </button>
 
@@ -139,7 +148,7 @@ export default function BottomNav({ currentPage, onNavigate, onOpenSuggest, onOp
             <User className="w-5 h-5 stroke-2" />
           )}
           <span className="text-[10px] mt-1 font-medium truncate max-w-[54px]">
-            {user ? user.name.split(' ')[0] : 'Sign In'}
+            {user ? user.name.split(' ')[0] : t('nav.signIn')}
           </span>
         </button>
       </nav>
