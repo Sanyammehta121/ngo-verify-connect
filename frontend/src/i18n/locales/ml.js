@@ -1,8 +1,8 @@
 export default {
   nav: {
-    brandTitle: "എൻ‌ജി‌ഒ വെരിഫൈ",
-    brandSubtitle: "& കണക്റ്റ്",
-    tagline: "പൊതുജന വിശ്വാസവും സുതാര്യതയും",
+    brandTitle: "TrueNGO",
+    brandSubtitle: "ദേശീയ പോർട്ടൽ",
+    tagline: "ദേശീയ എൻ‌ജി‌ഒ പരിശോധനാ പോർട്ടൽ",
     findNgos: "എൻ‌ജി‌ഒകളെ കണ്ടെത്തുക",
     howItWorks: "പരിശോധനാ രീതി",
     suggestNgo: "എൻ‌ജി‌ഒ നിർദ്ദേശിക്കുക",
@@ -148,7 +148,7 @@ export default {
     scoreDesc: "നിയമപരമായ പാലിക്കലും പ്രവർത്തനവും അടിസ്ഥാനമാക്കിയുള്ള കണക്കുകൂട്ടൽ."
   },
   auth: {
-    signInTitle: "എൻ‌ജി‌ഒ വെരിഫൈയിൽ സൈൻ ഇൻ ചെയ്യുക",
+    signInTitle: "TrueNGO-ൽ സൈൻ ഇൻ ചെയ്യുക",
     signInSub: "അവലോകനങ്ങളും ഓഡിറ്റ് ഡെസ്കും ആക്സസ് ചെയ്യുക",
     googleSignIn: "ഗൂഗിൾ വഴി തുടരുക",
     orEmail: "അല്ലെങ്കിൽ ഇമെയിൽ വഴി സൈൻ ഇൻ ചെയ്യുക",

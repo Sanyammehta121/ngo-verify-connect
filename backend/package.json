@@ -1,7 +1,7 @@
 {
-  "name": "ngo-verify-connect-backend",
+  "name": "truengo-backend",
   "version": "1.0.0",
-  "description": "Backend API for NGO Verify & Connect platform",
+  "description": "Backend API for TrueNGO - National Due Diligence Platform",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",

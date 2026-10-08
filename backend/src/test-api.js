@@ -37,7 +37,7 @@ function request(path, options = {}) {
 }
 
 async function runTests() {
-  console.log('🧪 Starting NGO Verify & Connect Automated API Test Suite...');
+  console.log('🧪 Starting TrueNGO Automated API Test Suite...');
   server = app.listen(PORT);
 
   try {

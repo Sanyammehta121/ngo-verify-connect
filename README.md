@@ -1,8 +1,8 @@
-# 🛡️ NGO Verify & Connect
+# 🛡️ TrueNGO | National Due Diligence Portal
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FSanyammehta121%2Fngo-verify-connect)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FSanyammehta121%2Fngotrustfinder)
 
-**NGO Verify & Connect** is a full-stack public transparency, verification, and due-diligence platform designed to help citizens, donors, and volunteers independently cross-examine, verify, and trust local non-profit organizations (NGOs) before donating or volunteering.
+**TrueNGO** is a full-stack national civic transparency, verification, and due-diligence platform designed to help citizens, donors, and CSR institutions independently cross-examine, verify, and trust non-profit organizations (NGOs) across all 28 states & 8 Union Territories in India.
 
 ---
 

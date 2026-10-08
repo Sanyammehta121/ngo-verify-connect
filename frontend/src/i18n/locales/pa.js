@@ -1,8 +1,8 @@
 export default {
   nav: {
-    brandTitle: "ਐਨਜੀਓ ਵੈਰੀਫਾਈ",
-    brandSubtitle: "& ਕਨੈਕਟ",
-    tagline: "ਜਨਤਕ ਭਰੋਸਾ ਅਤੇ ਪਾਲਣਾ",
+    brandTitle: "TrueNGO",
+    brandSubtitle: "ਰਾਸ਼ਟਰੀ ਪੋਰਟਲ",
+    tagline: "ਰਾਸ਼ਟਰੀ ਐਨਜੀਓ ਪੜਤਾਲ ਪੋਰਟਲ",
     findNgos: "ਐਨਜੀਓ ਲੱਭੋ",
     howItWorks: "ਪੜਤਾਲ ਪ੍ਰਕਿਰਿਆ",
     suggestNgo: "ਐਨਜੀਓ ਸੁਝਾਓ",
@@ -148,7 +148,7 @@ export default {
     scoreDesc: "ਕਾਨੂੰਨੀ ਪਾਲਣਾ, ਸੰਚਾਲਨ ਅਤੇ ਰੇਟਿੰਗ ਅਧਾਰਿਤ ਗਣਨਾ।"
   },
   auth: {
-    signInTitle: "ਐਨਜੀਓ ਵੈਰੀਫਾਈ ਵਿੱਚ ਸਾਈਨ ਇਨ ਕਰੋ",
+    signInTitle: "TrueNGO ਵਿੱਚ ਸਾਈਨ ਇਨ ਕਰੋ",
     signInSub: "ਸਮੀਖਿਆਵਾਂ ਅਤੇ ਆਡਿਟ ਡੈਸਕ ਤੱਕ ਪਹੁੰਚ ਪ੍ਰਾਪਤ ਕਰੋ",
     googleSignIn: "ਗੂਗਲ ਨਾਲ ਜਾਰੀ ਰੱਖੋ",
     orEmail: "ਜਾਂ ਈਮੇਲ ਰਾਹੀਂ ਸਾਈਨ ਇਨ ਕਰੋ",

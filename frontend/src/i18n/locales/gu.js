@@ -1,8 +1,8 @@
 export default {
   nav: {
-    brandTitle: "એનજીઓ વેરિફાય",
-    brandSubtitle: "& કનેક્ટ",
-    tagline: "જાહેર વિશ્વાસ અને પાલન",
+    brandTitle: "TrueNGO",
+    brandSubtitle: "રાષ્ટ્રીય પોર્ટલ",
+    tagline: "રાષ્ટ્રીય એનજીઓ ચકાસણી પોર્ટલ",
     findNgos: "એનજીઓ શોધો",
     howItWorks: "ચકાસણી પ્રક્રિયા",
     suggestNgo: "એનજીઓ સૂચવો",
@@ -148,7 +148,7 @@ export default {
     scoreDesc: "કાનૂની પાલન, સંચાલન અને પ્રતિસાદ પર આધારિત આપમેળે ગણતરી."
   },
   auth: {
-    signInTitle: "એનજીઓ વેરિફાયમાં સાઇન ઇન કરો",
+    signInTitle: "TrueNGO માં સાઇન ઇન કરો",
     signInSub: "સમીક્ષાઓ અને ઓડિટ ડેસ્ક ઍક્સેસ મેળવો",
     googleSignIn: "ગૂગલ સાથે ચાલુ રાખો",
     orEmail: "અથવા ઈમેલ દ્વારા સાઇન ઇન કરો",

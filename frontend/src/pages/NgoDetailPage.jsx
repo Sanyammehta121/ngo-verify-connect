@@ -97,7 +97,15 @@ export default function NgoDetailPage({ ngoId, onBack, onOpenTrustBreakdown }) {
       </button>
 
       {/* Hero Profile Dossier Card */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs">
+      <div className="relative overflow-hidden bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-xs">
+        <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#ff9933] via-slate-300 to-[#138808]"></div>
+        
+        <div className="mb-4 inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-[11px] font-bold uppercase tracking-wider">
+          <span>सत्यमेव जयते</span>
+          <span className="text-slate-400">|</span>
+          <span className="text-emerald-800">TrueNGO National Compliance Dossier</span>
+        </div>
+
         <div className="flex flex-col md:flex-row items-start justify-between gap-6">
           {/* Logo & Info */}
           <div className="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-5">
@@ -110,7 +118,7 @@ export default function NgoDetailPage({ ngoId, onBack, onOpenTrustBreakdown }) {
             </div>
             <div className="space-y-2">
               <div className="flex flex-wrap items-center gap-2">
-                <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+                <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
                   {ngo.name}
                 </h1>
                 {ngo.verificationStatus === 'Verified' ? (
@@ -130,7 +138,9 @@ export default function NgoDetailPage({ ngoId, onBack, onOpenTrustBreakdown }) {
                 <MapPin className="w-4 h-4 text-slate-400 shrink-0" />
                 <span className="font-semibold text-slate-700">{ngo.city}, {ngo.state}</span>
                 <span>•</span>
-                <span className="font-mono text-slate-500">Darpan: {ngo.darpanId || 'Pending'}</span>
+                <span className="font-mono text-emerald-800 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                  Darpan UID: {ngo.darpanId || 'Pending'}
+                </span>
               </div>
 
               {/* Category Pills */}

@@ -1,8 +1,8 @@
 export default {
   nav: {
-    brandTitle: "एनजीओ व्हेरिफाय",
-    brandSubtitle: "& कनेक्ट",
-    tagline: "सार्वजनिक विश्वास आणि अनुपालन",
+    brandTitle: "TrueNGO",
+    brandSubtitle: "राष्ट्रीय पोर्टल",
+    tagline: "राष्ट्रीय एनजीओ पडताळणी पोर्टल",
     findNgos: "एनजीओ शोधा",
     howItWorks: "पडताळणी प्रक्रिया",
     suggestNgo: "एनजीओ सुचवा",
@@ -148,7 +148,7 @@ export default {
     scoreDesc: "वैधानिक अनुपालन, प्रत्यक्ष पडताळणी आणि अभिप्राय यावर आधारित गणना."
   },
   auth: {
-    signInTitle: "एनजीओ व्हेरिफाय मध्ये साइन इन करा",
+    signInTitle: "TrueNGO मध्ये साइन इन करा",
     signInSub: "अभिप्राय आणि ऑडीट डेस्कमध्ये प्रवेश करा",
     googleSignIn: "गुगलने सुरू ठेवा",
     orEmail: "किंवा ईमेलने साइन इन करा",

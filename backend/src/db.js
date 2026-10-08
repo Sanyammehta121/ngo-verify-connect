@@ -136,6 +136,12 @@ try {
 try {
   db.exec("ALTER TABLE users ADD COLUMN avatar TEXT;");
 } catch (e) {}
+try {
+  db.exec("ALTER TABLE users ADD COLUMN google_id TEXT;");
+} catch (e) {}
+try {
+  db.exec("ALTER TABLE users ADD COLUMN email_verified INTEGER DEFAULT 0;");
+} catch (e) {}
 
 /**
  * Computes composite trust score based on document validity, donation verification,

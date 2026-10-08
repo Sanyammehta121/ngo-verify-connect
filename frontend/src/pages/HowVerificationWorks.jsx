@@ -62,11 +62,13 @@ export default function HowVerificationWorks({ onNavigate, onOpenSuggest }) {
     <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12 animate-fadeIn">
       {/* Page Header */}
       <div className="text-center space-y-4 max-w-3xl mx-auto">
-        <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">
+        <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-xs font-bold">
+          <span>सत्यमेव जयते</span>
+          <span className="text-slate-400">|</span>
           <ShieldCheck className="w-4 h-4 text-emerald-600" />
-          <span>Independent Non-Profit Due Diligence</span>
+          <span>TrueNGO Statutory Due Diligence Architecture</span>
         </div>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        <h1 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
           {t('howItWorks.title')}
         </h1>
         <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">

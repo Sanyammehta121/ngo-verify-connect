@@ -1,6 +1,6 @@
-# NGO Verify & Connect - Single Command Launcher
+# TrueNGO - Single Command Launcher
 Write-Host "==================================================" -ForegroundColor Cyan
-Write-Host "  🛡️  NGO VERIFY & CONNECT PLATFORM RUNNER        " -ForegroundColor Green
+Write-Host "  🛡️  TrueNGO - NATIONAL DUE DILIGENCE PORTAL    " -ForegroundColor Green
 Write-Host "==================================================" -ForegroundColor Cyan
 
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","User") + ";" + [System.Environment]::GetEnvironmentVariable("Path","Machine")

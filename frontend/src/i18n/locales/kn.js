@@ -1,8 +1,8 @@
 export default {
   nav: {
-    brandTitle: "ಎನ್‌ಜಿಒ ವೆರಿಫೈ",
-    brandSubtitle: "& ಕನೆಕ್ಟ್",
-    tagline: "ಸಾರ್ವಜನಿಕ ನಂಬಿಕೆ ಮತ್ತು ಅನುಸರಣೆ",
+    brandTitle: "TrueNGO",
+    brandSubtitle: "ರಾಷ್ಟ್ರೀಯ ಪೋರ್ಟಲ್",
+    tagline: "ರಾಷ್ಟ್ರೀಯ ಎನ್‌ಜಿಒ ಪರಿಶೀಲನಾ ಪೋರ್ಟಲ್",
     findNgos: "ಎನ್‌ಜಿಒಗಳನ್ನು ಹುಡುಕಿ",
     howItWorks: "ಪರಿಶೀಲನಾ ವಿಧಾನ",
     suggestNgo: "ಎನ್‌ಜಿಒ ಸೂಚಿಸಿ",
@@ -148,7 +148,7 @@ export default {
     scoreDesc: "ಶಾಸನಬದ್ಧ ಅನುಸರಣೆ ಮತ್ತು ಕಾರ್ಯಕ್ಷಮತೆಯ ಆಧಾರದ ಮೇಲೆ ಸ್ವಯಂಚಾಲಿತ ಲೆಕ್ಕಾಚಾರ."
   },
   auth: {
-    signInTitle: "ಎನ್‌ಜಿಒ ವೆರಿಫೈಗೆ ಸೈನ್ ಇನ್ ಮಾಡಿ",
+    signInTitle: "TrueNGO ಗೆ ಸೈನ್ ಇನ್ ಮಾಡಿ",
     signInSub: "ವಿಮರ್ಶೆಗಳು ಮತ್ತು ಆಡಿಟ್ ಡೆಸ್ಕ್ ಪ್ರವೇಶ ಪಡೆಯಿರಿ",
     googleSignIn: "ಗೂಗಲ್ ನೊಂದಿಗೆ ಮುಂದುವರಿಯಿರಿ",
     orEmail: "ಅಥವಾ ಇಮೇಲ್ ಮೂಲಕ ಸೈನ್ ಇನ್ ಮಾಡಿ",

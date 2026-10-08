@@ -1,8 +1,8 @@
 export default {
   nav: {
-    brandTitle: "ఎన్జీఓ వెరిఫై",
-    brandSubtitle: "& కనెక్ట్",
-    tagline: "ప్రజా విశ్వాసం మరియు నిబంధనల పాటించటం",
+    brandTitle: "TrueNGO",
+    brandSubtitle: "జాతీయ పోర్టల్",
+    tagline: "జాతీయ ఎన్జీఓ ధృవీకరణ పోర్టల్",
     findNgos: "ఎన్జీఓలను కనుగొనండి",
     howItWorks: "ధృవీకరణ విధానం",
     suggestNgo: "ఎన్జీఓను సూచించండి",
@@ -148,7 +148,7 @@ export default {
     scoreDesc: "చట్టబద్ధత మరియు పనితీరు ఆధారంగా ఆటోమేటెడ్ లెక్కల గణన."
   },
   auth: {
-    signInTitle: "ఎన్జీఓ వెరిఫై లో సైన్ ఇన్ చేయండి",
+    signInTitle: "TrueNGO లో సైన్ ఇన్ చేయండి",
     signInSub: "సమీక్షలు మరియు ఆడిట్ డెస్క్‌ను యాక్సెస్ చేయండి",
     googleSignIn: "గూగుల్ తో కొనసాగించండి",
     orEmail: "లేదా ఇమెయిల్ ద్వారా సైన్ ఇన్ చేయండి",

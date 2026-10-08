@@ -270,13 +270,19 @@ export default function NgoFinderPage({ initialFilters = {}, onSelectNgo, onOpen
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6">
       {/* Page Title & Search Bar */}
-      <div className="bg-white rounded-3xl p-5 sm:p-8 border border-slate-200/80 shadow-xs">
+      <div className="relative overflow-hidden bg-white rounded-3xl p-5 sm:p-8 border border-slate-200/80 shadow-xs">
+        <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-[#ff9933] via-slate-300 to-[#138808]"></div>
         <div className="max-w-3xl">
-          <h1 className="text-xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-[11px] font-bold uppercase tracking-wider mb-2">
+            <span>सत्यमेव जयते</span>
+            <span className="text-slate-400">|</span>
+            <span className="text-emerald-800">TrueNGO National Registry</span>
+          </div>
+          <h1 className="text-xl sm:text-3xl font-black text-slate-900 tracking-tight">
             {t('finder.title')}
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 mt-1">
-            {t('finder.subtitle')}
+          <p className="text-xs sm:text-sm text-slate-600 mt-1">
+            Authoritative national index of 328+ statutory audited non-profit institutions across 314 districts in India.
           </p>
 
           <form onSubmit={handleSearchSubmit} className="mt-4 sm:mt-5 flex gap-2">

@@ -44,7 +44,7 @@ function getLocalIpAddresses() {
 app.get(['/api', '/api/health'], (req, res) => {
   res.json({
     status: 'ok',
-    service: 'NGO Verify & Connect API',
+    service: 'TrueNGO National Due Diligence API',
     timestamp: new Date().toISOString()
   });
 });

@@ -1,8 +1,8 @@
 export default {
   nav: {
-    brandTitle: "என்ஜிஓ சரிபார்ப்பு",
-    brandSubtitle: "& இணைப்பு",
-    tagline: "பொது நம்பிக்கை மற்றும் இணக்கம்",
+    brandTitle: "TrueNGO",
+    brandSubtitle: "தேசிய தளம்",
+    tagline: "தேசிய என்ஜிஓ சரிபார்ப்பு தளம்",
     findNgos: "என்ஜிஓக்களைக் கண்டறிக",
     howItWorks: "சரிபார்ப்பு முறை",
     suggestNgo: "என்ஜிஓ பரிந்துரைக்க",
@@ -148,7 +148,7 @@ export default {
     scoreDesc: "சட்டப்பூர்வ இணக்கம் மற்றும் செயல்பாட்டின் அடிப்படையில் தானியங்கி கணக்கீடு."
   },
   auth: {
-    signInTitle: "என்ஜிஓ சரிபார்ப்பில் உள்நுழைக",
+    signInTitle: "TrueNGO-வில் உள்நுழைக",
     signInSub: "மதிப்புரைகள் மற்றும் தணிக்கை மேசையை அணுகவும்",
     googleSignIn: "கூகிள் மூலம் தொடரவும்",
     orEmail: "அல்லது மின்னஞ்சல் மூலம் உள்நுழைக",

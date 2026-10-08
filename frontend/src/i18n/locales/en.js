@@ -1,8 +1,8 @@
 export default {
   nav: {
-    brandTitle: "NGO Verify",
-    brandSubtitle: "& Connect",
-    tagline: "Public Trust & Compliance",
+    brandTitle: "TrueNGO",
+    brandSubtitle: "National Portal",
+    tagline: "National Due Diligence & Public Trust Portal",
     findNgos: "Find NGOs",
     howItWorks: "How Verification Works",
     suggestNgo: "Suggest an NGO",
@@ -148,7 +148,7 @@ export default {
     scoreDesc: "Our algorithm calculates trust scores using 50% Statutory Compliance, 20% Operational Verification, 15% Audit Freshness, and 15% Donor Ratings."
   },
   auth: {
-    signInTitle: "Sign in to NGO Verify & Connect",
+    signInTitle: "Sign in to TrueNGO",
     signInSub: "Access community reviews, whistleblower reporting, and audit desks",
     googleSignIn: "Continue with Google",
     orEmail: "Or sign in with email",
@@ -175,11 +175,11 @@ export default {
     success: "Thank you! NGO submitted for compliance review."
   },
   footer: {
-    aboutTitle: "NGO Verify & Connect",
-    aboutDesc: "India's independent civic-tech platform for public verification of non-governmental organizations, NITI Aayog Darpan compliance, and Section 80G tax status.",
+    aboutTitle: "TrueNGO National Portal",
+    aboutDesc: "India's official public due-diligence platform for independent verification of non-governmental organizations, NITI Aayog Darpan compliance, and Section 80G tax status.",
     quickLinks: "Quick Links",
     legalDisclaimer: "Official Disclaimer",
-    disclaimerText: "NGO Verify & Connect is an independent public-interest platform and does not process payments or collect commission. Always verify official bank account details before donating.",
+    disclaimerText: "TrueNGO is an independent public-interest verification platform. Always confirm official bank credentials before contributing.",
     allRightsReserved: "All rights reserved. Dedicated to civic transparency across India."
   },
   language: {

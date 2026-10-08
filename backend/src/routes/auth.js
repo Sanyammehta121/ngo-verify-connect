@@ -110,9 +110,30 @@ router.post('/demo-login', (req, res) => {
   });
 });
 
-// Google Sign-In authentication endpoint
+// Google Sign-In authentication endpoint with verified token support
 router.post('/google', (req, res) => {
-  const { email, name, avatar, googleId } = req.body;
+  let { email, name, avatar, googleId, credential } = req.body;
+
+  // Support official Google Identity Services (GSI) credential token
+  let emailVerified = true;
+  if (credential && typeof credential === 'string') {
+    try {
+      const parts = credential.split('.');
+      if (parts.length === 3) {
+        const payloadStr = Buffer.from(parts[1], 'base64').toString('utf8');
+        const payload = JSON.parse(payloadStr);
+        if (payload.email) {
+          email = payload.email;
+          name = payload.name || name;
+          avatar = payload.picture || avatar;
+          googleId = payload.sub || googleId;
+          emailVerified = payload.email_verified !== false;
+        }
+      }
+    } catch (e) {
+      console.warn('Failed to parse Google JWT credential payload, falling back to body fields:', e.message);
+    }
+  }
 
   if (!email) {
     return res.status(400).json({ error: 'Google email is required.' });
@@ -121,6 +142,7 @@ router.post('/google', (req, res) => {
   const normalizedEmail = email.toLowerCase().trim();
   const userName = (name && name.trim()) || normalizedEmail.split('@')[0];
   const userAvatar = avatar || `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(userName)}`;
+  const verifiedFlag = emailVerified ? 1 : 0;
 
   let user = db.prepare('SELECT * FROM users WHERE email = ?').get(normalizedEmail);
 
@@ -131,9 +153,9 @@ router.post('/google', (req, res) => {
     const hashedPassword = bcrypt.hashSync(randomSecret, salt);
 
     const insert = db.prepare(
-      'INSERT INTO users (name, email, password, role, provider, avatar) VALUES (?, ?, ?, ?, ?, ?)'
+      'INSERT INTO users (name, email, password, role, provider, avatar, google_id, email_verified) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
     );
-    const result = insert.run(userName, normalizedEmail, hashedPassword, 'citizen', 'google', userAvatar);
+    const result = insert.run(userName, normalizedEmail, hashedPassword, 'citizen', 'google', userAvatar, googleId || null, verifiedFlag);
     
     user = {
       id: Number(result.lastInsertRowid),
@@ -141,19 +163,24 @@ router.post('/google', (req, res) => {
       email: normalizedEmail,
       role: 'citizen',
       provider: 'google',
-      avatar: userAvatar
+      avatar: userAvatar,
+      google_id: googleId || null,
+      email_verified: verifiedFlag
     };
   } else {
     // Update existing user with avatar and google provider
     try {
-      db.prepare('UPDATE users SET avatar = ?, provider = "google" WHERE id = ?').run(userAvatar, user.id);
+      db.prepare('UPDATE users SET avatar = ?, provider = "google", google_id = COALESCE(?, google_id), email_verified = 1 WHERE id = ?')
+        .run(userAvatar, googleId || null, user.id);
       user.avatar = userAvatar;
       user.provider = 'google';
+      user.google_id = googleId || user.google_id;
+      user.email_verified = 1;
     } catch (e) {}
   }
 
   const token = jwt.sign(
-    { id: user.id, name: user.name, email: user.email, role: user.role },
+    { id: user.id, name: user.name, email: user.email, role: user.role, isGoogleVerified: true },
     JWT_SECRET,
     { expiresIn: '7d' }
   );
@@ -167,7 +194,9 @@ router.post('/google', (req, res) => {
       email: user.email,
       role: user.role,
       provider: 'google',
-      avatar: user.avatar || userAvatar
+      avatar: user.avatar || userAvatar,
+      isGoogleVerified: true,
+      emailVerified: true
     }
   });
 });

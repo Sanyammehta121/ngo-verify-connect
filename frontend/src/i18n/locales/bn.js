@@ -1,8 +1,8 @@
 export default {
   nav: {
-    brandTitle: "এনজিও ভেরিফাই",
-    brandSubtitle: "& কানেক্ট",
-    tagline: "জনগণের আস্থা ও সম্মতি",
+    brandTitle: "TrueNGO",
+    brandSubtitle: "জাতীয় পোর্টাল",
+    tagline: "জাতীয় এনজিও যাচাইকরণ পোর্টাল",
     findNgos: "এনজিও খুঁজুন",
     howItWorks: "যাচাইকরণ প্রক্রিয়া",
     suggestNgo: "এনজিও সাজেস্ট করুন",
@@ -148,7 +148,7 @@ export default {
     scoreDesc: "আইনি সম্মতি, পরিচালনা ও মতামতের ওপর ভিত্তি করে পরিগণিত।"
   },
   auth: {
-    signInTitle: "এনজিও ভেরিফাইতে সাইন ইন করুন",
+    signInTitle: "TrueNGO-তে সাইন ইন করুন",
     signInSub: "রিভিউ ও অডিট ডেস্কে প্রবেশ করুন",
     googleSignIn: "গুগলের সাথে চালিয়ে যান",
     orEmail: "অথবা ইমেইল দিয়ে সাইন ইন করুন",
