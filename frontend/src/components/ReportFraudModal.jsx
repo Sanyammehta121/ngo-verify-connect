@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { X, ShieldAlert, AlertTriangle, CheckCircle2, FileText } from 'lucide-react';
+import { X, ShieldAlert, AlertTriangle, CheckCircle2, FileText, Lock, ShieldCheck } from 'lucide-react';
 import { api } from '../services/api';
+import { useAuth } from '../context/AuthContext';
 
 export default function ReportFraudModal({ ngo, isOpen, onClose }) {
+  const { user, isEmailVerified } = useAuth();
   const [reason, setReason] = useState('Misuse of Donated Funds');
   const [details, setDetails] = useState('');
-  const [reporterName, setReporterName] = useState('');
-  const [reporterEmail, setReporterEmail] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
   const [ticket, setTicket] = useState('');
@@ -20,6 +20,16 @@ export default function ReportFraudModal({ ngo, isOpen, onClose }) {
       return;
     }
 
+    if (!user) {
+      setError('Authentication required: Please sign in to submit a whistleblower report.');
+      return;
+    }
+
+    if (!isEmailVerified) {
+      setError('Email verification required: Please verify your email address to file forensic fraud reports.');
+      return;
+    }
+
     setSubmitting(true);
     setError('');
 
@@ -28,8 +38,8 @@ export default function ReportFraudModal({ ngo, isOpen, onClose }) {
         ngoId: ngo.id,
         reason,
         details: details.trim(),
-        reporterName: reporterName.trim() || 'Anonymous Citizen',
-        reporterEmail: reporterEmail.trim() || null
+        reporterName: user.name || 'Verified Citizen',
+        reporterEmail: user.email
       });
       setTicket(res.ticket);
     } catch (err) {
@@ -131,27 +141,18 @@ export default function ReportFraudModal({ ngo, isOpen, onClose }) {
               ></textarea>
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <label className="block text-xs font-medium text-slate-700 mb-1">Your Name (Optional)</label>
-                <input
-                  type="text"
-                  placeholder="Anonymous"
-                  value={reporterName}
-                  onChange={(e) => setReporterName(e.target.value)}
-                  className="w-full p-2 text-xs bg-slate-50 border border-slate-200 rounded-xl"
-                />
+            {/* Authenticated Reporter Clearance Card */}
+            <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between text-xs">
+              <div className="flex items-center space-x-2">
+                <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+                <div className="leading-tight">
+                  <div className="font-bold text-slate-800">{user?.name || 'Verified Citizen'}</div>
+                  <div className="text-[10px] text-slate-500">{user?.email}</div>
+                </div>
               </div>
-              <div>
-                <label className="block text-xs font-medium text-slate-700 mb-1">Your Email (Optional)</label>
-                <input
-                  type="email"
-                  placeholder="For audit updates"
-                  value={reporterEmail}
-                  onChange={(e) => setReporterEmail(e.target.value)}
-                  className="w-full p-2 text-xs bg-slate-50 border border-slate-200 rounded-xl"
-                />
-              </div>
+              <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                Verified Whistleblower
+              </span>
             </div>
 
             <p className="text-[11px] text-slate-500 leading-tight">

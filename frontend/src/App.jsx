@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { AuthProvider, useAuth } from './context/AuthContext';
 import { LanguageProvider } from './context/LanguageContext';
 import Navbar from './components/Navbar';
 import BottomNav from './components/BottomNav';
@@ -8,10 +9,13 @@ import NgoFinderPage from './pages/NgoFinderPage';
 import NgoDetailPage from './pages/NgoDetailPage';
 import AdminDashboardPage from './pages/AdminDashboardPage';
 import HowVerificationWorks from './pages/HowVerificationWorks';
+import LoginPage from './pages/LoginPage';
 import SuggestNgoModal from './components/SuggestNgoModal';
 import TrustScoreModal from './components/TrustScoreModal';
+import { ShieldCheck } from 'lucide-react';
 
-function MainApp() {
+function AppGatekeeper() {
+  const { user, loading } = useAuth();
   const [currentPage, setCurrentPage] = useState('home');
   const [selectedNgoId, setSelectedNgoId] = useState(null);
   const [finderFilters, setFinderFilters] = useState({});
@@ -47,7 +51,7 @@ function MainApp() {
     window.addEventListener('hashchange', handleHash);
     handleHash();
     return () => window.removeEventListener('hashchange', handleHash);
-  }, []);
+  }, [user]);
 
   const navigateTo = (page, filters = {}) => {
     setFinderFilters(filters);
@@ -74,6 +78,27 @@ function MainApp() {
     setTrustModalOpen(true);
   };
 
+  // 1. Initial Security Boot / Session Verification
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-slate-900 flex flex-col items-center justify-center text-white space-y-4">
+        <div className="w-16 h-16 rounded-2xl bg-emerald-600/20 border border-emerald-500/40 flex items-center justify-center animate-pulse">
+          <ShieldCheck className="w-10 h-10 text-emerald-400" />
+        </div>
+        <div className="text-center">
+          <h2 className="text-lg font-bold tracking-tight">TrueNGO National Gateway</h2>
+          <p className="text-xs text-slate-400 mt-1">Verifying Citizen Clearance &amp; Session...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // 2. Strict Gatekeeper: No Access Without Login
+  if (!user) {
+    return <LoginPage />;
+  }
+
+  // 3. Authenticated Citizen Portal Access
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 selection:bg-emerald-100 selection:text-emerald-900">
       <Navbar
@@ -159,8 +184,10 @@ function MainApp() {
 
 export default function App() {
   return (
-    <LanguageProvider>
-      <MainApp />
-    </LanguageProvider>
+    <AuthProvider>
+      <LanguageProvider>
+        <AppGatekeeper />
+      </LanguageProvider>
+    </AuthProvider>
   );
 }

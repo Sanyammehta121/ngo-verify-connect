@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Star, MessageSquare, ShieldAlert, CheckCircle, Send, AlertTriangle } from 'lucide-react';
+import { Star, MessageSquare, ShieldAlert, CheckCircle, Send, AlertTriangle, Lock, ShieldCheck } from 'lucide-react';
 import { api } from '../services/api';
+import { useAuth } from '../context/AuthContext';
 
 export default function ReviewSection({ ngo, onOpenReportFraud, onReviewAdded }) {
-  const [userName, setUserName] = useState('');
+  const { user, isEmailVerified } = useAuth();
   const [rating, setRating] = useState(5);
   const [hoverRating, setHoverRating] = useState(0);
   const [comment, setComment] = useState('');
@@ -21,15 +22,24 @@ export default function ReviewSection({ ngo, onOpenReportFraud, onReviewAdded })
       return;
     }
 
+    if (!user) {
+      setError('You must be signed in to submit a review.');
+      return;
+    }
+
+    if (!isEmailVerified) {
+      setError('Email verification required. Please verify your email before posting reviews.');
+      return;
+    }
+
     setSubmitting(true);
     setError('');
     setSuccess('');
 
     try {
-      const response = await api.submitReview(ngo.id, rating, comment.trim(), userName.trim());
+      const response = await api.submitReview(ngo.id, rating, comment.trim());
       setSuccess('Your feedback has been verified and added to the public record!');
       setComment('');
-      setUserName('');
       setRating(5);
       if (onReviewAdded) {
         onReviewAdded(response.review, response.updatedTrustScore, response.updatedTrustPercentage);
@@ -110,16 +120,21 @@ export default function ReviewSection({ ngo, onOpenReportFraud, onReviewAdded })
                 </div>
               )}
 
-              {/* Reviewer Name (Optional) */}
-              <div>
-                <label className="block text-xs text-slate-600 mb-1 font-medium">Your Name (Optional)</label>
-                <input
-                  type="text"
-                  placeholder="e.g. Aarav Sharma (or leave blank for Verified Citizen)"
-                  value={userName}
-                  onChange={(e) => setUserName(e.target.value)}
-                  className="w-full p-2.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-hidden focus:ring-2 focus:ring-emerald-500 transition"
-                />
+              {/* Verified Identity Badge */}
+              <div className="p-2.5 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between text-xs">
+                <div className="flex items-center space-x-2">
+                  {user?.avatar ? (
+                    <img src={user.avatar} alt={user.name} className="w-5 h-5 rounded-full object-cover" />
+                  ) : (
+                    <div className="w-5 h-5 rounded-full bg-emerald-700 text-white flex items-center justify-center font-bold text-[9px]">
+                      {user?.name ? user.name.charAt(0).toUpperCase() : 'U'}
+                    </div>
+                  )}
+                  <span className="font-bold text-slate-800 truncate max-w-[150px]">{user?.name || 'Verified Citizen'}</span>
+                </div>
+                <span className="text-[10px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200 shrink-0">
+                  Verified Identity
+                </span>
               </div>
 
               {/* Interactive Star Picker */}

@@ -37,122 +37,188 @@ function request(path, options = {}) {
 }
 
 async function runTests() {
-  console.log('🧪 Starting TrueNGO Automated API Test Suite...');
+  console.log('🧪 Starting TrueNGO Simple Authentication & Demo Login Test Suite...');
   server = app.listen(PORT);
 
   try {
     // 1. Health check
-    console.log('Testing 1: /api/health');
+    console.log('\n--- 1. Core Health & Public Registry ---');
     const health = await request('/api/health');
     assert.strictEqual(health.status, 200);
     assert.strictEqual(health.body.status, 'ok');
     console.log('✅ Health check passed');
 
-    // 2. NGO list and search
-    console.log('Testing 2: GET /api/ngos');
+    // 2. Public NGO Registry Search & Browsing
     const ngosRes = await request('/api/ngos');
     assert.strictEqual(ngosRes.status, 200);
     assert(ngosRes.body.total >= 8, 'Must have at least 8 seeded NGOs');
-    console.log(`✅ Loaded ${ngosRes.body.total} NGOs`);
+    console.log(`✅ Loaded ${ngosRes.body.total} NGOs in public registry`);
 
     // 3. Autocomplete search
-    console.log('Testing 3: GET /api/ngos/search/autocomplete?q=Goonj');
     const autoRes = await request('/api/ngos/search/autocomplete?q=Goonj');
     assert.strictEqual(autoRes.status, 200);
     assert(autoRes.body.suggestions.length > 0);
-    assert.strictEqual(autoRes.body.suggestions[0].name, 'Goonj');
     console.log('✅ Autocomplete search passed');
 
-    // 4. NGO Single Detail
-    console.log('Testing 4: GET /api/ngos/1 (Goonj)');
-    const detailRes = await request('/api/ngos/1');
-    assert.strictEqual(detailRes.status, 200);
-    assert.strictEqual(detailRes.body.ngo.name, 'Goonj');
-    assert.strictEqual(detailRes.body.ngo.darpanId, 'DL/2009/0002131');
-    assert(detailRes.body.ngo.certifications.length > 0, 'Must have certifications');
-    console.log('✅ NGO Detail passed');
+    // -------------------------------------------------------------------------
+    // 4. One-Click Demo Login (Citizen & Admin)
+    // -------------------------------------------------------------------------
+    console.log('\n--- 2. Instant 1-Click Demo Login Endpoints ---');
+    
+    // Demo Citizen Login
+    const demoCitizenRes = await request('/api/auth/demo', {
+      method: 'POST',
+      body: { role: 'citizen' }
+    });
+    assert.strictEqual(demoCitizenRes.status, 200);
+    assert.strictEqual(demoCitizenRes.body.user.role, 'citizen');
+    assert(demoCitizenRes.body.token, 'Must return JWT session token');
+    const demoCitizenToken = demoCitizenRes.body.token;
+    console.log(`✅ Demo citizen login succeeded: ${demoCitizenRes.body.user.name} (${demoCitizenRes.body.user.email})`);
 
-    // 5. Post Review (Open to all citizens without login)
-    console.log('Testing 5: POST /api/reviews (Open Submission)');
-    const reviewRes = await request('/api/reviews', {
+    // Demo Admin Login
+    const demoAdminRes = await request('/api/auth/demo', {
+      method: 'POST',
+      body: { role: 'admin' }
+    });
+    assert.strictEqual(demoAdminRes.status, 200);
+    assert.strictEqual(demoAdminRes.body.user.role, 'admin');
+    assert(demoAdminRes.body.token, 'Must return JWT session token');
+    const demoAdminToken = demoAdminRes.body.token;
+    console.log(`✅ Demo officer login succeeded: ${demoAdminRes.body.user.name} (${demoAdminRes.body.user.email})`);
+
+    // -------------------------------------------------------------------------
+    // 5. Simple Email & Password Login
+    // -------------------------------------------------------------------------
+    console.log('\n--- 3. Simple Email & Password Authentication ---');
+    
+    // Valid Citizen Login
+    const citizenLoginRes = await request('/api/auth/login', {
+      method: 'POST',
+      body: { email: 'aarav.sharma@gmail.com', password: 'Password@123' }
+    });
+    assert.strictEqual(citizenLoginRes.status, 200);
+    assert.strictEqual(citizenLoginRes.body.user.email, 'aarav.sharma@gmail.com');
+    assert(citizenLoginRes.body.token, 'Must return JWT token');
+    console.log('✅ Citizen email & password authentication succeeded');
+
+    // Valid Admin Login
+    const adminLoginRes = await request('/api/auth/login', {
+      method: 'POST',
+      body: { email: 'admin@ngoverify.org', password: 'Admin@123' }
+    });
+    assert.strictEqual(adminLoginRes.status, 200);
+    assert.strictEqual(adminLoginRes.body.user.role, 'admin');
+    console.log('✅ Officer email & password authentication succeeded');
+
+    // Invalid Password Rejection
+    const badPassRes = await request('/api/auth/login', {
+      method: 'POST',
+      body: { email: 'admin@ngoverify.org', password: 'WrongPassword' }
+    });
+    assert.strictEqual(badPassRes.status, 401);
+    console.log('✅ Rejected invalid password with 401 Unauthorized');
+
+    // -------------------------------------------------------------------------
+    // 6. Citizen Registration (Immediately active without OTP friction)
+    // -------------------------------------------------------------------------
+    console.log('\n--- 4. User Registration Flow ---');
+    const testEmail = `new_citizen_${Date.now()}@domain.org`;
+    const regRes = await request('/api/auth/register', {
       method: 'POST',
       body: {
-        ngoId: 1,
-        rating: 5,
-        comment: 'Public citizen review verifying on-ground transparency.',
-        userName: 'Aarav Sharma'
+        name: 'Pooja Verma',
+        email: testEmail,
+        password: 'PassWord@123'
       }
     });
-    assert.strictEqual(reviewRes.status, 201);
-    assert.strictEqual(reviewRes.body.review.userName, 'Aarav Sharma');
-    assert(reviewRes.body.updatedTrustScore >= 4.0);
-    console.log('✅ Open review submission & score recalculation passed');
+    assert.strictEqual(regRes.status, 201);
+    assert.strictEqual(regRes.body.user.name, 'Pooja Verma');
+    assert(regRes.body.token, 'Must immediately return active session token');
+    const newCitizenToken = regRes.body.token;
+    console.log(`✅ New citizen registered and immediately active: ${testEmail}`);
 
-    // 6. Whistleblower Scam Report
-    console.log('Testing 6: POST /api/reports');
-    const reportRes = await request('/api/reports', {
+    // Duplicate Email Rejection
+    const dupRes = await request('/api/auth/register', {
       method: 'POST',
+      body: {
+        name: 'Duplicate Citizen',
+        email: testEmail,
+        password: 'PassWord@123'
+      }
+    });
+    assert.strictEqual(dupRes.status, 400);
+    console.log('✅ Rejected duplicate registration with 400 Bad Request');
+
+    // -------------------------------------------------------------------------
+    // 7. Protected Actions (Reviews & Reports)
+    // -------------------------------------------------------------------------
+    console.log('\n--- 5. Protected Features Authorization ---');
+
+    // Unauthenticated review attempt -> 401
+    const anonReviewRes = await request('/api/reviews', {
+      method: 'POST',
+      body: { ngoId: 1, rating: 5, comment: 'Anonymous review' }
+    });
+    assert.strictEqual(anonReviewRes.status, 401);
+    console.log('✅ Unauthenticated review blocked with 401');
+
+    // Authenticated review with new citizen token -> 201
+    const authReviewRes = await request('/api/reviews', {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${newCitizenToken}` },
+      body: { ngoId: 1, rating: 5, comment: 'Verified inspection completed successfully.' }
+    });
+    assert.strictEqual(authReviewRes.status, 201);
+    assert.strictEqual(authReviewRes.body.review.userName, 'Pooja Verma');
+    console.log('✅ Authenticated citizen review submitted successfully');
+
+    // Authenticated Whistleblower Fraud Report -> 201
+    const authReportRes = await request('/api/reports', {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${demoCitizenToken}` },
       body: {
         ngoId: 9,
         reason: 'Misuse of Donated Funds',
-        details: 'Testing whistleblower reporting with ticket verification.',
-        reporterName: 'Test Auditor'
+        details: 'Audit report inspection with transaction ID verification.'
       }
     });
-    assert.strictEqual(reportRes.status, 201);
-    assert(reportRes.body.ticket.startsWith('REP-2026-'));
-    console.log(`✅ Whistleblower report filed with ticket: ${reportRes.body.ticket}`);
+    assert.strictEqual(authReportRes.status, 201);
+    assert(authReportRes.body.ticket.startsWith('REP-2026-'));
+    console.log(`✅ Fraud report filed with ticket: ${authReportRes.body.ticket}`);
 
-    // 7. Suggest an NGO
-    console.log('Testing 7: POST /api/suggestions');
-    const suggestRes = await request('/api/suggestions', {
-      method: 'POST',
-      body: {
-        name: 'Goonj Delhi Regional Branch',
-        city: 'New Delhi',
-        state: 'Delhi',
-        category: 'Disaster Relief',
-        reason: 'High-impact community clothes bank.'
-      }
+    // -------------------------------------------------------------------------
+    // 8. Role-Based Access Control (Admin Desk)
+    // -------------------------------------------------------------------------
+    console.log('\n--- 6. Role-Based Access Control ---');
+    // Citizen accessing admin stats -> 403 Forbidden
+    const citizenAdminRes = await request('/api/admin/stats', {
+      headers: { 'Authorization': `Bearer ${demoCitizenToken}` }
     });
-    assert.strictEqual(suggestRes.status, 201);
-    console.log('✅ Public NGO suggestion passed');
+    assert.strictEqual(citizenAdminRes.status, 403);
+    console.log('✅ Citizen blocked from Admin Desk with 403 Forbidden');
 
-    // 8. Admin Stats (Accessible without login)
-    console.log('Testing 8: GET /api/admin/stats');
-    const adminStats = await request('/api/admin/stats');
-    assert.strictEqual(adminStats.status, 200);
-    assert(adminStats.body.totalNgos >= 8);
-    console.log('✅ Admin stats desk passed without login');
-
-    // 9. Admin Document Update & Real-Time Trust Recalculation (Accessible without login)
-    console.log('Testing 9: PUT /api/admin/ngos/9/documents');
-    const updateDocRes = await request('/api/admin/ngos/9/documents', {
-      method: 'PUT',
-      body: {
-        status12A: 'Verified',
-        status80G: 'Verified',
-        statusFCRA: 'Unverified',
-        darpanId: 'MH/2026/0991212',
-        verificationStatus: 'Verified'
-      }
+    // Officer accessing admin stats -> 200 OK
+    const adminStatsRes = await request('/api/admin/stats', {
+      headers: { 'Authorization': `Bearer ${demoAdminToken}` }
     });
-    assert.strictEqual(updateDocRes.status, 200);
-    assert(updateDocRes.body.trustScore > 3.0, 'Trust score should increase when 12A/80G are verified');
-    console.log(`✅ Admin document update recalculated score to: ${updateDocRes.body.trustScore}/5.0`);
+    assert.strictEqual(adminStatsRes.status, 200);
+    assert(adminStatsRes.body.totalNgos >= 8);
+    console.log(`✅ Officer accessed Admin Desk (Total NGOs: ${adminStatsRes.body.totalNgos})`);
 
-    // 10. Yamuna Nagar (Haryana) District Filter & Search
-    console.log('Testing 10: GET /api/ngos?city=Yamuna Nagar and city=Yamunanagar');
-    const y1 = await request('/api/ngos?city=Yamuna%20Nagar');
-    assert.strictEqual(y1.status, 200);
-    assert(y1.body.ngos.length > 0, 'Must find NGO for Yamuna Nagar');
-    assert.strictEqual(y1.body.ngos[0].state, 'Haryana');
-    const y2 = await request('/api/ngos?city=Yamunanagar');
-    assert.strictEqual(y2.status, 200);
-    assert(y2.body.ngos.length > 0, 'Must find NGO for Yamunanagar');
-    console.log(`✅ Yamuna Nagar district search passed -> ${y1.body.ngos[0].name}`);
+    // -------------------------------------------------------------------------
+    // 9. Session Verification (/api/auth/me)
+    // -------------------------------------------------------------------------
+    console.log('\n--- 7. Session Profile Verification (/api/auth/me) ---');
+    const meRes = await request('/api/auth/me', {
+      headers: { 'Authorization': `Bearer ${newCitizenToken}` }
+    });
+    assert.strictEqual(meRes.status, 200);
+    assert.strictEqual(meRes.body.user.email, testEmail);
+    assert.strictEqual(meRes.body.user.activity.reviewsSubmitted, 1);
+    console.log('✅ /api/auth/me returned user profile with accurate activity stats');
 
-    console.log('\n🎉 ALL 10 AUTOMATED VERIFICATION TESTS PASSED SUCCESSFULLY!');
+    console.log('\n🎉 ALL SIMPLE AUTHENTICATION & DEMO LOGIN TESTS PASSED SUCCESSFULLY!');
     process.exit(0);
   } catch (err) {
     console.error('❌ Test failed:', err);

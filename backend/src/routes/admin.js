@@ -1,7 +1,11 @@
 const express = require('express');
 const { db, computeTrustScore } = require('../db');
+const { authenticateToken, requireAdmin } = require('../middleware/auth');
 
 const router = express.Router();
+
+// Enforce compliance officer authentication and authorization on all admin endpoints
+router.use(authenticateToken, requireAdmin);
 
 /**
  * Platform stats summary

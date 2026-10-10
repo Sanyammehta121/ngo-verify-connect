@@ -1,13 +1,15 @@
 const express = require('express');
 const { db } = require('../db');
+const { authenticateToken, requireVerifiedEmail } = require('../middleware/auth');
 
 const router = express.Router();
 
 /**
  * Submit fraud / suspicious activity report for an NGO
+ * Requires authentication and verified email to prevent frivolous or impersonated reports.
  */
-router.post('/', (req, res) => {
-  const { ngoId, reporterName, reporterEmail, reason, details } = req.body;
+router.post('/', authenticateToken, requireVerifiedEmail, (req, res) => {
+  const { ngoId, reason, details } = req.body;
 
   if (!ngoId || !reason || !details) {
     return res.status(400).json({ error: 'NGO ID, reason, and detailed explanation are required.' });
@@ -18,15 +20,21 @@ router.post('/', (req, res) => {
     return res.status(404).json({ error: 'NGO not found.' });
   }
 
+  // Prevent impersonation: strictly bind to authenticated user session
+  const userId = req.user.id;
+  const reporterName = req.user.name || 'Verified Citizen';
+  const reporterEmail = req.user.email;
+
   const insert = db.prepare(`
-    INSERT INTO fraud_reports (ngo_id, reporter_name, reporter_email, reason, details, status, created_at)
-    VALUES (?, ?, ?, ?, ?, 'pending', CURRENT_TIMESTAMP)
+    INSERT INTO fraud_reports (ngo_id, user_id, reporter_name, reporter_email, reason, details, status, created_at)
+    VALUES (?, ?, ?, ?, ?, ?, 'pending', CURRENT_TIMESTAMP)
   `);
 
   const result = insert.run(
     ngoId,
-    reporterName ? reporterName.trim() : 'Anonymous Whistleblower',
-    reporterEmail ? reporterEmail.trim() : null,
+    userId,
+    reporterName,
+    reporterEmail,
     reason.trim(),
     details.trim()
   );
@@ -37,7 +45,8 @@ router.post('/', (req, res) => {
   res.status(201).json({
     message: 'Report filed successfully with platform verification desk.',
     ticket,
-    reportId
+    reportId,
+    userId
   });
 });
 

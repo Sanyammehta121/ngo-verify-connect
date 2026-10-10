@@ -140,7 +140,25 @@ try {
   db.exec("ALTER TABLE users ADD COLUMN google_id TEXT;");
 } catch (e) {}
 try {
+  db.exec("ALTER TABLE users ADD COLUMN github_id TEXT;");
+} catch (e) {}
+try {
+  db.exec("ALTER TABLE users ADD COLUMN provider_account_id TEXT;");
+} catch (e) {}
+try {
   db.exec("ALTER TABLE users ADD COLUMN email_verified INTEGER DEFAULT 0;");
+} catch (e) {}
+try {
+  db.exec("ALTER TABLE users ADD COLUMN verification_token TEXT;");
+} catch (e) {}
+try {
+  db.exec("ALTER TABLE users ADD COLUMN verification_token_expires INTEGER;");
+} catch (e) {}
+try {
+  db.exec("ALTER TABLE fraud_reports ADD COLUMN user_id INTEGER;");
+} catch (e) {}
+try {
+  db.exec("ALTER TABLE users ADD COLUMN updated_at DATETIME;");
 } catch (e) {}
 
 /**

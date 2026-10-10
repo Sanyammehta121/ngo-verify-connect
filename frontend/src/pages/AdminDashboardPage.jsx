@@ -5,9 +5,15 @@ import {
   ExternalLink, Save, Edit3, Trash2, Check, Sparkles 
 } from 'lucide-react';
 import { api } from '../services/api';
+import { useAuth } from '../context/AuthContext';
 import { INDIA_LOCATIONS, ALL_INDIAN_STATES, ALL_INDIAN_CITIES } from '../data/indiaLocations';
 
 export default function AdminDashboardPage({ onSelectNgo }) {
+  const { user, demoLogin } = useAuth();
+  const isAdmin = user?.role === 'admin';
+  const [switching, setSwitching] = useState(false);
+  const [loadError, setLoadError] = useState('');
+
   const [activeTab, setActiveTab] = useState('documents'); // 'documents', 'reviews', 'reports', 'suggestions'
 
   // Data states
@@ -45,6 +51,7 @@ export default function AdminDashboardPage({ onSelectNgo }) {
 
   const loadAllAdminData = async () => {
     setLoading(true);
+    setLoadError('');
     try {
       const [statsData, ngosData, reviewsData, reportsData, suggestionsData] = await Promise.all([
         api.getAdminStats(),
@@ -60,6 +67,7 @@ export default function AdminDashboardPage({ onSelectNgo }) {
       setSuggestions(suggestionsData.suggestions || []);
     } catch (err) {
       console.error('Failed to load admin desk data:', err);
+      setLoadError(err.message || 'Failed to load administrative data.');
     } finally {
       setLoading(false);
     }
@@ -142,6 +150,58 @@ export default function AdminDashboardPage({ onSelectNgo }) {
       alert(err.message);
     }
   };
+
+  if (!isAdmin) {
+    return (
+      <div className="max-w-xl mx-auto my-16 p-8 bg-white border border-slate-200 rounded-3xl shadow-xl text-center space-y-5 animate-fadeIn">
+        <div className="w-16 h-16 mx-auto rounded-2xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-600 shadow-inner">
+          <ShieldAlert className="w-8 h-8" />
+        </div>
+        <div>
+          <h2 className="text-xl font-black text-slate-900">Compliance Officer Clearance Required</h2>
+          <p className="text-xs text-slate-500 leading-relaxed mt-1.5">
+            The National Compliance &amp; Verification Desk is restricted to authorized regulatory officers. You are currently authenticated as a Citizen (<span className="font-semibold text-slate-700">{user?.email || 'citizen'}</span>).
+          </p>
+        </div>
+        <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+          <button
+            onClick={async () => {
+              setSwitching(true);
+              try {
+                await demoLogin('admin');
+              } catch (e) {
+                alert('Switch failed: ' + e.message);
+              } finally {
+                setSwitching(false);
+              }
+            }}
+            disabled={switching}
+            className="w-full sm:w-auto px-5 py-2.5 bg-blue-700 hover:bg-blue-800 text-white text-xs font-bold rounded-xl shadow-md transition cursor-pointer inline-flex items-center justify-center space-x-2"
+          >
+            <ShieldCheck className="w-4 h-4" />
+            <span>{switching ? 'Authenticating Officer...' : '⚡ Switch to Demo Officer Account'}</span>
+          </button>
+        </div>
+        <p className="text-[11px] text-slate-400">
+          Or sign in as <span className="font-mono text-slate-600">admin@ngoverify.org</span> (Password: <span className="font-mono text-slate-600">Admin@123</span>)
+        </p>
+      </div>
+    );
+  }
+
+  if (loading && !stats) {
+    return (
+      <div className="max-w-7xl mx-auto px-4 py-20 flex flex-col items-center justify-center text-slate-500 space-y-4">
+        <div className="w-12 h-12 rounded-2xl bg-blue-50 border border-blue-200 flex items-center justify-center text-blue-600 animate-spin">
+          <RefreshCw className="w-6 h-6" />
+        </div>
+        <div className="text-center">
+          <h3 className="font-bold text-slate-800 text-sm">Loading Gov Compliance Desk...</h3>
+          <p className="text-xs text-slate-400 mt-0.5">Fetching registered NGO dossiers and audit metrics</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 animate-fadeIn">

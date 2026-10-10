@@ -1,9 +1,11 @@
 import React from 'react';
 import { Home, Search, PlusCircle, ShieldCheck, Shield } from 'lucide-react';
 import { useTranslation } from '../context/LanguageContext';
+import { useAuth } from '../context/AuthContext';
 
 export default function BottomNav({ currentPage, onNavigate, onOpenSuggest }) {
   const { t } = useTranslation();
+  const { user } = useAuth();
 
   return (
     <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 shadow-xl px-2 pt-2 pb-3 flex items-center justify-around select-none">
@@ -57,18 +59,20 @@ export default function BottomNav({ currentPage, onNavigate, onOpenSuggest }) {
         <span className="text-[10px] mt-1 font-medium">{t('bottomNav.guide')}</span>
       </button>
 
-      {/* 5. Compliance Desk */}
-      <button
-        onClick={() => onNavigate('admin')}
-        className={`flex flex-col items-center justify-center flex-1 py-1 transition ${
-          currentPage === 'admin'
-            ? 'text-blue-700 font-bold'
-            : 'text-slate-500 hover:text-slate-800'
-        }`}
-      >
-        <Shield className={`w-5 h-5 ${currentPage === 'admin' ? 'stroke-[2.5] text-blue-600' : 'stroke-2'}`} />
-        <span className="text-[10px] mt-1 font-medium">{t('bottomNav.admin')}</span>
-      </button>
+      {/* 5. Compliance Desk - Only visible for admin accounts */}
+      {user?.role === 'admin' && (
+        <button
+          onClick={() => onNavigate('admin')}
+          className={`flex flex-col items-center justify-center flex-1 py-1 transition ${
+            currentPage === 'admin'
+              ? 'text-blue-700 font-bold'
+              : 'text-slate-500 hover:text-slate-800'
+          }`}
+        >
+          <Shield className={`w-5 h-5 ${currentPage === 'admin' ? 'stroke-[2.5] text-blue-600' : 'stroke-2'}`} />
+          <span className="text-[10px] mt-1 font-medium">{t('bottomNav.admin')}</span>
+        </button>
+      )}
     </nav>
   );
 }

@@ -1,13 +1,14 @@
 const express = require('express');
 const { db, computeTrustScore } = require('../db');
+const { authenticateToken, requireVerifiedEmail } = require('../middleware/auth');
 
 const router = express.Router();
 
 /**
- * Submit star rating and written review (Publicly accessible without login)
+ * Submit star rating and written review (Requires authentication & verified email)
  */
-router.post('/', (req, res) => {
-  const { ngoId, rating, comment, userName } = req.body;
+router.post('/', authenticateToken, requireVerifiedEmail, (req, res) => {
+  const { ngoId, rating, comment } = req.body;
 
   if (!ngoId || !rating || !comment) {
     return res.status(400).json({ error: 'NGO ID, rating, and written comment are required.' });
@@ -20,19 +21,22 @@ router.post('/', (req, res) => {
 
   const ngo = db.prepare('SELECT * FROM ngos WHERE id = ?').get(ngoId);
   if (!ngo) {
-    return res.status(404).json({ error: 'NGO not found' });
+    return res.status(404).json({ error: 'NGO not found.' });
   }
 
-  const reviewerName = (userName && userName.trim()) || 'Verified Citizen';
+  // Prevent impersonation: strictly bind to authenticated user session
+  const userId = req.user.id;
+  const reviewerName = req.user.name || 'Verified Citizen';
 
-  // Insert review (automatically approved for public record)
+  // Insert review linked to verified internal user ID
   const insert = db.prepare(`
     INSERT INTO reviews (ngo_id, user_id, user_name, rating, comment, status, created_at)
-    VALUES (?, NULL, ?, ?, ?, 'approved', CURRENT_TIMESTAMP)
+    VALUES (?, ?, ?, ?, ?, 'approved', CURRENT_TIMESTAMP)
   `);
 
   const result = insert.run(
     ngoId,
+    userId,
     reviewerName,
     numericRating,
     comment.trim()
@@ -50,6 +54,7 @@ router.post('/', (req, res) => {
     review: {
       id: Number(result.lastInsertRowid),
       ngoId,
+      userId,
       userName: reviewerName,
       rating: numericRating,
       comment: comment.trim(),
@@ -61,7 +66,7 @@ router.post('/', (req, res) => {
 });
 
 /**
- * Get reviews for a specific NGO
+ * Get reviews for a specific NGO (Publicly readable)
  */
 router.get('/ngo/:ngoId', (req, res) => {
   const ngoId = parseInt(req.params.ngoId, 10);

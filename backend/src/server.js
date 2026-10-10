@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('node:path');
 
+const authRoutes = require('./routes/auth');
 const ngosRoutes = require('./routes/ngos');
 const reviewsRoutes = require('./routes/reviews');
 const reportsRoutes = require('./routes/reports');
@@ -17,6 +18,7 @@ app.use(cors());
 app.use(express.json());
 
 // API Routes
+app.use('/api/auth', authRoutes);
 app.use('/api/ngos', ngosRoutes);
 app.use('/api/reviews', reviewsRoutes);
 app.use('/api/reports', reportsRoutes);

@@ -1,9 +1,11 @@
 import React from 'react';
 import { ShieldCheck, ExternalLink, FileText, CheckCircle2, Landmark, Shield, AlertTriangle } from 'lucide-react';
 import { useTranslation } from '../context/LanguageContext';
+import { useAuth } from '../context/AuthContext';
 
 export default function Footer({ onNavigate }) {
   const { t } = useTranslation();
+  const { user } = useAuth();
 
   return (
     <footer className="bg-[#0b1322] text-slate-400 text-xs border-t-4 border-slate-800 mt-20">
@@ -116,9 +118,14 @@ export default function Footer({ onNavigate }) {
               <li>
                 <button
                   onClick={() => onNavigate('admin')}
-                  className="hover:text-emerald-400 transition text-slate-300"
+                  className="hover:text-amber-300 transition text-slate-300 flex items-center space-x-1"
                 >
-                  Officer Verification Desk
+                  <span>Officer Verification Desk</span>
+                  {user?.role === 'admin' ? (
+                    <span className="text-[9px] bg-blue-900/60 text-blue-300 px-1.5 py-0.2 rounded font-bold">Officer</span>
+                  ) : (
+                    <span className="text-[9px] bg-slate-800 text-slate-400 px-1.5 py-0.2 rounded">Desk</span>
+                  )}
                 </button>
               </li>
               <li>
