@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { AuthProvider, useAuth } from './context/AuthContext';
 import { LanguageProvider } from './context/LanguageContext';
 import Navbar from './components/Navbar';
 import BottomNav from './components/BottomNav';
@@ -9,7 +8,6 @@ import NgoFinderPage from './pages/NgoFinderPage';
 import NgoDetailPage from './pages/NgoDetailPage';
 import AdminDashboardPage from './pages/AdminDashboardPage';
 import HowVerificationWorks from './pages/HowVerificationWorks';
-import AuthModal from './components/AuthModal';
 import SuggestNgoModal from './components/SuggestNgoModal';
 import TrustScoreModal from './components/TrustScoreModal';
 
@@ -19,7 +17,6 @@ function MainApp() {
   const [finderFilters, setFinderFilters] = useState({});
 
   // Modals
-  const [authModalOpen, setAuthModalOpen] = useState(false);
   const [suggestModalOpen, setSuggestModalOpen] = useState(false);
   const [trustModalOpen, setTrustModalOpen] = useState(false);
   const [trustNgo, setTrustNgo] = useState(null);
@@ -83,7 +80,6 @@ function MainApp() {
         currentPage={currentPage}
         onNavigate={navigateTo}
         onOpenSuggest={() => setSuggestModalOpen(true)}
-        onOpenAuth={() => setAuthModalOpen(true)}
       />
 
       {/* Main Content Area - with bottom padding on mobile for BottomNav */}
@@ -144,15 +140,9 @@ function MainApp() {
         currentPage={currentPage}
         onNavigate={navigateTo}
         onOpenSuggest={() => setSuggestModalOpen(true)}
-        onOpenAuth={() => setAuthModalOpen(true)}
       />
 
       {/* Global Modals */}
-      <AuthModal
-        isOpen={authModalOpen}
-        onClose={() => setAuthModalOpen(false)}
-      />
-
       <SuggestNgoModal
         isOpen={suggestModalOpen}
         onClose={() => setSuggestModalOpen(false)}
@@ -170,9 +160,7 @@ function MainApp() {
 export default function App() {
   return (
     <LanguageProvider>
-      <AuthProvider>
-        <MainApp />
-      </AuthProvider>
+      <MainApp />
     </LanguageProvider>
   );
 }

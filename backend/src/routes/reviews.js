@@ -1,14 +1,13 @@
 const express = require('express');
 const { db, computeTrustScore } = require('../db');
-const { authenticateToken } = require('../middleware/auth');
 
 const router = express.Router();
 
 /**
- * Submit star rating and written review (Requires authenticated login)
+ * Submit star rating and written review (Publicly accessible without login)
  */
-router.post('/', authenticateToken, (req, res) => {
-  const { ngoId, rating, comment } = req.body;
+router.post('/', (req, res) => {
+  const { ngoId, rating, comment, userName } = req.body;
 
   if (!ngoId || !rating || !comment) {
     return res.status(400).json({ error: 'NGO ID, rating, and written comment are required.' });
@@ -24,16 +23,17 @@ router.post('/', authenticateToken, (req, res) => {
     return res.status(404).json({ error: 'NGO not found' });
   }
 
-  // Insert review (automatically approved for clean demo, or queued for admin review)
+  const reviewerName = (userName && userName.trim()) || 'Verified Citizen';
+
+  // Insert review (automatically approved for public record)
   const insert = db.prepare(`
     INSERT INTO reviews (ngo_id, user_id, user_name, rating, comment, status, created_at)
-    VALUES (?, ?, ?, ?, ?, 'approved', CURRENT_TIMESTAMP)
+    VALUES (?, NULL, ?, ?, ?, 'approved', CURRENT_TIMESTAMP)
   `);
 
   const result = insert.run(
     ngoId,
-    req.user.id,
-    req.user.name || 'Verified Citizen',
+    reviewerName,
     numericRating,
     comment.trim()
   );
@@ -50,7 +50,7 @@ router.post('/', authenticateToken, (req, res) => {
     review: {
       id: Number(result.lastInsertRowid),
       ngoId,
-      userName: req.user.name,
+      userName: reviewerName,
       rating: numericRating,
       comment: comment.trim(),
       createdAt: new Date().toISOString()

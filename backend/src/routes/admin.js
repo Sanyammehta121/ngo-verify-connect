@@ -1,11 +1,7 @@
 const express = require('express');
 const { db, computeTrustScore } = require('../db');
-const { authenticateToken, adminOnly } = require('../middleware/auth');
 
 const router = express.Router();
-
-// Require admin for all routes in this router
-router.use(authenticateToken, adminOnly);
 
 /**
  * Platform stats summary

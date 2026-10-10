@@ -1,13 +1,6 @@
 const API_BASE = '/api';
 
-function getAuthHeaders() {
-  const token = localStorage.getItem('ngo_auth_token');
-  const headers = { 'Content-Type': 'application/json' };
-  if (token) {
-    headers['Authorization'] = `Bearer ${token}`;
-  }
-  return headers;
-}
+const JSON_HEADERS = { 'Content-Type': 'application/json' };
 
 export const api = {
   // NGO Finder & Details
@@ -50,65 +43,12 @@ export const api = {
     return res.json();
   },
 
-  // Auth
-  async login(email, password) {
-    const res = await fetch(`${API_BASE}/auth/login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password })
-    });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error || 'Login failed');
-    return data;
-  },
-
-  async register(name, email, password, role = 'citizen') {
-    const res = await fetch(`${API_BASE}/auth/register`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, password, role })
-    });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error || 'Registration failed');
-    return data;
-  },
-
-  async demoLogin(role = 'citizen') {
-    const res = await fetch(`${API_BASE}/auth/demo-login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ role })
-    });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error || 'Demo login failed');
-    return data;
-  },
-
-  async loginWithGoogle(googleData) {
-    const res = await fetch(`${API_BASE}/auth/google`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(googleData)
-    });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error || 'Google login failed');
-    return data;
-  },
-
-  async getMe() {
-    const res = await fetch(`${API_BASE}/auth/me`, {
-      headers: getAuthHeaders()
-    });
-    if (!res.ok) throw new Error('Failed to fetch profile');
-    return res.json();
-  },
-
-  // Feedback & Reviews
-  async submitReview(ngoId, rating, comment) {
+  // Feedback & Reviews (Open to all citizens without login)
+  async submitReview(ngoId, rating, comment, userName) {
     const res = await fetch(`${API_BASE}/reviews`, {
       method: 'POST',
-      headers: getAuthHeaders(),
-      body: JSON.stringify({ ngoId, rating, comment })
+      headers: JSON_HEADERS,
+      body: JSON.stringify({ ngoId, rating, comment, userName })
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.error || 'Failed to submit review');
@@ -119,7 +59,7 @@ export const api = {
   async submitFraudReport(data) {
     const res = await fetch(`${API_BASE}/reports`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: JSON_HEADERS,
       body: JSON.stringify(data)
     });
     const result = await res.json();
@@ -131,7 +71,7 @@ export const api = {
   async submitSuggestion(data) {
     const res = await fetch(`${API_BASE}/suggestions`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: JSON_HEADERS,
       body: JSON.stringify(data)
     });
     const result = await res.json();
@@ -139,19 +79,15 @@ export const api = {
     return result;
   },
 
-  // Admin APIs
+  // Admin Compliance Desk APIs (Accessible directly)
   async getAdminStats() {
-    const res = await fetch(`${API_BASE}/admin/stats`, {
-      headers: getAuthHeaders()
-    });
+    const res = await fetch(`${API_BASE}/admin/stats`);
     if (!res.ok) throw new Error('Failed to load admin stats');
     return res.json();
   },
 
   async getAdminNgos() {
-    const res = await fetch(`${API_BASE}/admin/ngos`, {
-      headers: getAuthHeaders()
-    });
+    const res = await fetch(`${API_BASE}/admin/ngos`);
     if (!res.ok) throw new Error('Failed to load NGOs for admin');
     return res.json();
   },
@@ -159,7 +95,7 @@ export const api = {
   async updateGovDocuments(ngoId, data) {
     const res = await fetch(`${API_BASE}/admin/ngos/${ngoId}/documents`, {
       method: 'PUT',
-      headers: getAuthHeaders(),
+      headers: JSON_HEADERS,
       body: JSON.stringify(data)
     });
     const result = await res.json();
@@ -170,7 +106,7 @@ export const api = {
   async createNgo(data) {
     const res = await fetch(`${API_BASE}/admin/ngos`, {
       method: 'POST',
-      headers: getAuthHeaders(),
+      headers: JSON_HEADERS,
       body: JSON.stringify(data)
     });
     const result = await res.json();
@@ -180,17 +116,14 @@ export const api = {
 
   async deleteNgo(id) {
     const res = await fetch(`${API_BASE}/admin/ngos/${id}`, {
-      method: 'DELETE',
-      headers: getAuthHeaders()
+      method: 'DELETE'
     });
     if (!res.ok) throw new Error('Failed to delete NGO');
     return res.json();
   },
 
   async getAdminReviews() {
-    const res = await fetch(`${API_BASE}/admin/reviews`, {
-      headers: getAuthHeaders()
-    });
+    const res = await fetch(`${API_BASE}/admin/reviews`);
     if (!res.ok) throw new Error('Failed to fetch reviews');
     return res.json();
   },
@@ -198,7 +131,7 @@ export const api = {
   async moderateReview(id, status) {
     const res = await fetch(`${API_BASE}/admin/reviews/${id}/status`, {
       method: 'PUT',
-      headers: getAuthHeaders(),
+      headers: JSON_HEADERS,
       body: JSON.stringify({ status })
     });
     const result = await res.json();
@@ -207,9 +140,7 @@ export const api = {
   },
 
   async getAdminReports() {
-    const res = await fetch(`${API_BASE}/admin/reports`, {
-      headers: getAuthHeaders()
-    });
+    const res = await fetch(`${API_BASE}/admin/reports`);
     if (!res.ok) throw new Error('Failed to fetch reports');
     return res.json();
   },
@@ -217,7 +148,7 @@ export const api = {
   async updateReportStatus(id, status) {
     const res = await fetch(`${API_BASE}/admin/reports/${id}/status`, {
       method: 'PUT',
-      headers: getAuthHeaders(),
+      headers: JSON_HEADERS,
       body: JSON.stringify({ status })
     });
     const result = await res.json();
@@ -226,17 +157,14 @@ export const api = {
   },
 
   async getAdminSuggestions() {
-    const res = await fetch(`${API_BASE}/admin/suggestions`, {
-      headers: getAuthHeaders()
-    });
+    const res = await fetch(`${API_BASE}/admin/suggestions`);
     if (!res.ok) throw new Error('Failed to fetch suggestions');
     return res.json();
   },
 
   async approveSuggestion(id) {
     const res = await fetch(`${API_BASE}/admin/suggestions/${id}/approve`, {
-      method: 'POST',
-      headers: getAuthHeaders()
+      method: 'POST'
     });
     const result = await res.json();
     if (!res.ok) throw new Error(result.error || 'Failed to approve suggestion');

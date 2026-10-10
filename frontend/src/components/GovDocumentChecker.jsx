@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { ShieldCheck, CheckCircle2, Clock, AlertTriangle, XCircle, ExternalLink, Calendar, Edit3, Save, X } from 'lucide-react';
 import { api } from '../services/api';
-import { useAuth } from '../context/AuthContext';
 
 export default function GovDocumentChecker({ ngo, onUpdateNgo }) {
-  const { isAdmin } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
@@ -112,8 +110,8 @@ export default function GovDocumentChecker({ ngo, onUpdateNgo }) {
             <span>Last verified on: <strong>{ngo.lastVerifiedOn || 'Recent'}</strong></span>
           </div>
 
-          {/* Admin Edit Trigger */}
-          {isAdmin && !isEditing && (
+          {/* Document Status Update Trigger */}
+          {!isEditing && (
             <button
               onClick={() => setIsEditing(true)}
               className="flex items-center space-x-1 px-2.5 py-1 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-medium rounded-lg transition"

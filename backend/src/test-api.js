@@ -48,45 +48,23 @@ async function runTests() {
     assert.strictEqual(health.body.status, 'ok');
     console.log('✅ Health check passed');
 
-    // 2. Demo login (Citizen)
-    console.log('Testing 2: Demo Citizen Login');
-    const citizenLogin = await request('/api/auth/demo-login', {
-      method: 'POST',
-      body: { role: 'citizen' }
-    });
-    assert.strictEqual(citizenLogin.status, 200);
-    assert(citizenLogin.body.token, 'Token must be present');
-    const citizenToken = citizenLogin.body.token;
-    console.log('✅ Citizen auth passed');
-
-    // 3. Demo login (Admin)
-    console.log('Testing 3: Demo Admin Login');
-    const adminLogin = await request('/api/auth/demo-login', {
-      method: 'POST',
-      body: { role: 'admin' }
-    });
-    assert.strictEqual(adminLogin.status, 200);
-    assert.strictEqual(adminLogin.body.user.role, 'admin');
-    const adminToken = adminLogin.body.token;
-    console.log('✅ Admin auth passed');
-
-    // 4. NGO list and search
-    console.log('Testing 4: GET /api/ngos');
+    // 2. NGO list and search
+    console.log('Testing 2: GET /api/ngos');
     const ngosRes = await request('/api/ngos');
     assert.strictEqual(ngosRes.status, 200);
     assert(ngosRes.body.total >= 8, 'Must have at least 8 seeded NGOs');
     console.log(`✅ Loaded ${ngosRes.body.total} NGOs`);
 
-    // 5. Autocomplete search
-    console.log('Testing 5: GET /api/ngos/search/autocomplete?q=Goonj');
+    // 3. Autocomplete search
+    console.log('Testing 3: GET /api/ngos/search/autocomplete?q=Goonj');
     const autoRes = await request('/api/ngos/search/autocomplete?q=Goonj');
     assert.strictEqual(autoRes.status, 200);
     assert(autoRes.body.suggestions.length > 0);
     assert.strictEqual(autoRes.body.suggestions[0].name, 'Goonj');
     console.log('✅ Autocomplete search passed');
 
-    // 6. NGO Single Detail
-    console.log('Testing 6: GET /api/ngos/1 (Goonj)');
+    // 4. NGO Single Detail
+    console.log('Testing 4: GET /api/ngos/1 (Goonj)');
     const detailRes = await request('/api/ngos/1');
     assert.strictEqual(detailRes.status, 200);
     assert.strictEqual(detailRes.body.ngo.name, 'Goonj');
@@ -94,23 +72,24 @@ async function runTests() {
     assert(detailRes.body.ngo.certifications.length > 0, 'Must have certifications');
     console.log('✅ NGO Detail passed');
 
-    // 7. Post Review (Authenticated Citizen)
-    console.log('Testing 7: POST /api/reviews');
+    // 5. Post Review (Open to all citizens without login)
+    console.log('Testing 5: POST /api/reviews (Open Submission)');
     const reviewRes = await request('/api/reviews', {
       method: 'POST',
-      headers: { 'Authorization': `Bearer ${citizenToken}` },
       body: {
         ngoId: 1,
         rating: 5,
-        comment: 'Automated test review verifying transparency.'
+        comment: 'Public citizen review verifying on-ground transparency.',
+        userName: 'Aarav Sharma'
       }
     });
     assert.strictEqual(reviewRes.status, 201);
+    assert.strictEqual(reviewRes.body.review.userName, 'Aarav Sharma');
     assert(reviewRes.body.updatedTrustScore >= 4.0);
-    console.log('✅ Review submission & score recalculation passed');
+    console.log('✅ Open review submission & score recalculation passed');
 
-    // 8. Whistleblower Scam Report
-    console.log('Testing 8: POST /api/reports');
+    // 6. Whistleblower Scam Report
+    console.log('Testing 6: POST /api/reports');
     const reportRes = await request('/api/reports', {
       method: 'POST',
       body: {
@@ -124,8 +103,8 @@ async function runTests() {
     assert(reportRes.body.ticket.startsWith('REP-2026-'));
     console.log(`✅ Whistleblower report filed with ticket: ${reportRes.body.ticket}`);
 
-    // 9. Suggest an NGO
-    console.log('Testing 9: POST /api/suggestions');
+    // 7. Suggest an NGO
+    console.log('Testing 7: POST /api/suggestions');
     const suggestRes = await request('/api/suggestions', {
       method: 'POST',
       body: {
@@ -139,20 +118,17 @@ async function runTests() {
     assert.strictEqual(suggestRes.status, 201);
     console.log('✅ Public NGO suggestion passed');
 
-    // 10. Admin Stats
-    console.log('Testing 10: GET /api/admin/stats');
-    const adminStats = await request('/api/admin/stats', {
-      headers: { 'Authorization': `Bearer ${adminToken}` }
-    });
+    // 8. Admin Stats (Accessible without login)
+    console.log('Testing 8: GET /api/admin/stats');
+    const adminStats = await request('/api/admin/stats');
     assert.strictEqual(adminStats.status, 200);
     assert(adminStats.body.totalNgos >= 8);
-    console.log('✅ Admin stats desk passed');
+    console.log('✅ Admin stats desk passed without login');
 
-    // 11. Admin Document Update & Real-Time Trust Recalculation
-    console.log('Testing 11: PUT /api/admin/ngos/9/documents');
+    // 9. Admin Document Update & Real-Time Trust Recalculation (Accessible without login)
+    console.log('Testing 9: PUT /api/admin/ngos/9/documents');
     const updateDocRes = await request('/api/admin/ngos/9/documents', {
       method: 'PUT',
-      headers: { 'Authorization': `Bearer ${adminToken}` },
       body: {
         status12A: 'Verified',
         status80G: 'Verified',
@@ -165,8 +141,8 @@ async function runTests() {
     assert(updateDocRes.body.trustScore > 3.0, 'Trust score should increase when 12A/80G are verified');
     console.log(`✅ Admin document update recalculated score to: ${updateDocRes.body.trustScore}/5.0`);
 
-    // 12. Yamuna Nagar (Haryana) District Filter & Search
-    console.log('Testing 12: GET /api/ngos?city=Yamuna Nagar and city=Yamunanagar');
+    // 10. Yamuna Nagar (Haryana) District Filter & Search
+    console.log('Testing 10: GET /api/ngos?city=Yamuna Nagar and city=Yamunanagar');
     const y1 = await request('/api/ngos?city=Yamuna%20Nagar');
     assert.strictEqual(y1.status, 200);
     assert(y1.body.ngos.length > 0, 'Must find NGO for Yamuna Nagar');
@@ -176,23 +152,7 @@ async function runTests() {
     assert(y2.body.ngos.length > 0, 'Must find NGO for Yamunanagar');
     console.log(`✅ Yamuna Nagar district search passed -> ${y1.body.ngos[0].name}`);
 
-    // 13. Google Sign-In Authentication
-    console.log('Testing 13: POST /api/auth/google');
-    const googleRes = await request('/api/auth/google', {
-      method: 'POST',
-      body: {
-        email: 'tester.google@gmail.com',
-        name: 'Tester Google Citizen',
-        avatar: 'https://lh3.googleusercontent.com/a/default-user'
-      }
-    });
-    assert.strictEqual(googleRes.status, 200);
-    assert.strictEqual(googleRes.body.user.provider, 'google');
-    assert.strictEqual(googleRes.body.user.role, 'citizen');
-    assert(googleRes.body.token, 'Must return signed JWT');
-    console.log('✅ Google Sign-In authentication passed');
-
-    console.log('\n🎉 ALL 13 AUTOMATED VERIFICATION TESTS PASSED SUCCESSFULLY!');
+    console.log('\n🎉 ALL 10 AUTOMATED VERIFICATION TESTS PASSED SUCCESSFULLY!');
     process.exit(0);
   } catch (err) {
     console.error('❌ Test failed:', err);
